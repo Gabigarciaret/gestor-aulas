@@ -41,6 +41,13 @@
   fill: currentColor;
 }
 
+/* imagenes usadas como ícono en botones */
+.icon-btn img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
 /* MOBILE: ocultar el texto */
 .icon-btn span {
   display: none;
@@ -69,6 +76,11 @@
   }
 
   .icon-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .icon-btn img {
     width: 20px;
     height: 20px;
   }

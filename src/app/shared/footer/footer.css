@@ -22,11 +22,10 @@
 .footer__logo {
   width: 24px;
   height: 24px;
-  fill: var(--color-accent);
 }
 
 .footer__name {
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-xl);
   font-weight: 600;
 }
 
@@ -39,7 +38,7 @@
 .footer__link {
   color: var(--color-text-inverse);
   text-decoration: none;
-  font-weight: 500;
+  font-size: var(--font-size-lg);
   transition: color var(--transition-speed);
 }
 
@@ -69,6 +68,6 @@
   }
 
   .footer__copy {
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-xs);
   }
 }
