@@ -1027,17 +1027,17 @@
       "id": 1,
       "apellido": "Principal",
       "nombre": "Admin",
-      "password": "$2a$10$3yJtdFxkMWptlDtgsjRZ.OMTKq7KsaPvKQjVkj/OBmnbYQMJwtP9q",
+      "password": "admin",
       "rol": "ADMIN",
-      "username": "admin"
+      "email": "admin@gmail.com"
     },
     {
       "id": 2,
       "apellido": "Martínez",
       "nombre": "Carlos",
-      "password": "$2a$10$wPHJ38iZ3bK5Abq50fHyeufyHUm4AgOWTh2a0rBTdxuB3lx0EyLRm",
+      "password": "profe",
       "rol": "PROFESOR",
-      "username": "profe"
+      "email": "profe@gmail.com"
     },
     {
       "id": 3,
@@ -1045,7 +1045,7 @@
       "nombre": "María",
       "password": "$2a$10$wPHJ38iZ3bK5Abq50fHyeufyHUm4AgOWTh2a0rBTdxuB3lx0EyLRm",
       "rol": "PROFESOR",
-      "username": "maria.gonzalez"
+      "email": "maria.gonzalez@gmail.com"
     },
     {
       "id": 4,
@@ -1053,7 +1053,7 @@
       "nombre": "Juan",
       "password": "$2a$10$wPHJ38iZ3bK5Abq50fHyeufyHUm4AgOWTh2a0rBTdxuB3lx0EyLRm",
       "rol": "PROFESOR",
-      "username": "juan.perez"
+      "email": "juan.perez@gmail.com"
     },
     {
       "id": 5,
@@ -1061,7 +1061,7 @@
       "nombre": "Ana",
       "password": "$2a$10$wPHJ38iZ3bK5Abq50fHyeufyHUm4AgOWTh2a0rBTdxuB3lx0EyLRm",
       "rol": "PROFESOR",
-      "username": "ana.rodriguez"
+      "email": "ana.rodriguez@gmail.com"
     },
     {
       "id": 6,
@@ -1069,7 +1069,7 @@
       "nombre": "Luis",
       "password": "$2a$10$wPHJ38iZ3bK5Abq50fHyeufyHUm4AgOWTh2a0rBTdxuB3lx0EyLRm",
       "rol": "PROFESOR",
-      "username": "luis.fernandez"
+      "email": "luis.fernandez@gmail.com"
     },
     {
       "id": 7,
@@ -1077,7 +1077,7 @@
       "nombre": "Sofia",
       "password": "$2a$10$wPHJ38iZ3bK5Abq50fHyeufyHUm4AgOWTh2a0rBTdxuB3lx0EyLRm",
       "rol": "PROFESOR",
-      "username": "sofia.lopez"
+      "email": "sofia.lopez@gmail.com"
     },
     {
       "id": 8,
@@ -1085,7 +1085,7 @@
       "nombre": "Diego",
       "password": "$2a$10$wPHJ38iZ3bK5Abq50fHyeufyHUm4AgOWTh2a0rBTdxuB3lx0EyLRm",
       "rol": "PROFESOR",
-      "username": "diego.ramirez"
+      "email": "diego.ramirez@gmail.com"
     },
     {
       "id": 9,
@@ -1093,7 +1093,7 @@
       "nombre": "Laura",
       "password": "$2a$10$wPHJ38iZ3bK5Abq50fHyeufyHUm4AgOWTh2a0rBTdxuB3lx0EyLRm",
       "rol": "PROFESOR",
-      "username": "laura.torres"
+      "email": "laura.torres@gmail.com"
     },
     {
       "id": 10,
@@ -1101,7 +1101,7 @@
       "nombre": "Roberto",
       "password": "$2a$10$wPHJ38iZ3bK5Abq50fHyeufyHUm4AgOWTh2a0rBTdxuB3lx0EyLRm",
       "rol": "PROFESOR",
-      "username": "roberto.silva"
+      "email": "roberto.silva@gmail.com"
     },
     {
       "id": 11,
@@ -1109,7 +1109,165 @@
       "nombre": "Patricia",
       "password": "$2a$10$wPHJ38iZ3bK5Abq50fHyeufyHUm4AgOWTh2a0rBTdxuB3lx0EyLRm",
       "rol": "PROFESOR",
-      "username": "patricia.morales"
+      "email": "patricia.morales@gmail.com"
+    }
+  ],
+  "carrera_x_asignatura": [
+    {
+      "carrera_id": 1,
+      "asignatura_id": 1
+    },
+    {
+      "carrera_id": 1,
+      "asignatura_id": 2
+    },
+    {
+      "carrera_id": 1,
+      "asignatura_id": 3
+    },
+    {
+      "carrera_id": 1,
+      "asignatura_id": 4
+    },
+    {
+      "carrera_id": 1,
+      "asignatura_id": 5
+    },
+    {
+      "carrera_id": 1,
+      "asignatura_id": 14
+    },
+    {
+      "carrera_id": 2,
+      "asignatura_id": 1
+    },
+    {
+      "carrera_id": 2,
+      "asignatura_id": 2
+    },
+    {
+      "carrera_id": 2,
+      "asignatura_id": 3
+    },
+    {
+      "carrera_id": 2,
+      "asignatura_id": 4
+    },
+    {
+      "carrera_id": 2,
+      "asignatura_id": 5
+    },
+    {
+      "carrera_id": 2,
+      "asignatura_id": 6
+    },
+    {
+      "carrera_id": 2,
+      "asignatura_id": 7
+    },
+    {
+      "carrera_id": 2,
+      "asignatura_id": 10
+    },
+    {
+      "carrera_id": 2,
+      "asignatura_id": 11
+    },
+    {
+      "carrera_id": 2,
+      "asignatura_id": 13
+    },
+    {
+      "carrera_id": 3,
+      "asignatura_id": 1
+    },
+    {
+      "carrera_id": 3,
+      "asignatura_id": 2
+    },
+    {
+      "carrera_id": 3,
+      "asignatura_id": 4
+    },
+    {
+      "carrera_id": 3,
+      "asignatura_id": 5
+    },
+    {
+      "carrera_id": 3,
+      "asignatura_id": 6
+    },
+    {
+      "carrera_id": 3,
+      "asignatura_id": 7
+    },
+    {
+      "carrera_id": 3,
+      "asignatura_id": 8
+    },
+    {
+      "carrera_id": 3,
+      "asignatura_id": 9
+    },
+    {
+      "carrera_id": 3,
+      "asignatura_id": 10
+    },
+    {
+      "carrera_id": 3,
+      "asignatura_id": 11
+    },
+    {
+      "carrera_id": 3,
+      "asignatura_id": 12
+    },
+    {
+      "carrera_id": 3,
+      "asignatura_id": 13
+    },
+    {
+      "carrera_id": 3,
+      "asignatura_id": 15
+    },
+    {
+      "carrera_id": 4,
+      "asignatura_id": 8
+    },
+    {
+      "carrera_id": 4,
+      "asignatura_id": 9
+    },
+    {
+      "carrera_id": 4,
+      "asignatura_id": 12
+    },
+    {
+      "carrera_id": 4,
+      "asignatura_id": 15
+    },
+    {
+      "carrera_id": 5,
+      "asignatura_id": 1
+    },
+    {
+      "carrera_id": 5,
+      "asignatura_id": 2
+    },
+    {
+      "carrera_id": 5,
+      "asignatura_id": 4
+    },
+    {
+      "carrera_id": 5,
+      "asignatura_id": 5
+    },
+    {
+      "carrera_id": 5,
+      "asignatura_id": 6
+    },
+    {
+      "carrera_id": 5,
+      "asignatura_id": 7
     }
   ]
 }
