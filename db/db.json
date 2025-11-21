@@ -1,0 +1,13 @@
+{
+  "aulas": [
+    { "id": 1, "nombre": "Lab 1", "capacidad": 30, "tipo": "LABORATORIO", "ubicacion": "Piso 1" },
+    { "id": 2, "nombre": "Aula 12", "capacidad": 40, "tipo": "TEORICA", "ubicacion": "Piso 2" }
+  ],
+  "usuarios": [
+    { "id": 1, "nombre": "Admin", "email": "admin@utn.edu", "rol": "ADMIN", "password": "1234" },
+    { "id": 2, "nombre": "Docente Juan", "email": "juan@utn.edu", "rol": "DOCENTE", "password": "abcd" }
+  ],
+  "reservas": [
+    { "id": 1, "aulaId": 1, "usuarioId": 2, "dia": "LUNES", "horaInicio": "10:00", "horaFin": "12:00" }
+  ]
+}
