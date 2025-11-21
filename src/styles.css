@@ -1,1 +1,69 @@
-/* You can add global styles to this file, and also import other style files */
+/* Importar fuentes desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Blinker:wght@100;200;300;400;600;700;800;900&family=Edu+NSW+ACT+Cursive:wght@400;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+:root {
+  /* Colores principales */
+  --color-bg-light: rgb(209, 213, 216);
+  --color-primary: rgb(19, 62, 135);
+  --color-secondary: rgb(96, 139, 193);
+  --color-accent: rgb(190, 214, 235);
+
+  /* Tonos derivados para gradientes o hover */
+  --color-primary-dark: rgb(15, 50, 110);
+  --color-primary-light: rgb(70, 100, 180);
+  --color-secondary-dark: rgb(70, 120, 180);
+  --color-secondary-light: rgb(150, 180, 220);
+
+  /* Colores de texto */
+  --color-text-primary: rgb(33, 33, 33);
+  --color-text-secondary: rgb(80, 80, 80);
+  --color-text-inverse: rgb(255, 255, 255);
+
+  /* Fondos adicionales */
+  --color-bg-dark: rgb(19, 62, 135);
+  --color-bg-muted: rgb(230, 230, 240);
+
+  /* Bordes y sombras */
+  --color-border: rgb(200, 200, 200);
+  --shadow-light: 0 2px 6px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.2);
+
+  /* Bordes y transiciones */
+  --border-radius: 12px;
+  --transition-speed: 0.3s;
+
+  /* Tipografías */
+  --font-sans: 'Blinker', Arial, sans-serif;
+  --font-cursive: 'Edu NSW ACT Cursive', cursive;
+  --font-serif: 'Playfair Display', serif;
+  --font-mono: 'Roboto Mono', monospace;
+
+  /* Tamaños de fuente base (pueden ajustarse según diseño) */
+ 
+  --font-size-xs: 0.75rem;  /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-md: 1rem;     /* 16px */
+  --font-size-lg: 1.125rem; /* 18px */
+  --font-size-xl: 1.25rem;  /* 20px */
+  --font-size-2xl: 1.5rem;  /* 24px */
+  --font-size-3xl: 1.875rem;/* 30px */
+  --font-size-4xl: 2.25rem; /* 36px */
+  --font-size-5xl: 3rem;    /* 48px */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  min-height: calc(100vh - 165px); /* Ajustar según el tamaño del header y footer */
+}
+
+@media(min-width: 768px) {
+  main {
+    min-height: calc(100vh - 115px); /* Ajustar según el tamaño del header y footer */
+  }
+}
