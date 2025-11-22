@@ -106,30 +106,6 @@
   transform: none;
 }
 
-.register-section {
-  text-align: center;
-  margin-top: 20px;
-  padding-top: 16px;
-  border-top: 1px solid #e2e8f0;
-}
-
-.register-section p {
-  color: #718096;
-  margin: 0;
-  font-size: 0.875rem;
-}
-
-.register-link {
-  color: #667eea;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.register-link:hover {
-  color: #764ba2;
-  text-decoration: underline;
-}
-
 .login-footer {
   text-align: center;
   margin-top: 24px;
