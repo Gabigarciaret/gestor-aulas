@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { LoginRequest } from './LoginRequest';
-import { map, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable, tap } from 'rxjs';
 import { UsuarioService } from '../usuario-service/usuario-service';
 import { AuthError } from '../../errores/AuthError';
 import { Usuario } from '../../models/usuario';
@@ -10,6 +10,14 @@ import { Usuario } from '../../models/usuario';
 })
 export class AuthService {
   private usuarioService = inject(UsuarioService);
+  usuarioLogueado: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  infoUsuario: BehaviorSubject<Usuario> = new BehaviorSubject<Usuario>({
+    id:'',
+    apellido:'',
+    nombre:'',
+    rol:undefined,
+    email:''
+  });
 
   validarCredenciales(credenciales:LoginRequest): Observable<Usuario> {
     return this.usuarioService.getUsuarioByEmail(credenciales.email).pipe(
@@ -24,7 +32,19 @@ export class AuthService {
           };
         }
         throw AuthError.UsuarioNoRegistrado();
+      }),
+      tap(usuario => {
+        this.usuarioLogueado.next(true);
+        this.infoUsuario.next(usuario);
       })
     );
+  }
+
+  get datosUsuario(): Observable<Usuario> {
+    return this.infoUsuario.asObservable();
+  }
+
+  get estaLogueado(): Observable<boolean> {
+    return this.usuarioLogueado.asObservable();
   }
 }

@@ -30,7 +30,7 @@ export class Login {
 
     this.authService.validarCredenciales(this.form.value as LoginRequest).subscribe({
       next: () => {
-        this.router.navigateByUrl('/home');
+        this.router.navigateByUrl('/menu');
       },
       error: (error) => {
         this.mensajeError.set(error.message);
