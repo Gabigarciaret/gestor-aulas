@@ -1,0 +1,135 @@
+<div class="perfil-container">
+  <div class="perfil-card">
+    <div class="perfil-header">
+      <h1>Mi Perfil</h1>
+      <button (click)="volver()" class="btn-volver">← Volver</button>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="perfil-form">
+      <!-- Información personal -->
+      <div class="form-section">
+        <h3>Información Personal</h3>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input
+              id="nombre"
+              type="text"
+              formControlName="nombre"
+              class="form-control"
+              [class.error]="form.get('nombre')?.invalid && form.get('nombre')?.touched"
+            />
+            @if (form.get('nombre')?.invalid && form.get('nombre')?.touched) {
+              <div class="error-message">El nombre es requerido</div>
+            }
+          </div>
+
+          <div class="form-group">
+            <label for="apellido">Apellido</label>
+            <input
+              id="apellido"
+              type="text"
+              formControlName="apellido"
+              class="form-control"
+              [class.error]="form.get('apellido')?.invalid && form.get('apellido')?.touched"
+            />
+            @if (form.get('apellido')?.invalid && form.get('apellido')?.touched) {
+              <div class="error-message">El apellido es requerido</div>
+            }
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            class="form-control"
+            [class.error]="form.get('email')?.invalid && form.get('email')?.touched"
+          />
+          @if (form.get('email')?.invalid && form.get('email')?.touched) {
+            <div class="error-message">
+              @if (form.get('email')?.errors?.['required']) {
+                El email es requerido
+              }
+              @if (form.get('email')?.errors?.['email']) {
+                Ingresa un email válido
+              }
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Cambiar contraseña -->
+      <div class="form-section">
+        <h3>Cambiar Contraseña</h3>
+        <p class="section-note">Deja estos campos vacíos si no quieres cambiar la contraseña</p>
+
+        <div class="form-group">
+          <label for="passwordActual">Contraseña Actual</label>
+          <input
+            id="passwordActual"
+            type="password"
+            formControlName="passwordActual"
+            class="form-control"
+            placeholder="Ingresa tu contraseña actual"
+          />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="passwordNuevo">Nueva Contraseña</label>
+            <input
+              id="passwordNuevo"
+              type="password"
+              formControlName="passwordNuevo"
+              class="form-control"
+              placeholder="Nueva contraseña"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="passwordConfirmar">Confirmar Contraseña</label>
+            <input
+              id="passwordConfirmar"
+              type="password"
+              formControlName="passwordConfirmar"
+              class="form-control"
+              placeholder="Confirma la nueva contraseña"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Mensajes -->
+      @if (mensaje) {
+        <div class="success-message">{{ mensaje }}</div>
+      }
+      
+      @if (error) {
+        <div class="error-message global-error">{{ error }}</div>
+      }
+
+      <!-- Botones -->
+      <div class="form-actions">
+        <button 
+          type="submit" 
+          class="btn-primary"
+          [disabled]="loading || form.invalid"
+        >
+          @if (loading) {
+            Guardando...
+          } @else {
+            Modificar en Base
+          }
+        </button>
+        
+        <button type="button" (click)="volver()" class="btn-secondary">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

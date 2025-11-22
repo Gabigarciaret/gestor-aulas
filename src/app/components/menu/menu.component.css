@@ -1,0 +1,25 @@
+/* src/app/components/menu/menu.component.css */
+.menu {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.menu__link {
+  color: var(--color-text-inverse);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  transition: background var(--transition-speed);
+}
+
+.menu__link:hover,
+.menu__link--active {
+  background: var(--color-secondary-dark);
+}
+
+@media (max-width: 767px) {
+  .menu {
+    flex-direction: column; /* si lo usan dentro de un desplegable mobile */
+  }
+}

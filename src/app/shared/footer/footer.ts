@@ -1,11 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-footer',
-  imports: [],
+  imports: [CommonModule, RouterLink],
   templateUrl: './footer.html',
   styleUrl: './footer.css',
 })
 export class Footer {
+  private auth = inject(AuthService);
 
+  get usuario() {
+    return this.auth.usuarioActual();
+  }
+
+  get isAdmin() {
+    return this.usuario?.rol === 'ADMIN';
+  }
 }
