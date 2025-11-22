@@ -4,28 +4,6 @@
   box-sizing: border-box;
 }
 
-.links-contenedor {
-    margin-top: 0.75rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-}
-
-.links {
-    text-decoration: none;
-    color: black;
-    font-family: var(--font-sans);
-    font-size: 1.5rem;
-    padding: 1.5rem;
-    border-bottom: 2px dashed var(--color-primary);
-    width: 100%;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .login-form {
     display: flex;
     flex-direction: column;

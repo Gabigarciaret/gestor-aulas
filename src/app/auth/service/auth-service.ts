@@ -47,4 +47,15 @@ export class AuthService {
   get estaLogueado(): Observable<boolean> {
     return this.usuarioLogueado.asObservable();
   }
+
+  cerrarSesion(): void {
+    this.usuarioLogueado.next(false);
+    this.infoUsuario.next({
+      id: '',
+      apellido: '',
+      nombre: '',
+      rol: undefined,
+      email: ''
+    });
+  }
 }
