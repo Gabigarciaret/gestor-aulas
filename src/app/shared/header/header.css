@@ -10,9 +10,17 @@
 }
 
 .header__logo {
+  text-decoration: none;
+  color: var(--color-text-inverse);
   font-family: var(--font-sans);
   font-size: var(--font-size-xl);
   font-weight: 700;
+  cursor: pointer;
+  transition: opacity var(--transition-speed);
+}
+
+.header__logo:hover {
+  opacity: 0.9;
 }
 
 .header__actions {
