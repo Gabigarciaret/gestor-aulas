@@ -1,0 +1,14 @@
+export class AuthError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = 'AuthError';
+  }
+
+  static CredencialesInvalidas(): AuthError {
+    return new AuthError('La contraseña que ingresaste es incorrecta');
+  }
+
+  static UsuarioNoRegistrado(): AuthError {
+    return new AuthError('El correo electrónico que ingresaste no está conectado a una cuenta');
+  }
+}

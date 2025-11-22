@@ -1,37 +1,27 @@
-import { Injectable, signal, computed } from '@angular/core';
+import { Injectable, signal, computed, inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { Usuario } from '../models/usuario.model';
+import { AuthService as NewAuthService } from '../auth/service/auth-service';
+import { LoginRequest } from '../auth/models/LoginRequest';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private baseUrl = 'http://localhost:3001';
-  private _usuarioActual = signal<Usuario | null>(this.getStoredUser());
+  private newAuthService = inject(NewAuthService);
+
+  // Mantener compatibilidad con la implementación anterior
+  private _usuarioActual = computed(() => {
+    const usuario = this.newAuthService.infoUsuario();
+    return usuario.id === 0 ? null : usuario;
+  });
 
   constructor(private http: HttpClient) {}
 
-  private getStoredUser(): Usuario | null {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      const stored = localStorage.getItem('currentUser');
-      return stored ? JSON.parse(stored) : null;
-    }
-    return null;
-  }
-
-  private setStoredUser(usuario: Usuario | null): void {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      if (usuario) {
-        localStorage.setItem('currentUser', JSON.stringify(usuario));
-      } else {
-        localStorage.removeItem('currentUser');
-      }
-    }
-  }
-
   get usuarioActual() {
-    return this._usuarioActual.asReadonly();
+    return this._usuarioActual;
   }
 
   rolActual = computed(() => {
@@ -40,39 +30,20 @@ export class AuthService {
   });
 
   login(email: string, password: string): Observable<Usuario> {
-    const params = new HttpParams().set('email', email);
-
-    return this.http.get<Usuario[]>(`${this.baseUrl}/usuarios`, { params }).pipe(
-      map(usuarios => {
-        if (!usuarios || usuarios.length === 0) {
-          throw new Error('Usuario o contraseña incorrectos');
-        }
-
-        const usuario = usuarios[0];
-
-        // para probar usamos solo las contraseñas en texto plano
-        if (usuario.password !== password) {
-          throw new Error('Usuario o contraseña incorrectos');
-        }
-
-        this._usuarioActual.set(usuario);
-        this.setStoredUser(usuario);
-        return usuario;
-      })
-    );
+    const loginRequest: LoginRequest = { email, password };
+    return this.newAuthService.validarCredenciales(loginRequest);
   }
 
   logout() {
-    this._usuarioActual.set(null);
-    this.setStoredUser(null);
+    this.newAuthService.logout();
   }
 
   isAuthenticated(): boolean {
-    return this._usuarioActual() !== null;
+    return this.newAuthService.estaLogueado();
   }
 
   estaLogueado(): boolean {
-    return this._usuarioActual() !== null;
+    return this.newAuthService.estaLogueado();
   }
 
   hasRole(rol: 'ADMIN' | 'PROFESOR'): boolean {
