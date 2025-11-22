@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, effect, inject, signal } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../auth/service/auth-service';
@@ -15,6 +15,14 @@ export class Login {
   private authService = inject(AuthService);
   private fb = inject(FormBuilder);
   private router = inject(Router);
+
+  constructor() {
+    effect(() => {
+      if(this.authService.usuarioLogueado()) {
+        this.authService.logout();
+      }
+    });
+  }
 
   form = this.fb.group({
     email: ['', [Validators.required]],

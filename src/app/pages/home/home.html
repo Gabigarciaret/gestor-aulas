@@ -1,2 +1,7 @@
-<p>home works!</p>
 <a routerLink="/login">LOGIN</a>
+<br><br>
+<p>
+    @if (authService.usuarioLogueado()) {
+        Bienvenido {{authService.infoUsuario().nombre}} {{authService.infoUsuario().apellido}}!
+    }
+</p>
