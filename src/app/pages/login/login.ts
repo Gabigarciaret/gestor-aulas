@@ -1,7 +1,8 @@
 import { Component, inject, signal } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { UsuarioService } from '../../services/usuario-service';
+import { AuthService } from '../../services/auth-service/auth-service';
+import { LoginRequest } from '../../services/auth-service/LoginRequest';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { UsuarioService } from '../../services/usuario-service';
 })
 
 export class Login {
-  private usuarioService = inject(UsuarioService);
+  private authService = inject(AuthService);
   private fb = inject(FormBuilder);
   private router = inject(Router);
 
@@ -20,24 +21,19 @@ export class Login {
     password: ['', [Validators.required]]
   });
 
-  errorMessage = signal('');
+  mensajeError = signal('');
 
   Enviar(): void {
     if (this.form.invalid) { return; }
 
-    const email = this.form.value.email;
-    const password = this.form.value.password;
+    this.mensajeError.set('');
 
-    if (!email || !password) { return; }
-
-    this.errorMessage.set('');
-
-    this.usuarioService.validarCredenciales(email, password).subscribe({
+    this.authService.validarCredenciales(this.form.value as LoginRequest).subscribe({
       next: () => {
-        this.router.navigate(['/home']);
+        this.router.navigateByUrl('/home');
       },
       error: (error) => {
-        this.errorMessage.set(error.message);
+        this.mensajeError.set(error.message);
       }
     });
   }
