@@ -80,4 +80,15 @@ export class AuthService {
     });
     localStorage.removeItem('usuario');
   }
+
+  cerrarSesion(): void {
+    this.usuarioLogueado.next(false);
+    this.infoUsuario.next({
+      id: '',
+      apellido: '',
+      nombre: '',
+      rol: undefined,
+      email: ''
+    });
+  }
 }
