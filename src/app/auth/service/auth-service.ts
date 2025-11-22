@@ -1,8 +1,8 @@
 import { inject, Injectable } from '@angular/core';
-import { LoginRequest } from './LoginRequest';
+import { LoginRequest } from '../models/LoginRequest';
 import { BehaviorSubject, map, Observable, tap } from 'rxjs';
-import { UsuarioService } from '../usuario-service/usuario-service';
-import { AuthError } from '../../errores/AuthError';
+import { UsuarioService } from '../../services/usuario-service/usuario-service';
+import { AuthError } from '../errores/AuthError';
 import { Usuario } from '../../models/usuario';
 
 @Injectable({
