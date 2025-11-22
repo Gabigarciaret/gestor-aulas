@@ -1,13 +1,1273 @@
 {
-  "aulas": [
-    { "id": 1, "nombre": "Lab 1", "capacidad": 30, "tipo": "LABORATORIO", "ubicacion": "Piso 1" },
-    { "id": 2, "nombre": "Aula 12", "capacidad": 40, "tipo": "TEORICA", "ubicacion": "Piso 2" }
+  "espacios": [
+    {
+      "tipo_espacio": "AULA",
+      "id": 1,
+      "capacidad": 40,
+      "nombre": "Aula 101",
+      "tiene_proyector": "1",
+      "tienetv": "0",
+      "cantidad_computadoras": 0
+    },
+    {
+      "tipo_espacio": "AULA",
+      "id": 2,
+      "capacidad": 35,
+      "nombre": "Aula 102",
+      "tiene_proyector": "1",
+      "tienetv": "1",
+      "cantidad_computadoras": 0
+    },
+    {
+      "tipo_espacio": "AULA",
+      "id": 3,
+      "capacidad": 45,
+      "nombre": "Aula 103",
+      "tiene_proyector": "1",
+      "tienetv": "0",
+      "cantidad_computadoras": 0
+    },
+    {
+      "tipo_espacio": "AULA",
+      "id": 4,
+      "capacidad": 50,
+      "nombre": "Aula 201",
+      "tiene_proyector": "1",
+      "tienetv": "1",
+      "cantidad_computadoras": 0
+    },
+    {
+      "tipo_espacio": "AULA",
+      "id": 5,
+      "capacidad": 30,
+      "nombre": "Aula 202",
+      "tiene_proyector": "0",
+      "tienetv": "1",
+      "cantidad_computadoras": 0
+    },
+    {
+      "tipo_espacio": "AULA",
+      "id": 6,
+      "capacidad": 38,
+      "nombre": "Aula 203",
+      "tiene_proyector": "1",
+      "tienetv": "0",
+      "cantidad_computadoras": 0
+    },
+    {
+      "tipo_espacio": "AULA",
+      "id": 7,
+      "capacidad": 120,
+      "nombre": "Aula Magna",
+      "tiene_proyector": "1",
+      "tienetv": "1",
+      "cantidad_computadoras": 0
+    },
+    {
+      "tipo_espacio": "LABORATORIO",
+      "id": 8,
+      "capacidad": 25,
+      "nombre": "Lab Informática 1",
+      "tiene_proyector": "1",
+      "tienetv": "1",
+      "cantidad_computadoras": 25
+    },
+    {
+      "tipo_espacio": "LABORATORIO",
+      "id": 9,
+      "capacidad": 30,
+      "nombre": "Lab Informática 2",
+      "tiene_proyector": "1",
+      "tienetv": "1",
+      "cantidad_computadoras": 30
+    },
+    {
+      "tipo_espacio": "LABORATORIO",
+      "id": 10,
+      "capacidad": 50,
+      "nombre": "Lab Informática 3",
+      "tiene_proyector": "1",
+      "tienetv": "0",
+      "cantidad_computadoras": 20
+    },
+    {
+      "tipo_espacio": "LABORATORIO",
+      "id": 11,
+      "capacidad": 15,
+      "nombre": "Lab Redes",
+      "tiene_proyector": "1",
+      "tienetv": "1",
+      "cantidad_computadoras": 15
+    },
+    {
+      "tipo_espacio": "LABORATORIO",
+      "id": 12,
+      "capacidad": 20,
+      "nombre": "Lab Física",
+      "tiene_proyector": "0",
+      "tienetv": "0",
+      "cantidad_computadoras": 0
+    },
+    {
+      "tipo_espacio": "AULA",
+      "id": 13,
+      "capacidad": 25,
+      "nombre": "Sala de Conferencias",
+      "tiene_proyector": "1",
+      "tienetv": "1",
+      "cantidad_computadoras": 0
+    },
+    {
+      "tipo_espacio": "AULA",
+      "id": 14,
+      "capacidad": 35,
+      "nombre": "Aula Virtual 1",
+      "tiene_proyector": "1",
+      "tienetv": "1",
+      "cantidad_computadoras": 0
+    },
+    {
+      "tipo_espacio": "AULA",
+      "id": 15,
+      "capacidad": 40,
+      "nombre": "Aula Virtual 2",
+      "tiene_proyector": "1",
+      "tienetv": "1",
+      "cantidad_computadoras": 0
+    }
   ],
-  "usuarios": [
-    { "id": 1, "nombre": "Admin", "email": "admin@utn.edu", "rol": "ADMIN", "password": "1234" },
-    { "id": 2, "nombre": "Docente Juan", "email": "juan@utn.edu", "rol": "DOCENTE", "password": "abcd" }
+  "asignaturas": [
+    {
+      "id": 1,
+      "codigo": 101,
+      "nombre_asignatura": "Programación 1",
+      "requiere_laboratorio": 1
+    },
+    {
+      "id": 2,
+      "codigo": 102,
+      "nombre_asignatura": "Bases de Datos",
+      "requiere_laboratorio": 1
+    },
+    {
+      "id": 3,
+      "codigo": 103,
+      "nombre_asignatura": "Matemática Discreta",
+      "requiere_laboratorio": 0
+    },
+    {
+      "id": 4,
+      "codigo": 201,
+      "nombre_asignatura": "Programación 2",
+      "requiere_laboratorio": 1
+    },
+    {
+      "id": 5,
+      "codigo": 202,
+      "nombre_asignatura": "Estructuras de Datos",
+      "requiere_laboratorio": 1
+    },
+    {
+      "id": 6,
+      "codigo": 203,
+      "nombre_asignatura": "Algoritmos",
+      "requiere_laboratorio": 0
+    },
+    {
+      "id": 7,
+      "codigo": 301,
+      "nombre_asignatura": "Ingeniería de Software",
+      "requiere_laboratorio": 0
+    },
+    {
+      "id": 8,
+      "codigo": 302,
+      "nombre_asignatura": "Redes de Computadoras",
+      "requiere_laboratorio": 1
+    },
+    {
+      "id": 9,
+      "codigo": 303,
+      "nombre_asignatura": "Sistemas Operativos",
+      "requiere_laboratorio": 1
+    },
+    {
+      "id": 10,
+      "codigo": 104,
+      "nombre_asignatura": "Álgebra Lineal",
+      "requiere_laboratorio": 0
+    },
+    {
+      "id": 11,
+      "codigo": 105,
+      "nombre_asignatura": "Cálculo 1",
+      "requiere_laboratorio": 0
+    },
+    {
+      "id": 12,
+      "codigo": 106,
+      "nombre_asignatura": "Física 1",
+      "requiere_laboratorio": 1
+    },
+    {
+      "id": 13,
+      "codigo": 304,
+      "nombre_asignatura": "Inteligencia Artificial",
+      "requiere_laboratorio": 1
+    },
+    {
+      "id": 14,
+      "codigo": 305,
+      "nombre_asignatura": "Desarrollo Web",
+      "requiere_laboratorio": 1
+    },
+    {
+      "id": 15,
+      "codigo": 306,
+      "nombre_asignatura": "Seguridad Informática",
+      "requiere_laboratorio": 0
+    }
+  ],
+  "carreras": [
+    {
+      "id": 5,
+      "nombre": "Analista de Sistemas"
+    },
+    {
+      "id": 3,
+      "nombre": "Ingeniería en Sistemas"
+    },
+    {
+      "id": 2,
+      "nombre": "Licenciatura en Informática"
+    },
+    {
+      "id": 1,
+      "nombre": "Tecnicatura en Programación"
+    },
+    {
+      "id": 4,
+      "nombre": "Tecnicatura en Redes"
+    }
+  ],
+  "comisiones": [
+    {
+      "id": 1,
+      "cantidad_alumnos": 35,
+      "nombre": "Prog1-C1-TM",
+      "asignatura_id": 1,
+      "carrera_id": 1,
+      "usuario_profesor_id": 2
+    },
+    {
+      "id": 2,
+      "cantidad_alumnos": 32,
+      "nombre": "Prog1-C2-TT",
+      "asignatura_id": 1,
+      "carrera_id": 1,
+      "usuario_profesor_id": 3
+    },
+    {
+      "id": 3,
+      "cantidad_alumnos": 28,
+      "nombre": "Prog1-C3-TN",
+      "asignatura_id": 1,
+      "carrera_id": 2,
+      "usuario_profesor_id": 4
+    },
+    {
+      "id": 4,
+      "cantidad_alumnos": 25,
+      "nombre": "BD-C1-TM",
+      "asignatura_id": 2,
+      "carrera_id": 1,
+      "usuario_profesor_id": 5
+    },
+    {
+      "id": 5,
+      "cantidad_alumnos": 30,
+      "nombre": "BD-C2-TT",
+      "asignatura_id": 2,
+      "carrera_id": 2,
+      "usuario_profesor_id": 6
+    },
+    {
+      "id": 6,
+      "cantidad_alumnos": 22,
+      "nombre": "BD-C3-TN",
+      "asignatura_id": 2,
+      "carrera_id": 3,
+      "usuario_profesor_id": 7
+    },
+    {
+      "id": 7,
+      "cantidad_alumnos": 40,
+      "nombre": "MatDisc-C1-TM",
+      "asignatura_id": 3,
+      "carrera_id": 2,
+      "usuario_profesor_id": 8
+    },
+    {
+      "id": 8,
+      "cantidad_alumnos": 35,
+      "nombre": "MatDisc-C2-TT",
+      "asignatura_id": 3,
+      "carrera_id": 3,
+      "usuario_profesor_id": 9
+    },
+    {
+      "id": 9,
+      "cantidad_alumnos": 20,
+      "nombre": "Prog2-C1-TM",
+      "asignatura_id": 4,
+      "carrera_id": 1,
+      "usuario_profesor_id": 2
+    },
+    {
+      "id": 10,
+      "cantidad_alumnos": 18,
+      "nombre": "Prog2-C2-TN",
+      "asignatura_id": 4,
+      "carrera_id": 2,
+      "usuario_profesor_id": 3
+    },
+    {
+      "id": 11,
+      "cantidad_alumnos": 22,
+      "nombre": "EstrDatos-C1-TT",
+      "asignatura_id": 5,
+      "carrera_id": 2,
+      "usuario_profesor_id": 4
+    },
+    {
+      "id": 12,
+      "cantidad_alumnos": 25,
+      "nombre": "EstrDatos-C2-TN",
+      "asignatura_id": 5,
+      "carrera_id": 3,
+      "usuario_profesor_id": 5
+    },
+    {
+      "id": 13,
+      "cantidad_alumnos": 30,
+      "nombre": "Algo-C1-TM",
+      "asignatura_id": 6,
+      "carrera_id": 2,
+      "usuario_profesor_id": 6
+    },
+    {
+      "id": 14,
+      "cantidad_alumnos": 28,
+      "nombre": "Algo-C2-TT",
+      "asignatura_id": 6,
+      "carrera_id": 3,
+      "usuario_profesor_id": 7
+    },
+    {
+      "id": 15,
+      "cantidad_alumnos": 24,
+      "nombre": "IngSoft-C1-TM",
+      "asignatura_id": 7,
+      "carrera_id": 3,
+      "usuario_profesor_id": 8
+    },
+    {
+      "id": 16,
+      "cantidad_alumnos": 26,
+      "nombre": "IngSoft-C2-TN",
+      "asignatura_id": 7,
+      "carrera_id": 5,
+      "usuario_profesor_id": 9
+    },
+    {
+      "id": 17,
+      "cantidad_alumnos": 15,
+      "nombre": "Redes-C1-TT",
+      "asignatura_id": 8,
+      "carrera_id": 3,
+      "usuario_profesor_id": 10
+    },
+    {
+      "id": 18,
+      "cantidad_alumnos": 18,
+      "nombre": "Redes-C2-TN",
+      "asignatura_id": 8,
+      "carrera_id": 4,
+      "usuario_profesor_id": 11
+    },
+    {
+      "id": 19,
+      "cantidad_alumnos": 20,
+      "nombre": "SO-C1-TM",
+      "asignatura_id": 9,
+      "carrera_id": 3,
+      "usuario_profesor_id": 2
+    },
+    {
+      "id": 20,
+      "cantidad_alumnos": 22,
+      "nombre": "SO-C2-TT",
+      "asignatura_id": 9,
+      "carrera_id": 3,
+      "usuario_profesor_id": 3
+    },
+    {
+      "id": 21,
+      "cantidad_alumnos": 28,
+      "nombre": "DevWeb-C1-TM",
+      "asignatura_id": 14,
+      "carrera_id": 1,
+      "usuario_profesor_id": 4
+    },
+    {
+      "id": 22,
+      "cantidad_alumnos": 30,
+      "nombre": "DevWeb-C2-TN",
+      "asignatura_id": 14,
+      "carrera_id": 2,
+      "usuario_profesor_id": 5
+    }
   ],
   "reservas": [
-    { "id": 1, "aulaId": 1, "usuarioId": 2, "dia": "LUNES", "horaInicio": "10:00", "horaFin": "12:00" }
+    {
+      "id": 1,
+      "dia": "LUNES",
+      "fecha_fin": "2025-06-13",
+      "fecha_inicio": "2025-06-13",
+      "hora_fin": "15:24:57.270000",
+      "hora_inicio": "15:24:57.270000",
+      "comision_id": 1,
+      "aula_id": 1
+    },
+    {
+      "id": 2,
+      "dia": "LUNES",
+      "fecha_fin": "2025-12-15",
+      "fecha_inicio": "2025-06-16",
+      "hora_fin": "12:00:00.000000",
+      "hora_inicio": "10:00:00.000000",
+      "comision_id": 4,
+      "aula_id": 8
+    },
+    {
+      "id": 3,
+      "dia": "LUNES",
+      "fecha_fin": "2025-12-15",
+      "fecha_inicio": "2025-06-16",
+      "hora_fin": "16:00:00.000000",
+      "hora_inicio": "14:00:00.000000",
+      "comision_id": 7,
+      "aula_id": 2
+    },
+    {
+      "id": 4,
+      "dia": "LUNES",
+      "fecha_fin": "2025-12-15",
+      "fecha_inicio": "2025-06-16",
+      "hora_fin": "18:00:00.000000",
+      "hora_inicio": "16:00:00.000000",
+      "comision_id": 9,
+      "aula_id": 9
+    },
+    {
+      "id": 5,
+      "dia": "LUNES",
+      "fecha_fin": "2025-12-15",
+      "fecha_inicio": "2025-06-16",
+      "hora_fin": "20:00:00.000000",
+      "hora_inicio": "18:00:00.000000",
+      "comision_id": 13,
+      "aula_id": 3
+    },
+    {
+      "id": 6,
+      "dia": "MARTES",
+      "fecha_fin": "2025-12-16",
+      "fecha_inicio": "2025-06-17",
+      "hora_fin": "10:00:00.000000",
+      "hora_inicio": "08:00:00.000000",
+      "comision_id": 2,
+      "aula_id": 4
+    },
+    {
+      "id": 7,
+      "dia": "MARTES",
+      "fecha_fin": "2025-12-16",
+      "fecha_inicio": "2025-06-17",
+      "hora_fin": "12:00:00.000000",
+      "hora_inicio": "10:00:00.000000",
+      "comision_id": 11,
+      "aula_id": 8
+    },
+    {
+      "id": 8,
+      "dia": "MARTES",
+      "fecha_fin": "2025-12-16",
+      "fecha_inicio": "2025-06-17",
+      "hora_fin": "16:00:00.000000",
+      "hora_inicio": "14:00:00.000000",
+      "comision_id": 8,
+      "aula_id": 5
+    },
+    {
+      "id": 9,
+      "dia": "MARTES",
+      "fecha_fin": "2025-12-16",
+      "fecha_inicio": "2025-06-17",
+      "hora_fin": "18:00:00.000000",
+      "hora_inicio": "16:00:00.000000",
+      "comision_id": 17,
+      "aula_id": 9
+    },
+    {
+      "id": 10,
+      "dia": "MARTES",
+      "fecha_fin": "2025-12-16",
+      "fecha_inicio": "2025-06-17",
+      "hora_fin": "20:00:00.000000",
+      "hora_inicio": "18:00:00.000000",
+      "comision_id": 15,
+      "aula_id": 6
+    },
+    {
+      "id": 11,
+      "dia": "MIERCOLES",
+      "fecha_fin": "2025-12-17",
+      "fecha_inicio": "2025-06-18",
+      "hora_fin": "10:00:00.000000",
+      "hora_inicio": "08:00:00.000000",
+      "comision_id": 3,
+      "aula_id": 1
+    },
+    {
+      "id": 12,
+      "dia": "MIERCOLES",
+      "fecha_fin": "2025-12-17",
+      "fecha_inicio": "2025-06-18",
+      "hora_fin": "12:00:00.000000",
+      "hora_inicio": "10:00:00.000000",
+      "comision_id": 5,
+      "aula_id": 8
+    },
+    {
+      "id": 13,
+      "dia": "MIERCOLES",
+      "fecha_fin": "2025-12-17",
+      "fecha_inicio": "2025-06-18",
+      "hora_fin": "16:00:00.000000",
+      "hora_inicio": "14:00:00.000000",
+      "comision_id": 19,
+      "aula_id": 10
+    },
+    {
+      "id": 14,
+      "dia": "MIERCOLES",
+      "fecha_fin": "2025-12-17",
+      "fecha_inicio": "2025-06-18",
+      "hora_fin": "18:00:00.000000",
+      "hora_inicio": "16:00:00.000000",
+      "comision_id": 14,
+      "aula_id": 7
+    },
+    {
+      "id": 15,
+      "dia": "MIERCOLES",
+      "fecha_fin": "2025-12-17",
+      "fecha_inicio": "2025-06-18",
+      "hora_fin": "20:00:00.000000",
+      "hora_inicio": "18:00:00.000000",
+      "comision_id": 16,
+      "aula_id": 2
+    },
+    {
+      "id": 16,
+      "dia": "JUEVES",
+      "fecha_fin": "2025-12-18",
+      "fecha_inicio": "2025-06-19",
+      "hora_fin": "10:00:00.000000",
+      "hora_inicio": "08:00:00.000000",
+      "comision_id": 6,
+      "aula_id": 9
+    },
+    {
+      "id": 17,
+      "dia": "JUEVES",
+      "fecha_fin": "2025-12-18",
+      "fecha_inicio": "2025-06-19",
+      "hora_fin": "12:00:00.000000",
+      "hora_inicio": "10:00:00.000000",
+      "comision_id": 10,
+      "aula_id": 3
+    },
+    {
+      "id": 18,
+      "dia": "JUEVES",
+      "fecha_fin": "2025-12-18",
+      "fecha_inicio": "2025-06-19",
+      "hora_fin": "16:00:00.000000",
+      "hora_inicio": "14:00:00.000000",
+      "comision_id": 12,
+      "aula_id": 8
+    },
+    {
+      "id": 19,
+      "dia": "JUEVES",
+      "fecha_fin": "2025-12-18",
+      "fecha_inicio": "2025-06-19",
+      "hora_fin": "18:00:00.000000",
+      "hora_inicio": "16:00:00.000000",
+      "comision_id": 18,
+      "aula_id": 11
+    },
+    {
+      "id": 20,
+      "dia": "JUEVES",
+      "fecha_fin": "2025-12-18",
+      "fecha_inicio": "2025-06-19",
+      "hora_fin": "20:00:00.000000",
+      "hora_inicio": "18:00:00.000000",
+      "comision_id": 20,
+      "aula_id": 4
+    },
+    {
+      "id": 21,
+      "dia": "VIERNES",
+      "fecha_fin": "2025-12-19",
+      "fecha_inicio": "2025-06-20",
+      "hora_fin": "10:00:00.000000",
+      "hora_inicio": "08:00:00.000000",
+      "comision_id": 21,
+      "aula_id": 9
+    },
+    {
+      "id": 22,
+      "dia": "VIERNES",
+      "fecha_fin": "2025-12-19",
+      "fecha_inicio": "2025-06-20",
+      "hora_fin": "12:00:00.000000",
+      "hora_inicio": "10:00:00.000000",
+      "comision_id": 22,
+      "aula_id": 8
+    },
+    {
+      "id": 23,
+      "dia": "VIERNES",
+      "fecha_fin": "2025-12-19",
+      "fecha_inicio": "2025-06-20",
+      "hora_fin": "16:00:00.000000",
+      "hora_inicio": "14:00:00.000000",
+      "comision_id": 1,
+      "aula_id": 13
+    },
+    {
+      "id": 24,
+      "dia": "VIERNES",
+      "fecha_fin": "2025-12-19",
+      "fecha_inicio": "2025-06-20",
+      "hora_fin": "18:00:00.000000",
+      "hora_inicio": "16:00:00.000000",
+      "comision_id": 7,
+      "aula_id": 14
+    },
+    {
+      "id": 25,
+      "dia": "VIERNES",
+      "fecha_fin": "2025-12-19",
+      "fecha_inicio": "2025-06-20",
+      "hora_fin": "20:00:00.000000",
+      "hora_inicio": "18:00:00.000000",
+      "comision_id": 15,
+      "aula_id": 15
+    },
+    {
+      "id": 26,
+      "dia": "MARTES",
+      "fecha_fin": "2025-06-24",
+      "fecha_inicio": "2025-06-24",
+      "hora_fin": "12:00:00.000000",
+      "hora_inicio": "10:00:00.000000",
+      "comision_id": 4,
+      "aula_id": 9
+    },
+    {
+      "id": 27,
+      "dia": "DOMINGO",
+      "fecha_fin": "2025-06-20",
+      "fecha_inicio": "2025-06-15",
+      "hora_fin": "10:00:00.000000",
+      "hora_inicio": "08:00:00.000000",
+      "comision_id": 3,
+      "aula_id": 10
+    }
+  ],
+  "solicitudes": [
+    {
+      "id": 1,
+      "comentario_estado": null,
+      "comentario_profesor": null,
+      "dia_semana": "LUNES",
+      "estado": "PENDIENTE",
+      "fecha_fin": "2025-06-23",
+      "fecha_hora_solicitud": "2025-06-13 09:00:00.000000",
+      "fecha_inicio": "2025-06-23",
+      "hora_fin": "16:00:00.000000",
+      "hora_inicio": "14:00:00.000000",
+      "comision_id": 1,
+      "nuevo_espacio_id": 8,
+      "reserva_original_id": 1,
+      "usuario_id": 2
+    },
+    {
+      "id": 2,
+      "comentario_estado": null,
+      "comentario_profesor": null,
+      "dia_semana": "MARTES",
+      "estado": "APROBADA",
+      "fecha_fin": "2025-06-24",
+      "fecha_hora_solicitud": "2025-06-13 10:30:00.000000",
+      "fecha_inicio": "2025-06-24",
+      "hora_fin": "12:00:00.000000",
+      "hora_inicio": "10:00:00.000000",
+      "comision_id": 4,
+      "nuevo_espacio_id": 9,
+      "reserva_original_id": null,
+      "usuario_id": 5
+    },
+    {
+      "id": 3,
+      "comentario_estado": null,
+      "comentario_profesor": null,
+      "dia_semana": "MIERCOLES",
+      "estado": "PENDIENTE",
+      "fecha_fin": "2025-06-25",
+      "fecha_hora_solicitud": "2025-06-13 11:15:00.000000",
+      "fecha_inicio": "2025-06-25",
+      "hora_fin": "18:00:00.000000",
+      "hora_inicio": "16:00:00.000000",
+      "comision_id": 9,
+      "nuevo_espacio_id": 10,
+      "reserva_original_id": null,
+      "usuario_id": 2
+    },
+    {
+      "id": 4,
+      "comentario_estado": null,
+      "comentario_profesor": null,
+      "dia_semana": "JUEVES",
+      "estado": "APROBADA",
+      "fecha_fin": "2025-06-26",
+      "fecha_hora_solicitud": "2025-06-12 14:20:00.000000",
+      "fecha_inicio": "2025-06-26",
+      "hora_fin": "10:00:00.000000",
+      "hora_inicio": "08:00:00.000000",
+      "comision_id": 7,
+      "nuevo_espacio_id": 7,
+      "reserva_original_id": null,
+      "usuario_id": 8
+    },
+    {
+      "id": 5,
+      "comentario_estado": null,
+      "comentario_profesor": null,
+      "dia_semana": "VIERNES",
+      "estado": "APROBADA",
+      "fecha_fin": "2025-06-27",
+      "fecha_hora_solicitud": "2025-06-12 15:45:00.000000",
+      "fecha_inicio": "2025-06-27",
+      "hora_fin": "16:00:00.000000",
+      "hora_inicio": "14:00:00.000000",
+      "comision_id": 11,
+      "nuevo_espacio_id": 8,
+      "reserva_original_id": null,
+      "usuario_id": 4
+    },
+    {
+      "id": 6,
+      "comentario_estado": null,
+      "comentario_profesor": null,
+      "dia_semana": "LUNES",
+      "estado": "APROBADA",
+      "fecha_fin": "2025-06-30",
+      "fecha_hora_solicitud": "2025-06-11 16:30:00.000000",
+      "fecha_inicio": "2025-06-30",
+      "hora_fin": "12:00:00.000000",
+      "hora_inicio": "10:00:00.000000",
+      "comision_id": 15,
+      "nuevo_espacio_id": 13,
+      "reserva_original_id": null,
+      "usuario_id": 8
+    },
+    {
+      "id": 7,
+      "comentario_estado": null,
+      "comentario_profesor": null,
+      "dia_semana": "LUNES",
+      "estado": "RECHAZADA",
+      "fecha_fin": "2025-06-23",
+      "fecha_hora_solicitud": "2025-06-10 12:00:00.000000",
+      "fecha_inicio": "2025-06-23",
+      "hora_fin": "10:00:00.000000",
+      "hora_inicio": "08:00:00.000000",
+      "comision_id": 2,
+      "nuevo_espacio_id": 1,
+      "reserva_original_id": null,
+      "usuario_id": 3
+    },
+    {
+      "id": 8,
+      "comentario_estado": null,
+      "comentario_profesor": null,
+      "dia_semana": "MARTES",
+      "estado": "RECHAZADA",
+      "fecha_fin": "2025-06-24",
+      "fecha_hora_solicitud": "2025-06-10 13:30:00.000000",
+      "fecha_inicio": "2025-06-24",
+      "hora_fin": "16:00:00.000000",
+      "hora_inicio": "14:00:00.000000",
+      "comision_id": 5,
+      "nuevo_espacio_id": 2,
+      "reserva_original_id": null,
+      "usuario_id": 6
+    },
+    {
+      "id": 9,
+      "comentario_estado": null,
+      "comentario_profesor": null,
+      "dia_semana": "MIERCOLES",
+      "estado": "PENDIENTE",
+      "fecha_fin": "2025-06-25",
+      "fecha_hora_solicitud": "2025-06-13 08:00:00.000000",
+      "fecha_inicio": "2025-06-25",
+      "hora_fin": "10:00:00.000000",
+      "hora_inicio": "08:00:00.000000",
+      "comision_id": 3,
+      "nuevo_espacio_id": 14,
+      "reserva_original_id": null,
+      "usuario_id": 4
+    },
+    {
+      "id": 10,
+      "comentario_estado": null,
+      "comentario_profesor": null,
+      "dia_semana": "JUEVES",
+      "estado": "PENDIENTE",
+      "fecha_fin": "2025-06-26",
+      "fecha_hora_solicitud": "2025-06-13 09:30:00.000000",
+      "fecha_inicio": "2025-06-26",
+      "hora_fin": "18:00:00.000000",
+      "hora_inicio": "16:00:00.000000",
+      "comision_id": 17,
+      "nuevo_espacio_id": 11,
+      "reserva_original_id": null,
+      "usuario_id": 10
+    },
+    {
+      "id": 11,
+      "comentario_estado": null,
+      "comentario_profesor": null,
+      "dia_semana": "MARTES",
+      "estado": "PENDIENTE",
+      "fecha_fin": "2025-07-01",
+      "fecha_hora_solicitud": "2025-06-13 12:00:00.000000",
+      "fecha_inicio": "2025-07-01",
+      "hora_fin": "20:00:00.000000",
+      "hora_inicio": "18:00:00.000000",
+      "comision_id": 21,
+      "nuevo_espacio_id": 7,
+      "reserva_original_id": null,
+      "usuario_id": 4
+    },
+    {
+      "id": 12,
+      "comentario_estado": null,
+      "comentario_profesor": null,
+      "dia_semana": "MIERCOLES",
+      "estado": "APROBADA",
+      "fecha_fin": "2025-07-02",
+      "fecha_hora_solicitud": "2025-06-13 13:15:00.000000",
+      "fecha_inicio": "2025-07-02",
+      "hora_fin": "18:00:00.000000",
+      "hora_inicio": "14:00:00.000000",
+      "comision_id": 16,
+      "nuevo_espacio_id": 7,
+      "reserva_original_id": null,
+      "usuario_id": 9
+    },
+    {
+      "id": 13,
+      "comentario_estado": null,
+      "comentario_profesor": null,
+      "dia_semana": "LUNES",
+      "estado": "PENDIENTE",
+      "fecha_fin": "2025-06-16",
+      "fecha_hora_solicitud": "2025-06-13 16:45:00.000000",
+      "fecha_inicio": "2025-06-16",
+      "hora_fin": "22:00:00.000000",
+      "hora_inicio": "20:00:00.000000",
+      "comision_id": 19,
+      "nuevo_espacio_id": 9,
+      "reserva_original_id": null,
+      "usuario_id": 2
+    },
+    {
+      "id": 14,
+      "comentario_estado": null,
+      "comentario_profesor": null,
+      "dia_semana": "MARTES",
+      "estado": "APROBADA",
+      "fecha_fin": "2025-06-17",
+      "fecha_hora_solicitud": "2025-06-13 17:20:00.000000",
+      "fecha_inicio": "2025-06-17",
+      "hora_fin": "22:00:00.000000",
+      "hora_inicio": "20:00:00.000000",
+      "comision_id": 20,
+      "nuevo_espacio_id": 10,
+      "reserva_original_id": null,
+      "usuario_id": 3
+    },
+    {
+      "id": 15,
+      "comentario_estado": null,
+      "comentario_profesor": null,
+      "dia_semana": "MARTES",
+      "estado": "PENDIENTE",
+      "fecha_fin": "2025-07-15",
+      "fecha_hora_solicitud": "2025-06-13 14:30:00.000000",
+      "fecha_inicio": "2025-07-15",
+      "hora_fin": "12:00:00.000000",
+      "hora_inicio": "09:00:00.000000",
+      "comision_id": 1,
+      "nuevo_espacio_id": 7,
+      "reserva_original_id": null,
+      "usuario_id": 2
+    },
+    {
+      "id": 16,
+      "comentario_estado": "solicitud rechazada por pedir un laboratorio",
+      "comentario_profesor": null,
+      "dia_semana": "MIERCOLES",
+      "estado": "RECHAZADA",
+      "fecha_fin": "2025-07-16",
+      "fecha_hora_solicitud": "2025-06-13 15:00:00.000000",
+      "fecha_inicio": "2025-07-16",
+      "hora_fin": "17:00:00.000000",
+      "hora_inicio": "14:00:00.000000",
+      "comision_id": 4,
+      "nuevo_espacio_id": 7,
+      "reserva_original_id": null,
+      "usuario_id": 5
+    },
+    {
+      "id": 17,
+      "comentario_estado": null,
+      "comentario_profesor": null,
+      "dia_semana": "JUEVES",
+      "estado": "APROBADA",
+      "fecha_fin": "2025-07-17",
+      "fecha_hora_solicitud": "2025-06-13 15:30:00.000000",
+      "fecha_inicio": "2025-07-17",
+      "hora_fin": "12:00:00.000000",
+      "hora_inicio": "09:00:00.000000",
+      "comision_id": 7,
+      "nuevo_espacio_id": 4,
+      "reserva_original_id": null,
+      "usuario_id": 8
+    },
+    {
+      "id": 18,
+      "comentario_estado": null,
+      "comentario_profesor": "Necesito un aula con proyector",
+      "dia_semana": "DOMINGO",
+      "estado": "PENDIENTE",
+      "fecha_fin": "2025-06-20",
+      "fecha_hora_solicitud": "2025-06-13 18:13:29.835228",
+      "fecha_inicio": "2025-06-15",
+      "hora_fin": "10:00:00.000000",
+      "hora_inicio": "08:00:00.000000",
+      "comision_id": 3,
+      "nuevo_espacio_id": 10,
+      "reserva_original_id": null,
+      "usuario_id": 2
+    },
+    {
+      "id": 19,
+      "comentario_estado": null,
+      "comentario_profesor": "Necesito la fecha de fin",
+      "dia_semana": "DOMINGO",
+      "estado": "PENDIENTE",
+      "fecha_fin": "2025-11-20",
+      "fecha_hora_solicitud": "2025-06-13 18:22:18.149781",
+      "fecha_inicio": "2025-06-15",
+      "hora_fin": "10:00:00.000000",
+      "hora_inicio": "08:00:00.000000",
+      "comision_id": 3,
+      "nuevo_espacio_id": 10,
+      "reserva_original_id": 3,
+      "usuario_id": 2
+    },
+    {
+      "id": 20,
+      "comentario_estado": null,
+      "comentario_profesor": "Necesito un aula con proyector",
+      "dia_semana": "DOMINGO",
+      "estado": "APROBADA",
+      "fecha_fin": "2025-06-20",
+      "fecha_hora_solicitud": "2025-06-13 20:22:31.849819",
+      "fecha_inicio": "2025-06-15",
+      "hora_fin": "10:00:00.000000",
+      "hora_inicio": "08:00:00.000000",
+      "comision_id": 3,
+      "nuevo_espacio_id": 10,
+      "reserva_original_id": null,
+      "usuario_id": 2
+    }
+  ],
+  "usuarios": [
+    {
+      "id": 1,
+      "apellido": "Principal",
+      "nombre": "Admin",
+      "password": "admin",
+      "rol": "ADMIN",
+      "email": "admin@gmail.com"
+    },
+    {
+      "id": 2,
+      "apellido": "Martínez",
+      "nombre": "Carlos",
+      "password": "profe",
+      "rol": "PROFESOR",
+      "email": "profe@gmail.com"
+    },
+    {
+      "id": 3,
+      "apellido": "González",
+      "nombre": "María",
+      "password": "$2a$10$wPHJ38iZ3bK5Abq50fHyeufyHUm4AgOWTh2a0rBTdxuB3lx0EyLRm",
+      "rol": "PROFESOR",
+      "email": "maria.gonzalez@gmail.com"
+    },
+    {
+      "id": 4,
+      "apellido": "Pérez",
+      "nombre": "Juan",
+      "password": "$2a$10$wPHJ38iZ3bK5Abq50fHyeufyHUm4AgOWTh2a0rBTdxuB3lx0EyLRm",
+      "rol": "PROFESOR",
+      "email": "juan.perez@gmail.com"
+    },
+    {
+      "id": 5,
+      "apellido": "Rodriguez",
+      "nombre": "Ana",
+      "password": "$2a$10$wPHJ38iZ3bK5Abq50fHyeufyHUm4AgOWTh2a0rBTdxuB3lx0EyLRm",
+      "rol": "PROFESOR",
+      "email": "ana.rodriguez@gmail.com"
+    },
+    {
+      "id": 6,
+      "apellido": "Fernández",
+      "nombre": "Luis",
+      "password": "$2a$10$wPHJ38iZ3bK5Abq50fHyeufyHUm4AgOWTh2a0rBTdxuB3lx0EyLRm",
+      "rol": "PROFESOR",
+      "email": "luis.fernandez@gmail.com"
+    },
+    {
+      "id": 7,
+      "apellido": "López",
+      "nombre": "Sofia",
+      "password": "$2a$10$wPHJ38iZ3bK5Abq50fHyeufyHUm4AgOWTh2a0rBTdxuB3lx0EyLRm",
+      "rol": "PROFESOR",
+      "email": "sofia.lopez@gmail.com"
+    },
+    {
+      "id": 8,
+      "apellido": "Ramírez",
+      "nombre": "Diego",
+      "password": "$2a$10$wPHJ38iZ3bK5Abq50fHyeufyHUm4AgOWTh2a0rBTdxuB3lx0EyLRm",
+      "rol": "PROFESOR",
+      "email": "diego.ramirez@gmail.com"
+    },
+    {
+      "id": 9,
+      "apellido": "Torres",
+      "nombre": "Laura",
+      "password": "$2a$10$wPHJ38iZ3bK5Abq50fHyeufyHUm4AgOWTh2a0rBTdxuB3lx0EyLRm",
+      "rol": "PROFESOR",
+      "email": "laura.torres@gmail.com"
+    },
+    {
+      "id": 10,
+      "apellido": "Silva",
+      "nombre": "Roberto",
+      "password": "$2a$10$wPHJ38iZ3bK5Abq50fHyeufyHUm4AgOWTh2a0rBTdxuB3lx0EyLRm",
+      "rol": "PROFESOR",
+      "email": "roberto.silva@gmail.com"
+    },
+    {
+      "id": 11,
+      "apellido": "Morales",
+      "nombre": "Patricia",
+      "password": "$2a$10$wPHJ38iZ3bK5Abq50fHyeufyHUm4AgOWTh2a0rBTdxuB3lx0EyLRm",
+      "rol": "PROFESOR",
+      "email": "patricia.morales@gmail.com"
+    }
+  ],
+  "carrera_x_asignatura": [
+    {
+      "carrera_id": 1,
+      "asignatura_id": 1
+    },
+    {
+      "carrera_id": 1,
+      "asignatura_id": 2
+    },
+    {
+      "carrera_id": 1,
+      "asignatura_id": 3
+    },
+    {
+      "carrera_id": 1,
+      "asignatura_id": 4
+    },
+    {
+      "carrera_id": 1,
+      "asignatura_id": 5
+    },
+    {
+      "carrera_id": 1,
+      "asignatura_id": 14
+    },
+    {
+      "carrera_id": 2,
+      "asignatura_id": 1
+    },
+    {
+      "carrera_id": 2,
+      "asignatura_id": 2
+    },
+    {
+      "carrera_id": 2,
+      "asignatura_id": 3
+    },
+    {
+      "carrera_id": 2,
+      "asignatura_id": 4
+    },
+    {
+      "carrera_id": 2,
+      "asignatura_id": 5
+    },
+    {
+      "carrera_id": 2,
+      "asignatura_id": 6
+    },
+    {
+      "carrera_id": 2,
+      "asignatura_id": 7
+    },
+    {
+      "carrera_id": 2,
+      "asignatura_id": 10
+    },
+    {
+      "carrera_id": 2,
+      "asignatura_id": 11
+    },
+    {
+      "carrera_id": 2,
+      "asignatura_id": 13
+    },
+    {
+      "carrera_id": 3,
+      "asignatura_id": 1
+    },
+    {
+      "carrera_id": 3,
+      "asignatura_id": 2
+    },
+    {
+      "carrera_id": 3,
+      "asignatura_id": 4
+    },
+    {
+      "carrera_id": 3,
+      "asignatura_id": 5
+    },
+    {
+      "carrera_id": 3,
+      "asignatura_id": 6
+    },
+    {
+      "carrera_id": 3,
+      "asignatura_id": 7
+    },
+    {
+      "carrera_id": 3,
+      "asignatura_id": 8
+    },
+    {
+      "carrera_id": 3,
+      "asignatura_id": 9
+    },
+    {
+      "carrera_id": 3,
+      "asignatura_id": 10
+    },
+    {
+      "carrera_id": 3,
+      "asignatura_id": 11
+    },
+    {
+      "carrera_id": 3,
+      "asignatura_id": 12
+    },
+    {
+      "carrera_id": 3,
+      "asignatura_id": 13
+    },
+    {
+      "carrera_id": 3,
+      "asignatura_id": 15
+    },
+    {
+      "carrera_id": 4,
+      "asignatura_id": 8
+    },
+    {
+      "carrera_id": 4,
+      "asignatura_id": 9
+    },
+    {
+      "carrera_id": 4,
+      "asignatura_id": 12
+    },
+    {
+      "carrera_id": 4,
+      "asignatura_id": 15
+    },
+    {
+      "carrera_id": 5,
+      "asignatura_id": 1
+    },
+    {
+      "carrera_id": 5,
+      "asignatura_id": 2
+    },
+    {
+      "carrera_id": 5,
+      "asignatura_id": 4
+    },
+    {
+      "carrera_id": 5,
+      "asignatura_id": 5
+    },
+    {
+      "carrera_id": 5,
+      "asignatura_id": 6
+    },
+    {
+      "carrera_id": 5,
+      "asignatura_id": 7
+    }
   ]
 }

@@ -1,0 +1,34 @@
+<header class="header">
+  <a routerLink="/home" class="header__logo">MiAula</a>
+
+  <nav class="header__actions">
+
+    <!-- Si NO está logueado 
+    @if (!isLoggedIn()) {
+      <button class="icon-btn" (click)="login()">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m15.626 11.769a6 6 0 1 0 -7.252 0 9.008 9.008 0 0 0 -5.374 8.231 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 9.008 9.008 0 0 0 -5.374-8.231zm-7.626-4.769a4 4 0 1 1 4 4 4 4 0 0 1 -4-4zm10 14h-12a1 1 0 0 1 -1-1 7 7 0 0 1 14 0 1 1 0 0 1 -1 1z"/>
+        </svg>
+        <span>Login</span>
+      </button>
+    }
+    -->
+    <!-- Si está logueado 
+    @if (isLoggedIn()) {
+      <button class="icon-btn" (click)="logout()">
+        <svg viewBox="0 0 24 24">
+          <path d="M4 3h16v18H4z M10 8l5 4-5 4V8z" />
+        </svg>
+        <span>Salir</span>
+      </button>
+    }
+    -->
+
+    <!-- Agenda (se muestra siempre) -->
+    <button class="icon-btn">
+      <img src="/calendar.png" alt="Agenda" />
+      <span>Agenda</span>
+    </button>
+
+  </nav>
+</header>

@@ -1,0 +1,95 @@
+.header {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-medium);
+}
+
+.header__logo {
+  text-decoration: none;
+  color: var(--color-text-inverse);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity var(--transition-speed);
+}
+
+.header__logo:hover {
+  opacity: 0.9;
+}
+
+.header__actions {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px;
+  background: var(--color-secondary);
+  color: var(--color-text-inverse);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+/* ícono */
+.icon-btn svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+/* imagenes usadas como ícono en botones */
+.icon-btn img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+/* MOBILE: ocultar el texto */
+.icon-btn span {
+  display: none;
+}
+
+/* HOVER */
+.icon-btn:hover {
+  background: var(--color-secondary-dark);
+  box-shadow: var(--shadow-light);
+}
+
+/* TABLET+DESKTOP: mostrar textos */
+@media (min-width: 768px) {
+    
+  .header__logo {
+    font-size: var(--font-size-3xl);
+  }
+
+  .icon-btn {
+    padding: 8px 14px;
+    font-size: var(--font-size-md);
+  }
+
+  .icon-btn span {
+    display: inline;
+  }
+
+  .icon-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .icon-btn img {
+    width: 20px;
+    height: 20px;
+  }
+}
