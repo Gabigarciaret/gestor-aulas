@@ -1,0 +1,71 @@
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <h1>MiAula</h1>
+      <p>Accede al gestor de aulas</p>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="login-form">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="Ingresa tu email"
+          class="form-control"
+          [class.error]="form.get('email')?.invalid && form.get('email')?.touched"
+        />
+        @if (form.get('email')?.invalid && form.get('email')?.touched) {
+          <div class="error-message">
+            @if (form.get('email')?.errors?.['required']) {
+              El email es requerido
+            }
+            @if (form.get('email')?.errors?.['email']) {
+              Ingresa un email válido
+            }
+          </div>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          placeholder="Ingresa tu contraseña"
+          class="form-control"
+          [class.error]="form.get('password')?.invalid && form.get('password')?.touched"
+        />
+        @if (form.get('password')?.invalid && form.get('password')?.touched) {
+          <div class="error-message">
+            La contraseña es requerida
+          </div>
+        }
+      </div>
+
+      @if (errorMsg) {
+        <div class="error-message global-error">
+          {{ errorMsg }}
+        </div>
+      }
+
+      <button 
+        type="submit" 
+        class="btn-primary"
+        [disabled]="loading"
+      >
+        @if (loading) {
+          Iniciando sesión...
+        } @else {
+          Iniciar Sesión
+        }
+      </button>
+    </form>
+
+    <div class="login-footer">
+      <p>© Proyecto Final - UTN Regional MdP</p>
+    </div>
+  </div>
+</div>

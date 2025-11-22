@@ -9,8 +9,17 @@
 
   <!-- Links -->
   <nav class="footer__links">
-    <a href="#" class="footer__link">Leer más</a>
-    <a href="#" class="footer__link">Soporte</a>
+    @if (usuario) {
+      <!-- Usuario logueado - mostrar links de navegación -->
+      <a routerLink="/perfil" class="footer__link">Ver Perfil</a>
+      @if (isAdmin) {
+        <a routerLink="/usuarios" class="footer__link">Admin y Users</a>
+      }
+    } @else {
+      <!-- Usuario no logueado - mostrar links informativos -->
+      <a href="#" class="footer__link">Leer más</a>
+      <a href="#" class="footer__link">Soporte</a>
+    }
   </nav>
 
   <!-- Copy -->
