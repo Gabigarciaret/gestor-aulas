@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { MenuComponent } from "../../components/menu/menu.components";
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../auth/service/auth-service';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +16,7 @@ export class Header {
   private router = inject(Router);
 
   get usuario() {
-    return this.auth.usuarioActual();
+    return this.auth.infoUsuario();
   }
 
   goToLogin() {

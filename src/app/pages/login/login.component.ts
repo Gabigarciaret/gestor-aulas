@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../auth/service/auth-service';
+import { LoginRequest } from '../../auth/models/LoginRequest';
 
 @Component({
   selector: 'app-login',
@@ -40,13 +41,15 @@ export class LoginComponent {
 
     console.log('Intentando login con:', { email, password });
 
-    this.auth.login(email, password).subscribe({
+    const loginRequest: LoginRequest = { email, password };
+
+    this.auth.validarCredenciales(loginRequest).subscribe({
       next: (usuario) => {
         console.log('Login exitoso:', usuario);
         this.loading = false;
         this.router.navigate(['/home']);
       },
-      error: (err) => {
+      error: (err: any) => {
         console.error('Error en login:', err);
         this.loading = false;
         this.errorMsg = err.message || 'Error al iniciar sesión';

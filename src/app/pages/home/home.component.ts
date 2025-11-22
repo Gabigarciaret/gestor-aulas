@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../auth/service/auth-service';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +15,7 @@ export class HomeComponent {
   private router = inject(Router);
 
   get usuario() {
-    return this.auth.usuarioActual();
+    return this.auth.infoUsuario();
   }
 
   // Simulamos solicitudes pendientes - después se conectará con el servicio real
