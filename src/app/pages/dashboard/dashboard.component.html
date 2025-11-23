@@ -17,7 +17,7 @@
       @if (usuario()?.rol === 'ADMIN') {
                 
         <div class="action-card solicitudes" (click)="navigateTo('solicitud/list-solicitudes')">
-          <div class="card-icon">📋</div>
+          <img class="card-icon" src="Solicitudes.png"/>
           <h3>Gestor Solicitudes</h3>
           <p>Administrar solicitudes de cambio de aula</p>
           @if (pendingSolicitudes > 0) {
@@ -26,31 +26,31 @@
         </div>
 
         <div class="action-card" (click)="navigateTo('/coming-soon')">
-          <div class="card-icon">📖</div>
+          <img class="card-icon" src="Reservas.png"/>
           <h3>Ver Todas las Reservas</h3>
           <p>Administrar todas las reservas del sistema</p>
         </div>
         
         <div class="action-card" (click)="navigateTo('/usuarios')">
-          <div class="card-icon">👥</div>
+          <img class="card-icon" src="Usuarios.png"/>
           <h3>Gestión de Usuarios</h3>
           <p>Administrar profesores y permisos</p>
         </div>
         
         <div class="action-card" (click)="navigateTo('/coming-soon')">
-          <div class="card-icon">🏢</div>
+          <img class="card-icon" src="Espacios.png"/>
           <h3>Gestión de Espacios</h3>
           <p>Administrar aulas y laboratorios</p>
         </div>
 
         <div class="action-card" (click)="navigateTo('/coming-soon')">
-          <div class="card-icon">🎓</div>
+          <img class="card-icon" src="Comisiones.png"/>
           <h3>Gestión de Comisiones</h3>
           <p>Administrar comisiones y asignaturas</p>
         </div>
 
         <div class="action-card" (click)="navigateTo('/coming-soon')">
-          <div class="card-icon">📚</div>
+          <img class="card-icon" src="Carreras.png"/>
           <h3>Gestión de Carreras</h3>
           <p>Administrar planes de estudio</p>
         </div>
@@ -59,25 +59,25 @@
       <!-- Cards para PROFESOR -->
       @if (usuario()?.rol === 'PROFESOR') {
         <div class="action-card" (click)="navigateTo('/solicitud/nueva')">
-          <div class="card-icon">🔄</div>
+          <img class="card-icon" src="Solicita reserva.png"/>
           <h3>Solicitar Reserva</h3>
           <p>Realizar una nueva solicitud de reserva de aula</p>
         </div>
 
         <div class="action-card" (click)="navigateTo('/solicitud/mis-solicitudes')">
-          <div class="card-icon">📋</div>
+          <img class="card-icon" src="Solicitudes.png"/>
           <h3>Mis Solicitudes</h3>
           <p>Ver historial de solicitudes realizadas</p>
         </div>
 
         <div class="action-card" (click)="navigateTo('/coming-soon')">
-          <div class="card-icon">📖</div>
+          <img class="card-icon" src="Reservas.png"/>
           <h3>Ver Mis Reservas</h3>
           <p>Ver mis clases programadas</p>
         </div>
 
         <div class="action-card" (click)="navigateTo('/coming-soon')">
-          <div class="card-icon">🎓</div>
+          <img class="card-icon" src="Comisiones.png"/>
           <h3>Mis Comisiones</h3>
           <p>Ver comisiones asignadas</p>
         </div>
