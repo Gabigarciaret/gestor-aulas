@@ -5,7 +5,7 @@ export class AuthError extends Error {
   }
 
   static CredencialesInvalidas(): AuthError {
-    return new AuthError('La contraseña que ingresaste es incorrecta');
+    return new AuthError('La contraseña es incorrecta');
   }
 
   static UsuarioNoRegistrado(): AuthError {

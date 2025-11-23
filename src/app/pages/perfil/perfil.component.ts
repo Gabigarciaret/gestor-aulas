@@ -79,8 +79,9 @@ export class PerfilComponent implements OnInit {
         this.mensajePerfil.set('¡Perfil actualizado correctamente!');
         this.loadingPerfil = false;
       },
-      error: () => {
+      error: (err) => {
         this.errorPerfil.set('Error al actualizar el perfil');
+        console.log(err);
         this.loadingPerfil = false;
       },
     });
@@ -121,8 +122,9 @@ export class PerfilComponent implements OnInit {
           this.formPassword.markAsUntouched();
           this.loadingPassword = false;
         },
-        error: () => {
+        error: (err) => {
           this.errorPassword.set('Error al actualizar la contraseña');
+          console.log(err);
           this.loadingPassword = false;
         },
       });
@@ -148,7 +150,7 @@ export class PerfilComponent implements OnInit {
         this.router.navigate(['/home']);
       },
       error: (err) => {
-        alert('Error al intentar cerrar la cuenta...');
+        alert('Error al intentar eliminar la cuenta...');
         console.log(err);
         this.cerrarAlertaEliminar();
       }
