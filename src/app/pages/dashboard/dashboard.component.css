@@ -100,8 +100,9 @@
 }
 
 .card-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  width: auto;
+  height: 48px;
+  margin: 0 auto 1rem;
   filter: drop-shadow(0 4px 10px rgba(11, 61, 145, 0.08));
 }
 
