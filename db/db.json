@@ -1024,92 +1024,103 @@
   ],
   "usuarios": [
     {
-      "id": 1,
+      "id": "1",
       "apellido": "Principal",
       "nombre": "Admin",
       "password": "admin",
       "rol": "ADMIN",
-      "email": "admin@gmail.com"
+      "email": "admin@gmail.com",
+      "activo": true
     },
     {
-      "id": 2,
+      "id": "2",
       "apellido": "Martínez",
       "nombre": "Carlos",
       "password": "profe",
       "rol": "PROFESOR",
-      "email": "profe@gmail.com"
+      "email": "profe@gmail.com",
+      "activo": true
     },
     {
-      "id": 3,
+      "id": "3",
       "apellido": "González",
       "nombre": "María",
       "password": "$2a$10$wPHJ38iZ3bK5Abq50fHyeufyHUm4AgOWTh2a0rBTdxuB3lx0EyLRm",
       "rol": "PROFESOR",
-      "email": "maria.gonzalez@gmail.com"
+      "email": "maria.gonzalez@gmail.com",
+      "activo": true
     },
     {
-      "id": 4,
+      "id": "4",
       "apellido": "Pérez",
       "nombre": "Juan",
       "password": "$2a$10$wPHJ38iZ3bK5Abq50fHyeufyHUm4AgOWTh2a0rBTdxuB3lx0EyLRm",
       "rol": "PROFESOR",
-      "email": "juan.perez@gmail.com"
+      "email": "juan.perez@gmail.com",
+      "activo": true
     },
     {
-      "id": 5,
+      "id": "5",
       "apellido": "Rodriguez",
       "nombre": "Ana",
       "password": "$2a$10$wPHJ38iZ3bK5Abq50fHyeufyHUm4AgOWTh2a0rBTdxuB3lx0EyLRm",
       "rol": "PROFESOR",
-      "email": "ana.rodriguez@gmail.com"
+      "email": "ana.rodriguez@gmail.com",
+      "activo": true
     },
     {
-      "id": 6,
+      "id": "6",
       "apellido": "Fernández",
       "nombre": "Luis",
       "password": "$2a$10$wPHJ38iZ3bK5Abq50fHyeufyHUm4AgOWTh2a0rBTdxuB3lx0EyLRm",
       "rol": "PROFESOR",
-      "email": "luis.fernandez@gmail.com"
+      "email": "luis.fernandez@gmail.com",
+      "activo": true
     },
     {
-      "id": 7,
+      "id": "7",
       "apellido": "López",
       "nombre": "Sofia",
       "password": "$2a$10$wPHJ38iZ3bK5Abq50fHyeufyHUm4AgOWTh2a0rBTdxuB3lx0EyLRm",
       "rol": "PROFESOR",
-      "email": "sofia.lopez@gmail.com"
+      "email": "sofia.lopez@gmail.com",
+      "activo": true
     },
     {
-      "id": 8,
+      "id": "8",
       "apellido": "Ramírez",
       "nombre": "Diego",
       "password": "$2a$10$wPHJ38iZ3bK5Abq50fHyeufyHUm4AgOWTh2a0rBTdxuB3lx0EyLRm",
       "rol": "PROFESOR",
-      "email": "diego.ramirez@gmail.com"
+      "email": "diego.ramirez@gmail.com",
+      "activo": true
     },
     {
-      "id": 9,
+      "id": "9",
       "apellido": "Torres",
       "nombre": "Laura",
       "password": "$2a$10$wPHJ38iZ3bK5Abq50fHyeufyHUm4AgOWTh2a0rBTdxuB3lx0EyLRm",
       "rol": "PROFESOR",
-      "email": "laura.torres@gmail.com"
+      "email": "laura.torres@gmail.com",
+      "activo": true
     },
     {
-      "id": 10,
+      "id": "10",
       "apellido": "Silva",
       "nombre": "Roberto",
       "password": "$2a$10$wPHJ38iZ3bK5Abq50fHyeufyHUm4AgOWTh2a0rBTdxuB3lx0EyLRm",
       "rol": "PROFESOR",
-      "email": "roberto.silva@gmail.com"
+      "email": "roberto.silva@gmail.com",
+      "activo": true
     },
     {
-      "id": 11,
+      "id": "11",
       "apellido": "Morales",
       "nombre": "Patricia",
       "password": "$2a$10$wPHJ38iZ3bK5Abq50fHyeufyHUm4AgOWTh2a0rBTdxuB3lx0EyLRm",
       "rol": "PROFESOR",
-      "email": "patricia.morales@gmail.com"
+      "email": "patricia.morales@gmail.com",
+      "activo": true
     }
   ],
   "carrera_x_asignatura": [

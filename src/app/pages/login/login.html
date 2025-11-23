@@ -6,7 +6,7 @@
             <input id="nombre-email" type="text" formControlName="email">
             <span class="error">
                 @if (form.get('email')?.invalid && form.get('email')?.touched) {
-                    El campo Email es obligatorio
+                    Ingrese su Email
                 }
             </span>
         </div>
@@ -15,7 +15,7 @@
             <input id="contraseña" type="password" formControlName="password">
             <span class="error">
                 @if (form.get('password')?.invalid && form.get('password')?.touched) {
-                    El campo Contraseña es obligatorio
+                    Ingrese una Contraseña
                 }
             </span>
         </div>
