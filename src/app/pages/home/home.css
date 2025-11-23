@@ -7,7 +7,7 @@
 }
 
 .home-hero{
-	min-height: calc(100vh - 70px - 70px);
+	min-height: calc(100vh - 70px - 115px);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -87,6 +87,10 @@
 @media (max-width: 1200px){
 	.home-hero::before{ width: 86%; right: -8%; bottom: -12%; }
 	.calendar-illustration{ width: 60%; right: 6%; bottom: -8%; opacity: 0.40; transform: rotate(-6deg) scale(0.92); }
+}
+
+@media (min-width: 760px){
+    .home-hero{min-height: calc(100vh - 70px - 50px)}
 }
 
 @media (max-width: 900px){
