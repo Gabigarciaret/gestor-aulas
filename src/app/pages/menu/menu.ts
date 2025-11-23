@@ -1,6 +1,5 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, effect } from '@angular/core';
 import { AuthService } from '../../auth/service/auth-service';
-import { Usuario } from '../../models/usuario';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,34 +8,18 @@ import { Router } from '@angular/router';
   templateUrl: './menu.html',
   styleUrl: './menu.css',
 })
-export class Menu implements OnInit{
-  private authService = inject(AuthService);
+export class Menu {
+  authService = inject(AuthService);
   private router = inject(Router);
 
-  estaLogueado:boolean = false;
-  datosUsuario?:Usuario; 
-
-  ngOnInit(): void {
-    this.authService.usuarioLogueado.subscribe(
-      {
-        next:(login) => {
-          this.estaLogueado = login;
-        }
+  /*El effect() se ejecuta automáticamente cada vez que
+  usuarioLogueado() cambia. Usar effect cuando queremos
+  realizar una accion cada vez que cambia el valor del signal */
+  constructor() {
+    effect(() => {
+      if (!this.authService.usuarioLogueado()) {
+        this.router.navigateByUrl('/home');
       }
-    )
-
-    if(!this.estaLogueado) {
-      this.router.navigateByUrl('/home');
-      return;
-    }
-
-    this.authService.infoUsuario.subscribe(
-      {
-        next:(data) => {
-          this.datosUsuario = data;
-        }
-      }
-    )
+    });
   }
-
 }

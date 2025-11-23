@@ -1,6 +1,6 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { LoginRequest } from '../models/LoginRequest';
-import { BehaviorSubject, map, Observable, tap } from 'rxjs';
+import { map, Observable, tap } from 'rxjs';
 import { UsuarioService } from '../../services/usuario-service/usuario-service';
 import { AuthError } from '../errores/AuthError';
 import { Usuario } from '../../models/usuario';
@@ -10,52 +10,109 @@ import { Usuario } from '../../models/usuario';
 })
 export class AuthService {
   private usuarioService = inject(UsuarioService);
-  usuarioLogueado: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  infoUsuario: BehaviorSubject<Usuario> = new BehaviorSubject<Usuario>({
-    id:'',
-    apellido:'',
-    nombre:'',
-    rol:undefined,
-    email:''
+
+  usuarioLogueado = signal<boolean>(false);
+  infoUsuario = signal<Usuario>({
+    id: '',
+    apellido: '',
+    nombre: '',
+    rol: undefined,
+    email: '',
+    activo: false,
   });
 
-  validarCredenciales(credenciales:LoginRequest): Observable<Usuario> {
-    return this.usuarioService.getUsuarioByEmail(credenciales.email).pipe(
-      map(usuarios => {
-        if (usuarios.length > 0) {
-          const usuario = usuarios[0];
-          if (usuario.password === credenciales.password) {
-            return usuario;
-          }
-          else{
-            throw AuthError.CredencialesInvalidas();
-          };
-        }
-        throw AuthError.UsuarioNoRegistrado();
-      }),
-      tap(usuario => {
-        this.usuarioLogueado.next(true);
-        this.infoUsuario.next(usuario);
+  constructor() {
+    this.cargarSesion();
+  }
+
+  private cargarSesion(): void {
+    const usuarioGuardado = localStorage.getItem('usuario');
+    if (usuarioGuardado) {
+      try {
+        const usuario: Usuario = JSON.parse(usuarioGuardado);
+        this.usuarioLogueado.set(true);
+        this.infoUsuario.set(usuario);
+      } catch (error) {
+        localStorage.removeItem('usuario');
+      }
+    }
+  }
+
+  private guardarSesion(usuario: Usuario): void {
+    const usuarioParaGuardar = {
+      id: usuario.id,
+      email: usuario.email,
+      nombre: usuario.nombre,
+      apellido: usuario.apellido,
+      rol: usuario.rol,
+      activo: usuario.activo,
+    };
+    localStorage.setItem('usuario', JSON.stringify(usuarioParaGuardar));
+  }
+
+  actualizarInfoUsuario(usuario: Usuario): Observable<Usuario> {
+    return this.usuarioService.actualizarUsuario(usuario).pipe(
+      tap((usuarioActualizado) => {
+        this.infoUsuario.set({
+          id: usuario.id,
+          nombre: usuario.nombre,
+          apellido: usuario.apellido,
+          email: usuario.email,
+          rol: usuario.rol,
+          activo: usuario.activo,
+        });
+        this.guardarSesion(usuarioActualizado);
       })
     );
   }
 
-  get datosUsuario(): Observable<Usuario> {
-    return this.infoUsuario.asObservable();
+  validarCredenciales(credenciales: LoginRequest): Observable<Usuario> {
+    console.log('validar credenciales');
+    return this.usuarioService.getUsuarioByEmail(credenciales.email).pipe(
+      map((usuarios) => {
+        if (usuarios.length > 0) {
+          const usuario = usuarios[0];
+          if(!usuario.activo){
+            throw AuthError.UsuarioEliminado();
+          }
+          if (usuario.password === credenciales.password) {
+            return usuario;
+          } else {
+            throw AuthError.CredencialesInvalidas();
+          }
+        }
+        throw AuthError.UsuarioNoRegistrado();
+      }),
+      tap((usuario) => {
+        console.log('guardar datos de sesion');
+        this.usuarioLogueado.set(true);
+        this.infoUsuario.set(usuario);
+        this.guardarSesion(usuario);
+      })
+    );
   }
 
-  get estaLogueado(): Observable<boolean> {
-    return this.usuarioLogueado.asObservable();
+  validarPassword(password1: string, password2: string): boolean {
+    if (password1 === password2) {
+      return true;
+    }
+    return false;
   }
 
-  cerrarSesion(): void {
-    this.usuarioLogueado.next(false);
-    this.infoUsuario.next({
+  logout(): void {
+    this.usuarioLogueado.set(false);
+    this.usuarioReset();
+    localStorage.removeItem('usuario');
+  }
+
+  private usuarioReset(): void {
+    this.infoUsuario.set({
       id: '',
       apellido: '',
       nombre: '',
       rol: undefined,
-      email: ''
+      email: '',
+      activo: false,
     });
   }
 }

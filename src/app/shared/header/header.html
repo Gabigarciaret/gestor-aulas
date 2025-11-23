@@ -1,5 +1,10 @@
 <header class="header">
-  <a routerLink="/home" class="header__logo">MiAula</a>
+  @if (isLoggedIn()) {
+  <a class="header__logo" routerLink="/dashboard">MiAula</a>
+  }
+  @if (!isLoggedIn()) {
+  <a class="header__logo" routerLink="/home">MiAula</a>
+  }
 
   <nav class="header__actions">
 

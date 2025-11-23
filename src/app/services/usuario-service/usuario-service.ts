@@ -10,13 +10,29 @@ export class UsuarioService {
   private http = inject(HttpClient);
   private baseDatosUrl = 'http://localhost:3000/usuarios';
 
-  getAll():Observable<Usuario[]> {
+  getAll(): Observable<Usuario[]> {
     return this.http.get<Usuario[]>(this.baseDatosUrl);
   }
 
-  getUsuarioByEmail(email:string):Observable<Usuario[]> {
+  getUsuarioById(id: string): Observable<Usuario> {
+    return this.http.get<Usuario>(`${this.baseDatosUrl}/${id}`);
+  }
+
+  getUsuarioByEmail(email: string): Observable<Usuario[]> {
     return this.http.get<Usuario[]>(`${this.baseDatosUrl}?email=${email}`);
   }
 
-}
+  actualizarUsuario(usuario: Usuario): Observable<Usuario> {
+    return this.http.put<Usuario>(`${this.baseDatosUrl}/${usuario.id}`, usuario);
+  }
 
+  actualizarPassword(id: string, password: string): Observable<Usuario> {
+    return this.http.patch<Usuario>(`${this.baseDatosUrl}/${id}`, { password });
+  }
+
+  eliminarById(id: string): Observable<Usuario> {
+    return this.http.patch<Usuario>(`${this.baseDatosUrl}/${id}`, { activo: false });
+  }
+
+  
+}

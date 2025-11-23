@@ -1,0 +1,184 @@
+<div class="perfil-container">
+  <div class="perfil-card">
+    <div class="perfil-header">
+      <h1>Mi Perfil</h1>
+      <button (click)="volver()" class="btn-volver">← Volver</button>
+    </div>
+
+    <!-- Formulario perfil -->
+    <form [formGroup]="formPerfil" (ngSubmit)="enviarDatos()" class="perfil-form">
+      <div class="form-section">
+        <h3>Información Personal</h3>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input
+              id="nombre"
+              type="text"
+              formControlName="nombre"
+              class="form-control"
+              [class.error]="formPerfil.get('nombre')?.invalid"
+            />
+            @if (formPerfil.get('nombre')?.invalid) {
+            <div class="error-message">El nombre es requerido</div>
+            }
+          </div>
+
+          <div class="form-group">
+            <label for="apellido">Apellido</label>
+            <input
+              id="apellido"
+              type="text"
+              formControlName="apellido"
+              class="form-control"
+              [class.error]="
+                formPerfil.get('apellido')?.invalid"
+            />
+            @if (formPerfil.get('apellido')?.invalid) {
+            <div class="error-message">El apellido es requerido</div>
+            }
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            class="form-control"
+            [class.error]="formPerfil.get('email')?.invalid"
+          />
+          @if (formPerfil.get('email')?.invalid) {
+          <div class="error-message">
+            @if (formPerfil.get('email')?.errors?.['required']) { El email es requerido } @if
+            (formPerfil.get('email')?.errors?.['email']) { Ingresa un email válido }
+          </div>
+          }
+        </div>
+
+        <div class="form-actions-section">
+          <button type="submit" class="btn-save-info" [disabled]="loadingPerfil || formPerfil.invalid">
+            @if (loadingPerfil) { Guardando... } @else { Guardar }
+          </button>
+        </div>
+
+        @if (mensajePerfil()) {
+        <div class="success-message">{{ mensajePerfil() }}</div>
+        } @if (errorPerfil()) {
+        <div class="error-message global-error">{{ errorPerfil() }}</div>
+        }
+      </div>
+    </form>
+
+    <!-- Formulario contraseña -->
+    <form [formGroup]="formPassword" (ngSubmit)="enviarPassword()" class="perfil-form">
+      <div class="form-section">
+        <h3>Cambiar Contraseña</h3>
+
+        <div class="form-group">
+          <label for="passwordActual">Contraseña Actual</label>
+          <input
+            id="passwordActual"
+            type="password"
+            formControlName="passwordActual"
+            class="form-control"
+            placeholder="Ingresa tu contraseña actual"
+          />
+          <div class="error-message">
+            @if (formPassword.get('passwordActual')?.errors?.['required'] &&
+            formPassword.get('passwordActual')?.touched &&
+            formPassword.get('passwordActual')?.dirty) { La contraseña actual es requerida }
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="passwordNuevo">Nueva Contraseña</label>
+            <input
+              id="passwordNuevo"
+              type="password"
+              formControlName="passwordNuevo"
+              class="form-control"
+              placeholder="Nueva contraseña"
+            />
+            <div class="error-message">
+              @if (formPassword.get('passwordNuevo')?.errors?.['required'] &&
+              formPassword.get('passwordNuevo')?.touched &&
+              formPassword.get('passwordNuevo')?.dirty){ La contraseña es requerida } @if
+              (formPassword.get('passwordNuevo')?.errors?.['minlength'] &&
+              formPassword.get('passwordNuevo')?.touched &&
+              formPassword.get('passwordNuevo')?.dirty) { La contraseña debe tener mínimo 3
+              caracteres }
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="passwordConfirmar">Confirmar Contraseña</label>
+            <input
+              id="passwordConfirmar"
+              type="password"
+              formControlName="passwordConfirmar"
+              class="form-control"
+              placeholder="Confirma la nueva contraseña"
+            />
+            <div class="error-message">
+              @if (formPassword.get('passwordConfirmar')?.errors?.['required'] &&
+              formPassword.get('passwordConfirmar')?.touched &&
+              formPassword.get('passwordConfirmar')?.dirty){ Es necesario que repitas la nueva
+              contraseña }
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mensajes -->
+      @if (mensajePassword()) {
+      <div class="success-message">{{ mensajePassword() }}</div>
+      } @if (errorPassword()) {
+      <div class="error-message global-error">{{ errorPassword() }}</div>
+      }
+
+      <!-- Botones -->
+      <div class="form-actions">
+        <button (click)="abrirAlertaEliminar()" type="button" class="btn-delete">
+          Cerrar Cuenta
+        </button>
+
+        <div class="form-actions-right">
+          <button
+            type="submit"
+            class="btn-save-password"
+            [disabled]="loadingPassword || formPassword.invalid"
+          >
+            @if (loadingPassword) { Cambiando contraseña... } @else { Cambiar contraseña }
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <!-- Modal de confirmación -->
+    @if (mostrarAlertaEliminar()) {
+      <div class="modal-overlay" (click)="cerrarAlertaEliminar()">
+        <div class="modal-content" (click)="$event.stopPropagation()">
+          <div class="modal-header">
+            <h2>Confirmar Cierre de Cuenta</h2>
+          </div>
+          <div class="modal-body">
+            <p>¿Estás seguro de que deseas cerrar tu cuenta?</p>
+            <p class="modal-warning">Esta acción desactivará tu cuenta y cerrarás sesión inmediatamente.</p>
+          </div>
+          <div class="modal-actions">
+            <button type="button" (click)="cerrarAlertaEliminar()" class="btn-modal-cancelar">
+              Cancelar
+            </button>
+            <button type="button" (click)="confirmarEliminar()" class="btn-modal-confirmar">
+              Confirmar
+            </button>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

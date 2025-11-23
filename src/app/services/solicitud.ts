@@ -6,11 +6,13 @@ export interface Solicitud{
   id?: number;
   comentario_estado: string;
   comentario_profesor: string;
-  dia_semana: "LUNES" | "MARTES" | "MIÉRCOLES" | "JUEVES" | "VIERNES";
+  dia_semana: "LUNES" | "MARTES" | "MIERCOLES" | "JUEVES" | "VIERNES";
   estado: "PENDIENTE" | "APROBADA" | "RECHAZADA" | "CANCELADA";
   fecha_fin: string;
   fecha_hora_solicitud: string;
   fecha_inicio: string;
+  hora_inicio?: string;
+  hora_fin?: string;
   comision_id: number;
   nuevo_espacio_id: number;
   reserva_original_id: number;
@@ -33,22 +35,32 @@ export class Solicitud {
     return this.http.post<Solicitud>(this.apiUrl, solicitud);
   }
 
-  updateSolicitud(id: number, solicitud: Solicitud): Observable<Solicitud> {
+  updateSolicitud(id: string, solicitud: Solicitud): Observable<Solicitud> {
     return this.http.put<Solicitud>(`${this.apiUrl}/${id}`, solicitud);
   }
 
-  cancelarSolicitud(id: number, solicitud: Solicitud): Observable<Solicitud> {
-    const payload = { ...solicitud, estado: 'CANCELADA' };
-    return this.http.put<Solicitud>(`${this.apiUrl}/${id}`, payload);
+  cancelarSolicitud(id: string, solicitud: Solicitud): Observable<Solicitud> {
+    const payload = { estado: 'CANCELADA' };
+    return this.http.patch<Solicitud>(`${this.apiUrl}/${id}`, payload);
+  }
+
+  // Patch parcial para actualizar solo el comentario de estado
+  patchComentarioEstado(id: string, comentario: string): Observable<Solicitud> {
+    return this.http.patch<Solicitud>(`${this.apiUrl}/${id}`, { comentario_estado: comentario });
+  }
+
+  // Patch parcial para actualizar estado y comentario de estado en una sola llamada
+  patchEstadoComentario(id: string, estado: string, comentario: string): Observable<Solicitud> {
+    return this.http.patch<Solicitud>(`${this.apiUrl}/${id}`, { estado, comentario_estado: comentario });
   }
 
   /**
    * Comprueba si la solicitud puede ser modificada por el usuario actual.
    * Solo el usuario creador y cuando el estado sea 'PENDIENTE'.
    */
-  isEditable(solicitud: Solicitud, currentUserId: number): boolean {
+  isEditable(solicitud: Solicitud, currentUserId: string | number): boolean {
     return (
-      solicitud?.usuario_id === currentUserId &&
+      String(solicitud?.usuario_id) === String(currentUserId) &&
       solicitud?.estado === 'PENDIENTE'
     );
   }
@@ -58,9 +70,9 @@ export class Solicitud {
    * Devuelve un error observable si no está permitido.
    */
   updateSolicitudIfAllowed(
-    id: number,
+    id: string,
     solicitud: Solicitud,
-    currentUserId: number
+    currentUserId: string | number
   ): Observable<Solicitud> {
     if (!this.isEditable(solicitud, currentUserId)) {
       return throwError(
@@ -71,9 +83,9 @@ export class Solicitud {
   }
 
   cancelarSolicitudIfAllowed(
-    id: number,
+    id: string,
     solicitud: Solicitud,
-    currentUserId: number
+    currentUserId: string
   ): Observable<Solicitud> {
     if (!this.isEditable(solicitud, currentUserId)) {
       return throwError(

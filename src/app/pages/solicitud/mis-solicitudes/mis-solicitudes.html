@@ -1,0 +1,59 @@
+<section class="header">
+    <h1>Mis Solicitudes</h1>
+	<button type="button" routerLink="/dashboard" class="btn-secondary">
+        ← Volver
+    </button>
+</section>
+
+<section class="grid-container">
+	@for (s of solicitudes(); track s.id) {
+		<article class="card">
+			<div class="card-content">
+				<h2>Solicitud #{{ s.id }}</h2>
+				<div class="meta">
+					<span class="day">{{ s.dia_semana }}</span>
+					  <span class="horas"><strong>Horario:</strong> {{ formatHora(s.hora_inicio) }} - {{ formatHora(s.hora_fin) }}</span>
+					<span class="fechas"><strong>Fecha inicio - fin:</strong> {{ formatFecha(s.fecha_inicio) }} - {{ formatFecha(s.fecha_fin) }}</span>
+				</div>
+			</div>
+			<div class="right">
+				<div class="status-bubble status-{{ s.estado }}">{{ s.estado }}</div>
+				<div class="card-footer">
+					<a class="btn" (click)="openDetails(s)">Ver Detalles</a>
+				</div>
+			</div>
+		</article>
+	}
+
+	@if (solicitudes().length === 0) {
+		<div class="empty">No hay solicitudes para mostrar.</div>
+	}
+</section>
+
+@if (selectedSolicitud()) {
+	<div class="modal-overlay" (click)="closeDetails()">
+		<div class="modal-card" (click)="$event.stopPropagation()">
+			<header class="modal-header">
+				<h3>Detalle - Solicitud #{{ selectedSolicitud()?.id }}</h3>
+				<button class="close" aria-label="Cerrar" (click)="closeDetails()">×</button>
+			</header>
+
+			<div class="modal-body">
+				<p><strong>Estado:</strong> {{ selectedSolicitud()?.estado }}</p>
+				<p><strong>Día:</strong> {{ selectedSolicitud()?.dia_semana }}</p>
+				<p><strong>Horario:</strong> {{ formatHora(selectedSolicitud()?.hora_inicio) }} - {{ formatHora(selectedSolicitud()?.hora_fin) }}</p>
+				<p><strong>Fechas:</strong> {{ formatFecha(selectedSolicitud()?.fecha_inicio) }} - {{ formatFecha(selectedSolicitud()?.fecha_fin) }}</p>
+				<p><strong>Comentario profesor:</strong> {{ selectedSolicitud()?.comentario_profesor || '-' }}</p>
+				<p><strong>Comentario estado:</strong> {{ selectedSolicitud()?.comentario_estado || '-' }}</p>
+			</div>
+
+			<footer class="modal-footer">
+				@if (selectedSolicitud()?.estado === 'PENDIENTE') {
+					<button class="btn btn-danger" (click)="cancelarSolicitud(selectedSolicitud())" [disabled]="isCancelling()">Cancelar solicitud</button>
+				}
+				<button class="btn" (click)="closeDetails()">Cerrar</button>
+			</footer>
+		</div>
+	</div>
+}
+
