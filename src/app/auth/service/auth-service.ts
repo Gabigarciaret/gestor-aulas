@@ -29,7 +29,7 @@ export class AuthService {
           }
           else{
             throw AuthError.CredencialesInvalidas();
-          };
+          }
         }
         throw AuthError.UsuarioNoRegistrado();
       }),

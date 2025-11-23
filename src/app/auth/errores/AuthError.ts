@@ -11,5 +11,4 @@ export class AuthError extends Error {
   static UsuarioNoRegistrado(): AuthError {
     return new AuthError('El correo electrónico que ingresaste no está conectado a una cuenta');
   }
-
 }

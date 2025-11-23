@@ -1,12 +1,14 @@
 .header {
   width: 100%;
+  min-height: 60px;
   padding: 0.8rem 1rem;
-  background: var(--color-primary);
-  color: var(--color-text-inverse);
+  background: var(--color-primary, #667eea);
+  color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: var(--shadow-medium);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
 }
 
 /* necesario para posicionar dropdown */
@@ -30,7 +32,37 @@
 
 .header__actions {
   display: flex;
-  gap: 0.6rem;
+  gap: 1rem;
+  align-items: center;
+}
+
+.guest-actions, .logged-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.welcome-text {
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.user-name {
+  font-weight: 600;
+}
+
+.user-role {
+  font-size: 0.75rem;
+  opacity: 0.8;
 }
 
 .icon-btn {
@@ -38,16 +70,16 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
-  padding: 8px;
-  background: var(--color-secondary);
-  color: var(--color-text-inverse);
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
   border: none;
-  border-radius: var(--border-radius);
+  border-radius: 8px;
   cursor: pointer;
-  transition: background var(--transition-speed), box-shadow var(--transition-speed);
+  transition: background 0.2s, transform 0.2s;
+  font-size: 0.9rem;
 }
 
-/* ícono */
 .icon-btn svg {
   width: 18px;
   height: 18px;
@@ -154,29 +186,30 @@
 
 /* HOVER */
 .icon-btn:hover {
-  background: var(--color-secondary-dark);
-  box-shadow: var(--shadow-light);
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
 }
 
-/* TABLET+DESKTOP: mostrar textos */
-@media (min-width: 768px) {
-    
-  .header__logo {
-    font-size: var(--font-size-3xl);
-  }
+.logout-btn:hover {
+  background: rgba(229, 62, 62, 0.8);
+}
 
-  .icon-btn {
-    padding: 8px 14px;
-    font-size: var(--font-size-md);
+/* Responsive */
+@media (max-width: 768px) {
+  .user-info {
+    display: none;
   }
-
+  
+  .welcome-text {
+    font-size: 0.875rem;
+  }
+  
   .icon-btn span {
-    display: inline;
+    display: none;
   }
-
-  .icon-btn svg {
-    width: 20px;
-    height: 20px;
+  
+  .icon-btn {
+    padding: 8px;
   }
 
   .icon-btn img {
