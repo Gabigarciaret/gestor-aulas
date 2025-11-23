@@ -2,7 +2,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #ffffff;
   min-height: 100vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -10,35 +10,38 @@
 .welcome-section {
   text-align: center;
   margin-bottom: 3rem;
-  color: white;
+  color: #0b3d91;
 }
 
 .welcome-section h1 {
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  color: #0b3d91;
+  text-shadow: none;
 }
 
 .welcome-section p {
   font-size: 1.2rem;
-  opacity: 0.9;
+  opacity: 0.95;
   margin-bottom: 1.5rem;
+  color: #33485a;
 }
 
 .user-info {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
+  background: #f8fbff;
   border-radius: 15px;
   padding: 1rem 2rem;
   margin: 1rem auto;
   max-width: 400px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(11, 61, 145, 0.06);
+  box-shadow: 0 6px 18px rgba(11, 61, 145, 0.03);
 }
 
 .user-info p {
   margin: 0.5rem 0;
   font-size: 1rem;
+  color: #33485a;
 }
 
 .actions-section {
@@ -46,28 +49,37 @@
 }
 
 .action-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1.5rem;
+  margin: 0 auto;
+  align-items: stretch;
 }
 
 .action-card {
-  background: rgba(255, 255, 255, 0.95);
+  background: #ffffff;
   border-radius: 20px;
   padding: 2rem;
   text-align: center;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(11, 61, 145, 0.06);
   position: relative;
   overflow: hidden;
+  flex: 0 0 320px;
+  max-width: 320px;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .action-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
-  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 15px 45px rgba(11, 61, 145, 0.08);
+  background: #f1f6ff;
 }
 
 .action-card::before {
@@ -77,17 +89,17 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #667eea, #764ba2);
+  background: linear-gradient(90deg, #4e8ef7, #0b3d91);
 }
 
 .card-icon {
   font-size: 3rem;
   margin-bottom: 1rem;
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+  filter: drop-shadow(0 4px 10px rgba(11, 61, 145, 0.08));
 }
 
 .action-card h3 {
-  color: #2c3e50;
+  color: #0b3d91;
   font-size: 1.3rem;
   font-weight: 600;
   margin-bottom: 0.8rem;
@@ -108,7 +120,7 @@
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background: #e74c3c;
+  background: #ff1111;
   color: white;
   border-radius: 50%;
   width: 2rem;
@@ -122,9 +134,9 @@
 }
 
 @keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7); }
-  70% { box-shadow: 0 0 0 10px rgba(231, 76, 60, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
+  0% { box-shadow: 0 0 0 0 rgba(194, 28, 28, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(194, 28, 28, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(194, 28, 28, 0); }
 }
 
 .quick-actions {
@@ -145,16 +157,16 @@
   align-items: center;
   gap: 0.8rem;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  background: rgba(255, 255, 255, 0.95);
-  color: #495057;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: #ffffff;
+  color: #0b3d91;
+  border: 2px solid rgba(11, 61, 145, 0.12);
 }
 
 .btn-secondary:hover {
-  background: white;
+  background: #eaf2ff;
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  border-color: rgba(102, 126, 234, 0.3);
+  box-shadow: 0 8px 25px rgba(11, 61, 145, 0.08);
+  border-color: rgba(11, 61, 145, 0.2);
 }
 
 .icon {
@@ -172,12 +184,32 @@
   }
   
   .action-cards {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: center;
     gap: 1rem;
   }
   
   .action-card {
     padding: 1.5rem;
+    flex: 0 0 100%;
+    max-width: 100%;
+    width: 100%;
+    height: 220px;
+    min-height: 220px;
+    box-sizing: border-box;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Tablet: tarjetas un poco más estrechas que desktop */
+  .action-card {
+    flex: 0 0 300px;
+    max-width: 300px;
+    min-height: 260px;
   }
   
   .btn-secondary {

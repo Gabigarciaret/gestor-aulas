@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import type { Solicitud as SolicitudModel } from '../../../services/solicitud';
 import { Solicitud as SolicitudService } from '../../../services/solicitud';
 import { AuthService } from '../../../auth/service/auth-service';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-mis-solicitudes',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './mis-solicitudes.html',
   styleUrls: ['./mis-solicitudes.css'],
 })

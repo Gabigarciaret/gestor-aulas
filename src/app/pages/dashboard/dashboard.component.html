@@ -15,12 +15,7 @@
     <div class="action-cards">
       <!-- Cards para ADMIN -->
       @if (usuario()?.rol === 'ADMIN') {
-        <div class="action-card" (click)="navigateTo('/calendario')">
-          <div class="card-icon">📅</div>
-          <h3>Calendario</h3>
-          <p>Ver cronograma completo de actividades</p>
-        </div>
-        
+                
         <div class="action-card solicitudes" (click)="navigateTo('/solicitudes')">
           <div class="card-icon">📋</div>
           <h3>Gestor Solicitudes</h3>
@@ -30,37 +25,31 @@
           }
         </div>
 
-        <div class="action-card" (click)="navigateTo('/espacios')">
-          <div class="card-icon">🏢</div>
-          <h3>Gestión de Espacios</h3>
-          <p>Administrar aulas y laboratorios</p>
-        </div>
-
-        <div class="action-card" (click)="navigateTo('/reservas')">
+        <div class="action-card" (click)="navigateTo('/coming-soon')">
           <div class="card-icon">📖</div>
           <h3>Ver Todas las Reservas</h3>
           <p>Administrar todas las reservas del sistema</p>
         </div>
-
+        
         <div class="action-card" (click)="navigateTo('/usuarios')">
           <div class="card-icon">👥</div>
           <h3>Gestión de Usuarios</h3>
           <p>Administrar profesores y permisos</p>
         </div>
-
-        <div class="action-card" (click)="navigateTo('/reportes')">
-          <div class="card-icon">📊</div>
-          <h3>Reportes</h3>
-          <p>Estadísticas de uso y ocupación</p>
+        
+        <div class="action-card" (click)="navigateTo('/coming-soon')">
+          <div class="card-icon">🏢</div>
+          <h3>Gestión de Espacios</h3>
+          <p>Administrar aulas y laboratorios</p>
         </div>
 
-        <div class="action-card" (click)="navigateTo('/comisiones')">
+        <div class="action-card" (click)="navigateTo('/coming-soon')">
           <div class="card-icon">🎓</div>
           <h3>Gestión de Comisiones</h3>
           <p>Administrar comisiones y asignaturas</p>
         </div>
 
-        <div class="action-card" (click)="navigateTo('/carreras')">
+        <div class="action-card" (click)="navigateTo('/coming-soon')">
           <div class="card-icon">📚</div>
           <h3>Gestión de Carreras</h3>
           <p>Administrar planes de estudio</p>
@@ -69,40 +58,28 @@
       
       <!-- Cards para PROFESOR -->
       @if (usuario()?.rol === 'PROFESOR') {
-        <div class="action-card" (click)="navigateTo('/mis-reservas')">
-          <div class="card-icon">📖</div>
-          <h3>Ver Mis Reservas</h3>
-          <p>Ver mis clases programadas</p>
-        </div>
-
-        <div class="action-card" (click)="navigateTo('/solicitar-cambio')">
+        <div class="action-card" (click)="navigateTo('/solicitud/nueva')">
           <div class="card-icon">🔄</div>
-          <h3>Solicitar Cambio de Aula</h3>
-          <p>Pedir cambio por necesidades especiales</p>
+          <h3>Solicitar Reserva</h3>
+          <p>Realizar una nueva solicitud de reserva de aula</p>
         </div>
 
-        <div class="action-card" (click)="navigateTo('/calendario-personal')">
-          <div class="card-icon">📅</div>
-          <h3>Mi Calendario</h3>
-          <p>Ver mi cronograma semanal</p>
-        </div>
-
-        <div class="action-card" (click)="navigateTo('/mis-comisiones')">
-          <div class="card-icon">🎓</div>
-          <h3>Mis Comisiones</h3>
-          <p>Ver comisiones asignadas</p>
-        </div>
-
-        <div class="action-card" (click)="navigateTo('/historial-solicitudes')">
+        <div class="action-card" (click)="navigateTo('/solicitud/mis-solicitudes')">
           <div class="card-icon">📋</div>
           <h3>Mis Solicitudes</h3>
           <p>Ver historial de solicitudes realizadas</p>
         </div>
 
-        <div class="action-card" (click)="navigateTo('/disponibilidad-aulas')">
-          <div class="card-icon">🔍</div>
-          <h3>Consultar Disponibilidad</h3>
-          <p>Ver disponibilidad de aulas y labs</p>
+        <div class="action-card" (click)="navigateTo('/coming-soon')">
+          <div class="card-icon">📖</div>
+          <h3>Ver Mis Reservas</h3>
+          <p>Ver mis clases programadas</p>
+        </div>
+
+        <div class="action-card" (click)="navigateTo('/coming-soon')">
+          <div class="card-icon">🎓</div>
+          <h3>Mis Comisiones</h3>
+          <p>Ver comisiones asignadas</p>
         </div>
       }
     </div>
