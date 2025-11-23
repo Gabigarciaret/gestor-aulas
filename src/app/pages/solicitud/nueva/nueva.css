@@ -1,0 +1,15 @@
+.solicitud-container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.solicitud-container h2 {
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.solicitud-container p {
+  color: var(--color-text-secondary);
+  margin-bottom: 2rem;
+}

@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../auth/service/auth-service';
 import { Subscription } from 'rxjs';
@@ -33,7 +33,7 @@ export class Header {
   }
 
   viewProfile(): void {
-    this.router.navigate(['/menu']);
+    this.router.navigate(['/perfil']);
   }
 
   toggleProfileMenu(): void {

@@ -19,7 +19,7 @@ export class Login {
   constructor() {
     effect(() => {
       if(this.authService.usuarioLogueado()) {
-        this.router.navigateByUrl('/home');
+        this.router.navigateByUrl('/dashboard');
       }
     });
   }
@@ -38,7 +38,7 @@ export class Login {
 
     this.authService.validarCredenciales(this.form.value as LoginRequest).subscribe({
       next: () => {
-        this.router.navigateByUrl('/menu');
+        this.router.navigateByUrl('/dashboard');
       },
       error: (error) => {
         this.mensajeError.set(error.message);
