@@ -15,31 +15,25 @@ export class PerfilComponent implements OnInit {
   private auth = inject(AuthService);
   private router = inject(Router);
   private fb = inject(FormBuilder);
-
-  form!: FormGroup;
+  
   loading = false;
   mensaje: string | null = null;
   error: string | null = null;
 
-  get usuario() {
-    return this.auth.infoUsuario();
-  }
+  form = this.fb.group({
+      nombre: [this.auth.infoUsuario().nombre, [Validators.required, Validators.minLength(2)]],
+      apellido: [this.auth.infoUsuario().apellido, [Validators.required, Validators.minLength(2)]],
+      email: [this.auth.infoUsuario().email, [Validators.required, Validators.email]],
+      passwordActual: ['', [Validators.required]],
+      passwordNuevo: ['', [Validators.required]],
+      passwordConfirmar: ['']
+    });
 
   ngOnInit() {
-    const usuario = this.usuario;
-    if (!usuario) {
+    if (!this.auth.usuarioLogueado) {
       this.router.navigate(['/login']);
       return;
     }
-
-    this.form = this.fb.group({
-      nombre: [usuario.nombre, [Validators.required]],
-      apellido: [usuario.apellido, [Validators.required]],
-      email: [usuario.email, [Validators.required, Validators.email]],
-      passwordActual: [''],
-      passwordNuevo: [''],
-      passwordConfirmar: ['']
-    });
   }
 
   onSubmit() {
