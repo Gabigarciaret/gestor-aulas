@@ -10,14 +10,15 @@ import { Usuario } from '../../models/usuario';
 })
 export class AuthService {
   private usuarioService = inject(UsuarioService);
-  
+
   usuarioLogueado = signal<boolean>(false);
   infoUsuario = signal<Usuario>({
     id: '',
     apellido: '',
     nombre: '',
     rol: undefined,
-    email: ''
+    email: '',
+    activo: false,
   });
 
   constructor() {
@@ -43,17 +44,37 @@ export class AuthService {
       email: usuario.email,
       nombre: usuario.nombre,
       apellido: usuario.apellido,
-      rol: usuario.rol
+      rol: usuario.rol,
+      activo: usuario.activo,
     };
     localStorage.setItem('usuario', JSON.stringify(usuarioParaGuardar));
   }
 
+  actualizarInfoUsuario(usuario: Usuario): Observable<Usuario> {
+    return this.usuarioService.actualizarUsuario(usuario).pipe(
+      tap((usuarioActualizado) => {
+        this.infoUsuario.set({
+          id: usuario.id,
+          nombre: usuario.nombre,
+          apellido: usuario.apellido,
+          email: usuario.email,
+          rol: usuario.rol,
+          activo: usuario.activo,
+        });
+        this.guardarSesion(usuarioActualizado);
+      })
+    );
+  }
+
   validarCredenciales(credenciales: LoginRequest): Observable<Usuario> {
-    console.log("validar credenciales");
+    console.log('validar credenciales');
     return this.usuarioService.getUsuarioByEmail(credenciales.email).pipe(
-      map(usuarios => {
+      map((usuarios) => {
         if (usuarios.length > 0) {
           const usuario = usuarios[0];
+          if(!usuario.activo){
+            throw AuthError.UsuarioEliminado();
+          }
           if (usuario.password === credenciales.password) {
             return usuario;
           } else {
@@ -62,8 +83,8 @@ export class AuthService {
         }
         throw AuthError.UsuarioNoRegistrado();
       }),
-      tap(usuario => {
-        console.log("guardar datos de sesion");
+      tap((usuario) => {
+        console.log('guardar datos de sesion');
         this.usuarioLogueado.set(true);
         this.infoUsuario.set(usuario);
         this.guardarSesion(usuario);
@@ -71,15 +92,27 @@ export class AuthService {
     );
   }
 
+  validarPassword(password1: string, password2: string): boolean {
+    if (password1 === password2) {
+      return true;
+    }
+    return false;
+  }
+
   logout(): void {
     this.usuarioLogueado.set(false);
+    this.usuarioReset();
+    localStorage.removeItem('usuario');
+  }
+
+  private usuarioReset(): void {
     this.infoUsuario.set({
       id: '',
       apellido: '',
       nombre: '',
       rol: undefined,
-      email: ''
+      email: '',
+      activo: false,
     });
-    localStorage.removeItem('usuario');
   }
 }

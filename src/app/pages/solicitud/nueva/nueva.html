@@ -1,5 +1,86 @@
-<div class="solicitud-container">
-  <h2>Nueva Solicitud</h2>
-  <p>Formulario para crear una nueva solicitud de cambio de aula.</p>
-  <!-- Aquí Kari puede agregar su formulario -->
+<div class="nueva-solicitud">
+	<div class="nueva-card">
+		<h2>Nueva solicitud</h2>
+
+		<form [formGroup]="form" (ngSubmit)="onSubmit()">
+			<div class="form-row">
+				<div class="form-group">
+					<label for="comision">Comisión</label>
+					<select id="comision" class="form-control" formControlName="comision_id">
+						<option [ngValue]="null">-- Seleccione --</option>
+						<option *ngFor="let c of comisiones" [value]="c.id">{{c.nombre}}</option>
+					</select>
+					<span *ngIf="form.get('comision_id')?.touched && form.get('comision_id')?.hasError('required')" class="error-message">La comisión es requerida.</span>
+				</div>
+
+				<div class="form-group">
+					<label for="espacio">Espacio solicitado</label>
+					<select id="espacio" class="form-control" formControlName="nuevo_espacio_id">
+						<option [ngValue]="null">-- Seleccione --</option>
+						<option *ngFor="let e of espacios" [value]="e.id">{{e.nombre}}</option>
+					</select>
+					<span *ngIf="form.get('nuevo_espacio_id')?.touched && form.get('nuevo_espacio_id')?.hasError('required')" class="error-message">El espacio es requerido.</span>
+				</div>
+			</div>
+
+			<div class="form-row">
+				<div class="form-group">
+					<label for="dia">Día de la semana</label>
+					<select id="dia" class="form-control" formControlName="dia_semana">
+						<option value="LUNES">LUNES</option>
+						<option value="MARTES">MARTES</option>
+						<option value="MIÉRCOLES">MIÉRCOLES</option>
+						<option value="JUEVES">JUEVES</option>
+						<option value="VIERNES">VIERNES</option>
+					</select>
+					<span *ngIf="form.get('dia_semana')?.touched && form.get('dia_semana')?.hasError('required')" class="error-message">El día es requerido.</span>
+				</div>
+			</div>
+
+			<div class="form-row">
+				<div class="form-group">
+					<label for="fecha_inicio">Fecha inicio</label>
+					<input id="fecha_inicio" class="form-control" type="date" formControlName="fecha_inicio" />
+					<span *ngIf="form.get('fecha_inicio')?.touched && form.get('fecha_inicio')?.hasError('required')" class="error-message">La fecha de inicio es requerida.</span>
+				</div>
+
+				<div class="form-group">
+					<label for="fecha_fin">Fecha fin</label>
+					<input id="fecha_fin" class="form-control" type="date" formControlName="fecha_fin" />
+					<span *ngIf="form.get('fecha_fin')?.touched && form.get('fecha_fin')?.hasError('required')" class="error-message">La fecha de fin es requerida.</span>
+				</div>
+			</div>
+
+			<div class="form-row">
+				<div class="form-group">
+					<label for="hora_inicio">Hora inicio</label>
+					<input id="hora_inicio" class="form-control" type="time" formControlName="hora_inicio" />
+					<span *ngIf="form.get('hora_inicio')?.touched && form.get('hora_inicio')?.hasError('required')" class="error-message">La hora de inicio es requerida.</span>
+				</div>
+
+				<div class="form-group">
+					<label for="hora_fin">Hora fin</label>
+					<input id="hora_fin" class="form-control" type="time" formControlName="hora_fin" />
+					<span *ngIf="form.get('hora_fin')?.touched && form.get('hora_fin')?.hasError('required')" class="error-message">La hora de fin es requerida.</span>
+				</div>
+			</div>
+
+			<div class="form-row single">
+				<div class="form-group">
+					<label for="comentario">Comentario para el administrador (opcional)</label>
+					<textarea id="comentario" class="form-control" formControlName="comentario_profesor" rows="3"></textarea>
+					<div class="small-note">(opcional) Anota detalles o motivos de la solicitud</div>
+				</div>
+			</div>
+
+			<div class="acciones">
+				<button type="submit" class="btn-primary" [disabled]="loading">Enviar solicitud</button>
+				<button type="button" class="btn-secondary" (click)="cancelar()">Cancelar</button>
+			</div>
+		</form>
+
+		<div *ngIf="mensaje" class="mensaje">{{mensaje}}</div>
+		<div *ngIf="error" class="error">{{error}}</div>
+	</div>
 </div>
+

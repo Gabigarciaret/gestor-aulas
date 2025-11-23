@@ -4,20 +4,10 @@
         <div class="campo">
             <label for="nombre-email">Nombre o Email </label>
             <input id="nombre-email" type="text" formControlName="email">
-            <span class="error">
-                @if (form.get('email')?.invalid && form.get('email')?.touched) {
-                    El campo Email es obligatorio
-                }
-            </span>
         </div>
         <div class="campo">
             <label for="contraseña">contraseña</label>
             <input id="contraseña" type="password" formControlName="password">
-            <span class="error">
-                @if (form.get('password')?.invalid && form.get('password')?.touched) {
-                    El campo Contraseña es obligatorio
-                }
-            </span>
         </div>
         <button class="btn-enviar" type="submit" [disabled]="form.invalid">Ingresar</button>
         <span class="error-general">{{ mensajeError() }}</span>

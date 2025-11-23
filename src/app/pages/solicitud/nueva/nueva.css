@@ -1,15 +1,136 @@
-.solicitud-container {
-  padding: 2rem;
-  max-width: 800px;
+/* Estilos para el formulario de nueva solicitud - basados en perfil.component.css */
+.nueva-solicitud {
+  flex: 1;
+  padding: 20px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #eef2ff 100%);
+  min-height: 100vh;
+}
+
+.nueva-card {
+  max-width: 900px;
   margin: 0 auto;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  padding: 32px;
 }
 
-.solicitud-container h2 {
-  color: var(--color-primary);
-  margin-bottom: 1rem;
+.nueva-solicitud h2 {
+  color: #2d3748;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0 0 18px 0;
 }
 
-.solicitud-container p {
-  color: var(--color-text-secondary);
-  margin-bottom: 2rem;
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-row.single {
+  grid-template-columns: 1fr;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #2d3748;
+  font-size: 0.9rem;
+}
+
+input[type="date"],
+input[type="time"],
+select,
+textarea,
+input[type="text"],
+input[type="number"] {
+  padding: 10px 14px;
+  border: 2px solid #e6eef8;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.18s, box-shadow 0.18s;
+  background: #fff;
+}
+
+select { appearance: none; }
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 6px 18px rgba(102,126,234,0.08);
+}
+
+textarea { resize: vertical; min-height: 84px; }
+
+.acciones {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 6px;
+}
+
+.acciones button {
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--color-secondary);
+  color: var(--color-text-inverse);
+  box-shadow: none;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--color-secondary-dark);
+}
+.btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.btn-secondary {
+  background: #edf2f7;
+  color: #334155;
+}
+
+.mensaje {
+  background: #e6fffa;
+  color: #065f46;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.error {
+  background: #fff5f5;
+  color: #9b2c2c;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.error-message {
+  color: #e53e3e;
+  font-size: 0.85rem;
+  margin-top: 6px;
+}
+
+@media (max-width: 800px) {
+  .form-row { grid-template-columns: 1fr; }
+  .acciones { justify-content: stretch; flex-direction: column; }
+}
+
+/* Helpers */
+.small-note { color: #718096; font-size: 0.875rem; }

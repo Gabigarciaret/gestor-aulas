@@ -25,10 +25,10 @@ export class DashboardComponent {
   }
 
   navigateTo(path: string) {
-    if (path === '/dashboard' || path === '/perfil') {
+    if (path) {
       this.router.navigate([path]);
     } else {
-      alert(`La funcionalidad "${path}" estará disponible próximamente.`);
+      alert(`La funcionalidad estará disponible próximamente.`);
     }
   }
 }
