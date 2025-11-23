@@ -33,7 +33,7 @@ export class Header {
   }
 
   viewProfile(): void {
-    this.router.navigate(['/menu']);
+    this.router.navigate(['/perfil']);
   }
 
   toggleProfileMenu(): void {
