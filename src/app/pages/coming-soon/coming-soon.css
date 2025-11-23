@@ -1,0 +1,459 @@
+.coming-soon {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  transform-origin: center;
+  transition: transform 180ms ease;
+}
+.coming-soon .card {
+  background: var(--color-surface, #fff);
+  color: var(--color-text, #111);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow-medium);
+  max-width: 520px;
+  width: 100%;
+  text-align: center;
+}
+.coming-soon h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: var(--font-size-2xl);
+}
+.coming-soon p {
+  margin: 0 0 1rem 0;
+  color: rgba(0,0,0,0.7);
+}
+.coming-soon .actions {
+  display: flex;
+  justify-content: center;
+}
+.coming-soon .primary {
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.coming-soon .primary:hover { opacity: 0.95 }
+
+/* --- LEGO ANIMATION (scoped to .coming-soon) --- */
+.coming-soon {
+  position: relative;
+  /* permitimos desborde visual para que los ladrillos no se corten en escritorio */
+  overflow: visible;
+}
+.coming-soon .legos {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  left: 0;
+  top: 0;
+  /* permitir overflow para que los ladrillos puedan salir del contenedor */
+  overflow: visible;
+  pointer-events: none;
+  /* colocarlos detrás de la tarjeta (no negativo para evitar issues móviles) */
+  z-index: 0;
+}
+
+.coming-soon .card {
+  position: relative;
+  z-index: 2;
+}
+
+/* En móvil: ocultar overflow vertical para que no empuje ni desplace el header */
+@media (max-width: 599px) {
+  .coming-soon,
+  .coming-soon .legos {
+    overflow-x: visible;
+    overflow-y: visible;
+  }
+}
+.coming-soon .lego {
+  position: absolute;
+  height: 155px;
+  width: 268px;
+  transform: rotate(-23deg);
+  background-size:
+    72% 46%,
+    100% 45%,
+    92% 56%;
+  background-position:
+    70px 0px,
+    0 0,
+    18px 100%;
+  background-repeat: no-repeat;
+}
+.coming-soon .lego:before {
+  content: "";
+  position: absolute;
+  border-radius: 40%;
+  height: 18px;
+  width: 37px;
+  left: 26px;
+  top: -9px;
+  transform: rotate(23deg);
+}
+.coming-soon .lego:after {
+  content: "";
+  position: absolute;
+  height: 82px;
+  width: 88px;
+  transform: rotate(51deg) skew(28deg);
+  left: -35px;
+  top: 37px;
+}
+.coming-soon .blue {
+  top: calc(50% - 15px);
+  left: calc(50% - 140px);
+  z-index: 1;
+  animation: blue-move 10s infinite linear;
+  background-image: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 95%,
+      rgba(110, 187, 255, 0.4) 98%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    linear-gradient(52deg, #1e88e5 82%, rgba(255, 255, 255, 0) 82%),
+    linear-gradient(113deg, #1e88e5 87%, rgba(0, 0, 0, 0) 86%);
+}
+.coming-soon .blue:before {
+  background: #2093f7;
+  box-shadow:
+    0px 10px 0px #1d6bb2,
+    0px 5px 0px #1d6bb2,
+    50px -20px 0px #2093f7,
+    50px -10px 0px #1d6bb2,
+    50px -15px 0px #1d6bb2,
+    100px -40px 0px #2093f7,
+    100px -30px 0px #1d6bb2,
+    100px -35px 0px #1d6bb2,
+    150px -60px 0px #2093f7,
+    150px -50px 0px #1d6bb2,
+    150px -55px 0px #1d6bb2,
+    40px 20px 0px #2093f7,
+    40px 25px 0px #1d6bb2,
+    40px 30px 0px #1d6bb2,
+    90px 0px 0px #2093f7,
+    90px 5px 0px #1d6bb2,
+    90px 10px 0px #1d6bb2,
+    140px -20px 0px #2093f7,
+    140px -15px 0px #1d6bb2,
+    140px -10px 0px #1d6bb2,
+    190px -40px 0px #2093f7,
+    190px -35px 0px #1d6bb2,
+    190px -30px 0px #1d6bb2;
+}
+.coming-soon .blue:after {
+  background: #1d6bb2;
+}
+
+@keyframes blue-move {
+  0% {
+    top: calc(50% - 15px);
+    left: calc(50% - 140px);
+    z-index: 1;
+  }
+  3.334% {
+    top: calc(50% + 100px);
+  }
+  6.668% {
+    left: calc(50% + 180px);
+  }
+  10% {
+    left: calc(50% + 180px);
+    top: calc(50% - 290px);
+  }
+  13.336% {
+    top: calc(50% - 290px);
+    left: calc(50% - 78px);
+    z-index: 3;
+  }
+  16.67% {
+    top: calc(50% - 202px);
+    left: calc(50% - 78px);
+    z-index: 3;
+  }
+  33.337% {
+    top: calc(50% - 134px);
+    left: calc(50% - 78px);
+    z-index: 2;
+  }
+  50% {
+    top: calc(50% - 15px);
+    left: calc(50% - 78px);
+    z-index: 1;
+  }
+  53.334% {
+    top: calc(50% + 100px);
+  }
+  56.668% {
+    left: calc(50% - 400px);
+  }
+  60% {
+    left: calc(50% - 200px);
+    top: calc(50% - 290px);
+  }
+  63.336% {
+    top: calc(50% - 290px);
+    left: calc(50% - 140px);
+    z-index: 3;
+  }
+  66.68% {
+    top: calc(50% - 202px);
+    left: calc(50% - 140px);
+    z-index: 3;
+  }
+  83.35% {
+    top: calc(50% - 83px);
+    left: calc(50% - 137px);
+    z-index: 2;
+  }
+}
+
+.coming-soon .red {
+  top: calc(50% - 134px);
+  left: calc(50% - 78px);
+  z-index: 2;
+  animation: red-move 10s infinite linear;
+  background-image: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 95%,
+      rgba(88, 145, 216, 0.35) 98%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    linear-gradient(52deg, #1565c0 82%, rgba(0, 0, 0, 0) 82%),
+    linear-gradient(113deg, #1565c0 87%, rgba(0, 0, 0, 0) 86%);
+}
+
+.coming-soon .red:before {
+  background: #1976d2;
+  box-shadow:
+    0px 10px 0px #0d47a1,
+    0px 5px 0px #0d47a1,
+    50px -20px 0px #1976d2,
+    50px -10px 0px #0d47a1,
+    50px -15px 0px #0d47a1,
+    100px -40px 0px #1976d2,
+    100px -30px 0px #0d47a1,
+    100px -35px 0px #0d47a1,
+    150px -60px 0px #1976d2,
+    150px -50px 0px #0d47a1,
+    150px -55px 0px #0d47a1,
+    40px 20px 0px #1976d2,
+    40px 25px 0px #0d47a1,
+    40px 30px 0px #0d47a1,
+    90px 0px 0px #1976d2,
+    90px 5px 0px #0d47a1,
+    90px 10px 0px #0d47a1,
+    140px -20px 0px #1976d2,
+    140px -15px 0px #0d47a1,
+    140px -10px 0px #0d47a1,
+    190px -40px 0px #1976d2,
+    190px -35px 0px #0d47a1,
+    190px -30px 0px #0d47a1;
+}
+
+.coming-soon .red:after {
+  background: #0d47a1;
+}
+
+@keyframes red-move {
+  0% {
+    top: calc(50% - 134px);
+    left: calc(50% - 78px);
+    z-index: 2;
+  }
+  16.67% {
+    top: calc(50% - 15px);
+    left: calc(50% - 78px);
+    z-index: 1;
+  }
+  20% {
+    top: calc(50% + 100px);
+  }
+  23.338% {
+    left: calc(50% - 400px);
+  }
+  26.672% {
+    left: calc(50% - 200px);
+    top: calc(50% - 290px);
+  }
+  30% {
+    top: calc(50% - 290px);
+    left: calc(50% - 140px);
+    z-index: 3;
+  }
+  33.337% {
+    top: calc(50% - 202px);
+    left: calc(50% - 140px);
+    z-index: 3;
+  }
+  50% {
+    top: calc(50% - 83px);
+    left: calc(50% - 137px);
+    z-index: 2;
+  }
+  66.68% {
+    top: calc(50% - 15px);
+    left: calc(50% - 140px);
+    z-index: 1;
+  }
+  70.014% {
+    top: calc(50% + 100px);
+  }
+  73.348% {
+    left: calc(50% + 168px);
+  }
+  76.68% {
+    left: calc(50% + 168px);
+    top: calc(50% - 290px);
+  }
+  80.016% {
+    top: calc(50% - 290px);
+    left: calc(50% - 78px);
+    z-index: 3;
+  }
+  83.35% {
+    top: calc(50% - 202px);
+    left: calc(50% - 78px);
+    z-index: 3;
+  }
+}
+
+.coming-soon .yellow {
+  top: calc(50% - 202px);
+  left: calc(50% - 140px);
+  z-index: 3;
+  animation: yellow-move 10s infinite linear;
+  background-image: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 95%,
+      #b3e5fc 98%,
+      #b3e5fc 98%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    linear-gradient(52deg, #4fc3f7 82%, rgba(0, 0, 0, 0) 82%),
+    linear-gradient(113deg, #29b6f6 87%, rgba(0, 0, 0, 0) 86%);
+}
+
+.coming-soon .yellow:before {
+  background: #81d4fa;
+  box-shadow:
+    0px 10px 0px #4fc3f7,
+    0px 5px 0px #4fc3f7,
+    50px -20px 0px #81d4fa,
+    50px -10px 0px #4fc3f7,
+    50px -15px 0px #4fc3f7,
+    100px -40px 0px #81d4fa,
+    100px -30px 0px #4fc3f7,
+    100px -35px 0px #4fc3f7,
+    150px -60px 0px #81d4fa,
+    150px -50px 0px #4fc3f7,
+    150px -55px 0px #4fc3f7,
+    40px 20px 0px #81d4fa,
+    40px 25px 0px #4fc3f7,
+    40px 30px 0px #4fc3f7,
+    90px 0px 0px #81d4fa,
+    90px 5px 0px #4fc3f7,
+    90px 10px 0px #4fc3f7,
+    140px -20px 0px #81d4fa,
+    140px -15px 0px #4fc3f7,
+    140px -10px 0px #4fc3f7,
+    190px -40px 0px #81d4fa,
+    190px -35px 0px #4fc3f7,
+    190px -30px 0px #4fc3f7;
+}
+
+.coming-soon .yellow:after {
+  background: #29b6f6;
+}
+
+@keyframes yellow-move {
+  0% {
+    top: calc(50% - 202px);
+    left: calc(50% - 140px);
+    z-index: 3;
+  }
+  16.67% {
+    top: calc(50% - 83px);
+    left: calc(50% - 137px);
+    z-index: 2;
+  }
+  33.337% {
+    top: calc(50% - 15px);
+    left: calc(50% - 140px);
+    z-index: 1;
+  }
+  36.671% {
+    top: calc(50% + 100px);
+  }
+  40% {
+    left: calc(50% + 168px);
+  }
+  43.339% {
+    left: calc(50% + 168px);
+    top: calc(50% - 290px);
+  }
+  46.673% {
+    top: calc(50% - 290px);
+    left: calc(50% - 78px);
+    z-index: 3;
+  }
+  50% {
+    top: calc(50% - 202px);
+    left: calc(50% - 78px);
+    z-index: 3;
+  }
+  66.68% {
+    top: calc(50% - 134px);
+    left: calc(50% - 78px);
+    z-index: 2;
+  }
+  83.35% {
+    top: calc(50% - 15px);
+    left: calc(50% - 78px);
+    z-index: 1;
+  }
+  86.684% {
+    top: calc(50% + 100px);
+  }
+  90.018% {
+    left: calc(50% - 400px);
+  }
+  93.352% {
+    left: calc(50% - 200px);
+    top: calc(50% - 290px);
+    z-index: 1;
+  }
+  96.686% {
+    top: calc(50% - 290px);
+    left: calc(50% - 140px);
+    z-index: 3;
+  }
+}
+
+/* --- Responsive scale for three sizes: móvil / tablet / escritorio --- */
+/* Ajusta los valores scale() si prefieres tamaños distintos */
+@media (max-width: 599px) {
+  .coming-soon {
+    transform: scale(0.50);
+  }
+}
+
+@media (min-width: 600px) and (max-width: 1023px) {
+  .coming-soon {
+    transform: scale(0.70);
+  }
+}
+
+@media (min-width: 1024px) {
+  .coming-soon {
+    transform: scale(.80);
+  }
+}
+
