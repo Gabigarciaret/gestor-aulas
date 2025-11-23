@@ -47,4 +47,13 @@ export class Header {
   comingSoon(): void {
     this.router.navigate(['/coming-soon']);
   }
+
+  isComingSoon(): boolean {
+    try {
+      const url = this.router.url || '';
+      return url === '/coming-soon' || url.startsWith('/coming-soon');
+    } catch (e) {
+      return false;
+    }
+  }
 }

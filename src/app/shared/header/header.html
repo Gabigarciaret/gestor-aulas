@@ -8,13 +8,12 @@
 
   <nav class="header__actions">
 
-
+    @if (!isComingSoon()) {
     <!-- Agenda -->
     <button class="icon-btn" routerLink="/coming-soon" aria-label="Ir a Agenda (sitio en construcción)">
       <img src="/calendar.png" alt="Agenda" />
       <span>Agenda</span>
     </button>
-
 
     <!-- Si NO está logueado -->
     @if (!isLoggedIn()) {
@@ -47,7 +46,8 @@
 
     <!-- Mobile: botón perfil con menú desplegable -->
     <div class="profile-menu mobile-only">
-      <button class="icon-btn" (click)="toggleProfileMenu()" aria-haspopup="true" aria-expanded="@{showProfileMenu}" aria-label="Abrir menú de perfil">
+      <button class="icon-btn" (click)="toggleProfileMenu()" aria-haspopup="true" aria-expanded="@{showProfileMenu}"
+        aria-label="Abrir menú de perfil">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M12 12a5 5 0 1 0 -5-5 5 5 0 0 0 5 5zm0 2c-4 0-8 2-8 4v2h16v-2c0-2-4-4-8-4z" />
         </svg>
@@ -61,6 +61,8 @@
       </div>
       }
     </div>
+    }
+
     }
 
   </nav>
