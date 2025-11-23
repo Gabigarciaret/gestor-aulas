@@ -38,8 +38,18 @@ export const routes: Routes = [
     canActivate: [authGuard]
   },
   {
+    path: 'agenda',
+    loadComponent: () => import('./pages/calendario/calendario.component').then(m => m.CalendarioComponent),
+    canActivate: [authGuard]
+  },
+  {
+    path: 'mis-reservas',
+    loadComponent: () => import('./pages/calendario/calendario.component').then(m => m.CalendarioComponent),
+    canActivate: [authGuard]
+  },
+  {
     path: 'coming-soon',
-    loadComponent: () => import('./pages/calendario/calendario.component').then(m => m.CalendarioComponent)
+    redirectTo: '/home'  // Temporal hasta que tus compañeros implementen coming-soon
   },
   {
     path: '**',

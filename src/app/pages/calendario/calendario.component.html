@@ -1,26 +1,35 @@
 <div class="calendario-container">
   <!-- Header con controles -->
   <div class="calendario-header">
-    <h1>📅 Calendario de Reservas</h1>
-    <p>Gestión de horarios y reservas de aulas</p>
+    <h1>📅 {{ getTituloVista() }}</h1>
+    
+    <!-- Mostrar información del usuario dinámicamente -->
+    <p class="info-usuario">{{ getMensajeInfo() }}</p>
     
     <!-- Solo selector de vista -->
     <div class="controles">
       <div class="vista-selector">
         <label>Vista:</label>
         <button 
-          [class]="vistaActual() === 'mensual' ? 'active' : ''"
-          (click)="cambiarVista('mensual')"
+          [class]="vistaActual() === 'diario' ? 'active' : ''"
+          (click)="cambiarVista('diario')"
           class="btn-vista"
         >
-          📅 Mensual
+          📊 Diario
         </button>
         <button 
           [class]="vistaActual() === 'semanal' ? 'active' : ''"
           (click)="cambiarVista('semanal')"
           class="btn-vista"
         >
-          📋 Semanal
+          � Semanal
+        </button>
+        <button 
+          [class]="vistaActual() === 'mensual' ? 'active' : ''"
+          (click)="cambiarVista('mensual')"
+          class="btn-vista"
+        >
+          � Mensual
         </button>
       </div>
     </div>
