@@ -35,6 +35,24 @@ export class MisSolicitudes implements OnInit {
         const currentUser = this.authService.infoUsuario();
         const userId = currentUser?.id ?? '';
         const filtered = data.filter((s) => String(s.usuario_id) === String(userId));
+
+          // Ordenar por fecha_hora_solicitud descendente (más reciente primero)
+        const parseValue = (item: any): number => {
+          //Intentar parsear fecha_hora_solicitud
+          if (item?.fecha_hora_solicitud) {
+            const d = Date.parse(item.fecha_hora_solicitud);
+            if (!isNaN(d)) return d;
+          }
+          
+          return 0;
+        };
+
+        filtered.sort((a, b) => {
+          const va = parseValue(a);
+          const vb = parseValue(b);
+          return vb - va; // descendente: más reciente primero
+        });
+
         this.solicitudes.set(filtered);
       },
       error: (err) => {

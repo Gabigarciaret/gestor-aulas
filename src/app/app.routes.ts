@@ -39,10 +39,10 @@ export const routes: Routes = [
   },
   {
     path: 'coming-soon',
-    redirectTo: '/login'
+    redirectTo: '/home'
   },
   {
     path: '**',
-    redirectTo: '/login'
+    redirectTo: '/home'
   }
 ];

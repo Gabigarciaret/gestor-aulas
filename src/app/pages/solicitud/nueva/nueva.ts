@@ -189,6 +189,6 @@ export class Nueva implements OnInit {
   }
 
   cancelar() {
-    this.router.navigate(['/menu']);
+    this.router.navigate(['/dashboard']);
   }
 }
