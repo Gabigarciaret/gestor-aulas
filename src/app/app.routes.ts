@@ -4,6 +4,10 @@ import { Login } from './pages/login/login';
 import { Home } from './pages/home/home';
 import { Nueva } from './pages/solicitud/nueva/nueva';
 import { MisSolicitudes } from './pages/solicitud/mis-solicitudes/mis-solicitudes';
+import { GestionUsuarios } from './pages/gestion-usuarios/gestion-usuarios';
+import { RegistrarUsuario } from './pages/gestion-usuarios/registrar-usuario/registrar-usuario';
+import { EliminarUsuario } from './pages/gestion-usuarios/eliminar-usuario/eliminar-usuario';
+import { ReactivarUsuario } from './pages/gestion-usuarios/reactivar-usuario/reactivar-usuario';
 
 export const routes: Routes = [
   {
@@ -36,6 +40,22 @@ export const routes: Routes = [
   { path: 'solicitud/mis-solicitudes',
     component: MisSolicitudes,
     canActivate: [authGuard]
+  },
+  {
+    path: 'gestionUsuarios',
+    component: GestionUsuarios
+  },
+  {
+    path: 'gestionUsuarios/registrarUsuario',
+    component: RegistrarUsuario
+  },
+  {
+    path: 'gestionUsuarios/eliminarUsuario',
+    component: EliminarUsuario
+  },
+  {
+    path: 'gestionUsuarios/reactivarUsuario',
+    component: ReactivarUsuario
   },
   {
     path: 'coming-soon',

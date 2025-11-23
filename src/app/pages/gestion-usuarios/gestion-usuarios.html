@@ -1,0 +1,57 @@
+<div class="gestion-container">
+  <div class="gestion-card">
+    <div class="gestion-header">
+      <h1>Gestión de Usuarios</h1>
+      <button routerLink="/dashboard" class="btn-volver">← Volver</button>
+    </div>
+
+    <div class="opciones-grid">
+      <div class="opcion-card">
+        <div class="opcion-icon registrar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <line x1="19" y1="8" x2="19" y2="14"></line>
+            <line x1="22" y1="11" x2="16" y2="11"></line>
+          </svg>
+        </div>
+        <h3>Registrar Usuario</h3>
+        <p>Crear una nueva cuenta de usuario en el sistema</p>
+        <button routerLink="/gestionUsuarios/registrarUsuario" class="btn-opcion registrar">
+          Ir a Registro
+        </button>
+      </div>
+
+      <div class="opcion-card">
+        <div class="opcion-icon eliminar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <line x1="17" y1="8" x2="22" y2="13"></line>
+            <line x1="22" y1="8" x2="17" y2="13"></line>
+          </svg>
+        </div>
+        <h3>Eliminar Usuario</h3>
+        <p>Desactivar la cuenta de un usuario existente</p>
+        <button routerLink="/gestionUsuarios/eliminarUsuario" class="btn-opcion eliminar">
+          Ir a Eliminación
+        </button>
+      </div>
+
+      <div class="opcion-card">
+        <div class="opcion-icon reactivar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <polyline points="17 11 19 13 23 9"></polyline>
+          </svg>
+        </div>
+        <h3>Reactivar Usuario</h3>
+        <p>Restaurar la cuenta de un usuario desactivado</p>
+        <button routerLink="/gestionUsuarios/reactivarUsuario" class="btn-opcion reactivar">
+          Ir a Reactivación
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

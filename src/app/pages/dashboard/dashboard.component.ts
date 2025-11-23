@@ -27,8 +27,6 @@ export class DashboardComponent {
   navigateTo(path: string) {
     if (path) {
       this.router.navigate([path]);
-    } else {
-      alert(`La funcionalidad estará disponible próximamente.`);
     }
   }
 }

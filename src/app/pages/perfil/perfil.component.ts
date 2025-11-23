@@ -108,7 +108,7 @@ export class PerfilComponent implements OnInit {
     }
 
     if (this.formPassword.value.passwordNuevo! !== this.formPassword.value.passwordConfirmar!) {
-      this.errorPassword.set('Repita correctamente la nueva contraseña');
+      this.errorPassword.set('Repita correctamente la contraseña');
       this.loadingPassword = false;
       return;
     }
