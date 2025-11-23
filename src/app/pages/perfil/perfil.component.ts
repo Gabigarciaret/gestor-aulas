@@ -128,6 +128,6 @@ export class PerfilComponent implements OnInit {
   }
 
   volver() {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/dashboard']);
   }
 }

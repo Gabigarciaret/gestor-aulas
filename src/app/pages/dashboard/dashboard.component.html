@@ -1,0 +1,87 @@
+<div class="dashboard-container">
+  <div class="welcome-section">
+    <h1>¡Bienvenido/a, {{ usuario()?.nombre }}!</h1>
+    <p>Sistema de Gestión de Aulas - UTN Regional MdP</p>
+    
+    @if (usuario()) {
+      <div class="user-info">
+        <p><strong>Rol:</strong> {{ usuario()!.rol }}</p>
+        <p><strong>Email:</strong> {{ usuario()!.email }}</p>
+      </div>
+    }
+  </div>
+
+  <div class="actions-section">
+    <div class="action-cards">
+      <!-- Cards para ADMIN -->
+      @if (usuario()?.rol === 'ADMIN') {
+                
+        <div class="action-card solicitudes" (click)="navigateTo('/solicitudes')">
+          <div class="card-icon">📋</div>
+          <h3>Gestor Solicitudes</h3>
+          <p>Administrar solicitudes de cambio de aula</p>
+          @if (pendingSolicitudes > 0) {
+            <div class="notification-badge">{{ pendingSolicitudes }}</div>
+          }
+        </div>
+
+        <div class="action-card" (click)="navigateTo('/coming-soon')">
+          <div class="card-icon">📖</div>
+          <h3>Ver Todas las Reservas</h3>
+          <p>Administrar todas las reservas del sistema</p>
+        </div>
+        
+        <div class="action-card" (click)="navigateTo('/usuarios')">
+          <div class="card-icon">👥</div>
+          <h3>Gestión de Usuarios</h3>
+          <p>Administrar profesores y permisos</p>
+        </div>
+        
+        <div class="action-card" (click)="navigateTo('/coming-soon')">
+          <div class="card-icon">🏢</div>
+          <h3>Gestión de Espacios</h3>
+          <p>Administrar aulas y laboratorios</p>
+        </div>
+
+        <div class="action-card" (click)="navigateTo('/coming-soon')">
+          <div class="card-icon">🎓</div>
+          <h3>Gestión de Comisiones</h3>
+          <p>Administrar comisiones y asignaturas</p>
+        </div>
+
+        <div class="action-card" (click)="navigateTo('/coming-soon')">
+          <div class="card-icon">📚</div>
+          <h3>Gestión de Carreras</h3>
+          <p>Administrar planes de estudio</p>
+        </div>
+      }
+      
+      <!-- Cards para PROFESOR -->
+      @if (usuario()?.rol === 'PROFESOR') {
+        <div class="action-card" (click)="navigateTo('/solicitud/nueva')">
+          <div class="card-icon">🔄</div>
+          <h3>Solicitar Reserva</h3>
+          <p>Realizar una nueva solicitud de reserva de aula</p>
+        </div>
+
+        <div class="action-card" (click)="navigateTo('/solicitud/mis-solicitudes')">
+          <div class="card-icon">📋</div>
+          <h3>Mis Solicitudes</h3>
+          <p>Ver historial de solicitudes realizadas</p>
+        </div>
+
+        <div class="action-card" (click)="navigateTo('/coming-soon')">
+          <div class="card-icon">📖</div>
+          <h3>Ver Mis Reservas</h3>
+          <p>Ver mis clases programadas</p>
+        </div>
+
+        <div class="action-card" (click)="navigateTo('/coming-soon')">
+          <div class="card-icon">🎓</div>
+          <h3>Mis Comisiones</h3>
+          <p>Ver comisiones asignadas</p>
+        </div>
+      }
+    </div>
+  </div>
+</div>

@@ -12,6 +12,10 @@
     padding: 1.5rem;
     max-width: 500px;
     margin: 1rem auto;
+    background: var(--color-surface, #fff);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
 }
 
 .login-form h3 {
@@ -76,6 +80,8 @@
     transition: all var(--transition-speed);
     margin-top: 1rem;
 }
+
+.btn-enviar { width: 100%; }
 
 .btn-enviar:hover {
     background-color: var(--color-primary-dark);
