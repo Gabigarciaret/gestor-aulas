@@ -142,16 +142,43 @@
 
       <!-- Botones -->
       <div class="form-actions">
-        <button
-          type="submit"
-          class="btn-primary"
-          [disabled]="loadingPassword || formPassword.invalid"
-        >
-          @if (loadingPassword) { Cambiando contraseña... } @else { Cambiar contraseña }
+        <button (click)="abrirAlertaEliminar()" type="button" class="btn-delete">
+          Cerrar Cuenta
         </button>
 
-        <button type="button" (click)="volver()" class="btn-secondary">Cancelar</button>
+        <div class="form-actions-right">
+          <button
+            type="submit"
+            class="btn-save-password"
+            [disabled]="loadingPassword || formPassword.invalid"
+          >
+            @if (loadingPassword) { Cambiando contraseña... } @else { Cambiar contraseña }
+          </button>
+        </div>
       </div>
     </form>
+
+    <!-- Modal de confirmación -->
+    @if (mostrarAlertaEliminar()) {
+      <div class="modal-overlay" (click)="cerrarAlertaEliminar()">
+        <div class="modal-content" (click)="$event.stopPropagation()">
+          <div class="modal-header">
+            <h2>Confirmar Cierre de Cuenta</h2>
+          </div>
+          <div class="modal-body">
+            <p>¿Estás seguro de que deseas cerrar tu cuenta?</p>
+            <p class="modal-warning">Esta acción desactivará tu cuenta y cerrarás sesión inmediatamente.</p>
+          </div>
+          <div class="modal-actions">
+            <button type="button" (click)="cerrarAlertaEliminar()" class="btn-modal-cancelar">
+              Cancelar
+            </button>
+            <button type="button" (click)="confirmarEliminar()" class="btn-modal-confirmar">
+              Confirmar
+            </button>
+          </div>
+        </div>
+      </div>
+    }
   </div>
 </div>

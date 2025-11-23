@@ -29,4 +29,10 @@ export class UsuarioService {
   actualizarPassword(id: string, password: string): Observable<Usuario> {
     return this.http.patch<Usuario>(`${this.baseDatosUrl}/${id}`, { password });
   }
+
+  eliminarById(id: string): Observable<Usuario> {
+    return this.http.patch<Usuario>(`${this.baseDatosUrl}/${id}`, { activo: false });
+  }
+
+  
 }

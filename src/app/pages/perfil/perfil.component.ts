@@ -27,6 +27,7 @@ export class PerfilComponent implements OnInit {
   mensajePassword = signal('');
   errorPerfil = signal('');
   errorPassword = signal('');
+  mostrarAlertaEliminar = signal(false);
 
   formPerfil = this.fb.group({
     nombre: [this.auth.infoUsuario().nombre, [Validators.required, Validators.minLength(2)]],
@@ -106,7 +107,7 @@ export class PerfilComponent implements OnInit {
     }
 
     if (this.formPassword.value.passwordNuevo! !== this.formPassword.value.passwordConfirmar!) {
-      this.errorPassword.set('Repite correctamente la nueva contraseña');
+      this.errorPassword.set('Repita correctamente la nueva contraseña');
       this.loadingPassword = false;
       return;
     }
@@ -129,5 +130,28 @@ export class PerfilComponent implements OnInit {
 
   volver() {
     this.router.navigate(['/dashboard']);
+  }
+
+  abrirAlertaEliminar() {
+    this.mostrarAlertaEliminar.set(true);
+  }
+
+  cerrarAlertaEliminar() {
+    this.mostrarAlertaEliminar.set(false);
+  }
+
+  confirmarEliminar() {
+    this.usuarioService.eliminarById(this.usuarioActual!.id).subscribe({
+      next: () => {
+        this.cerrarAlertaEliminar();
+        this.auth.logout();
+        this.router.navigate(['/home']);
+      },
+      error: (err) => {
+        alert('Error al intentar cerrar la cuenta...');
+        console.log(err);
+        this.cerrarAlertaEliminar();
+      }
+    });
   }
 }

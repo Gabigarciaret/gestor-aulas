@@ -72,6 +72,9 @@ export class AuthService {
       map((usuarios) => {
         if (usuarios.length > 0) {
           const usuario = usuarios[0];
+          if(!usuario.activo){
+            throw AuthError.UsuarioEliminado();
+          }
           if (usuario.password === credenciales.password) {
             return usuario;
           } else {
