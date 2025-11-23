@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../auth/service/auth-service';
 
 @Component({
   selector: 'app-perfil',
@@ -22,7 +22,7 @@ export class PerfilComponent implements OnInit {
   error: string | null = null;
 
   get usuario() {
-    return this.auth.usuarioActual();
+    return this.auth.infoUsuario();
   }
 
   ngOnInit() {

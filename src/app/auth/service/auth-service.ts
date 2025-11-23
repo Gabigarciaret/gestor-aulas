@@ -49,6 +49,7 @@ export class AuthService {
   }
 
   validarCredenciales(credenciales: LoginRequest): Observable<Usuario> {
+    console.log("validar credenciales");
     return this.usuarioService.getUsuarioByEmail(credenciales.email).pipe(
       map(usuarios => {
         if (usuarios.length > 0) {
@@ -62,6 +63,7 @@ export class AuthService {
         throw AuthError.UsuarioNoRegistrado();
       }),
       tap(usuario => {
+        console.log("guardar datos de sesion");
         this.usuarioLogueado.set(true);
         this.infoUsuario.set(usuario);
         this.guardarSesion(usuario);

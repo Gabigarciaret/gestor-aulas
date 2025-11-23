@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../auth/service/auth-service';
 
 @Component({
   selector: 'app-footer',
@@ -13,7 +13,7 @@ export class Footer {
   private auth = inject(AuthService);
 
   get usuario() {
-    return this.auth.usuarioActual();
+    return this.auth.infoUsuario();
   }
 
   get isAdmin() {

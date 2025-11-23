@@ -2,7 +2,7 @@
 import { Component, inject, computed } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { NgFor } from '@angular/common';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../auth/service/auth-service';
 
 interface MenuItem {
   label: string;
@@ -31,10 +31,10 @@ export class MenuComponent {
     // { label: 'Usuarios', path: '/usuarios', roles: ['ADMIN'] }
   ];
 
-  rolActual = this.auth.rolActual;
+  rolActual = this.auth.infoUsuario().rol;
 
   menuVisible = computed(() => {
-    const rol = this.rolActual();
+    const rol = this.rolActual;
     if (!rol) return [];
     return this.items.filter(i => i.roles.includes(rol));
   });

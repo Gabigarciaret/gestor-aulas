@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Footer } from './shared/footer/footer';
 import { Header } from './shared/header/header';
-import { AuthService } from './services/auth.service';
+import { AuthService } from './auth/service/auth-service';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +21,6 @@ export class App {
   private auth = inject(AuthService);
 
   get isLoggedIn() {
-    return this.auth.estaLogueado(); //se agrega para pruebas Gabi
+    return this.auth.usuarioLogueado(); //se agrega para pruebas Gabi
   }
 }

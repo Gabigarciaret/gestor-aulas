@@ -19,7 +19,7 @@ export class Login {
   constructor() {
     effect(() => {
       if(this.authService.usuarioLogueado()) {
-        this.authService.logout();
+        this.router.navigateByUrl('/home');
       }
     });
   }
