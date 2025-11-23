@@ -39,7 +39,7 @@ export const routes: Routes = [
   },
   {
     path: 'coming-soon',
-    redirectTo: '/login'
+    loadComponent: () => import('./pages/calendario/calendario.component').then(m => m.CalendarioComponent)
   },
   {
     path: '**',
