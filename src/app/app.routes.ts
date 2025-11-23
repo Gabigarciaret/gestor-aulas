@@ -1,9 +1,11 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './guards/auth.guard';
+import { adminGuard } from './guards/admin.guard';
 import { Login } from './pages/login/login';
 import { Home } from './pages/home/home';
 import { Nueva } from './pages/solicitud/nueva/nueva';
 import { MisSolicitudes } from './pages/solicitud/mis-solicitudes/mis-solicitudes';
+import { ListSolicitudes } from './pages/solicitud/list-solicitudes/list-solicitudes';
 
 export const routes: Routes = [
   {
@@ -38,9 +40,18 @@ export const routes: Routes = [
     canActivate: [authGuard]
   },
   {
-    path: 'agenda',
-    loadComponent: () => import('./pages/calendario/calendario.component').then(m => m.CalendarioComponent),
+    path: 'gestor-solicitudes',
+    component: ListSolicitudes,
     canActivate: [authGuard]
+  },
+  {
+    path: 'agenda',
+    loadComponent: () => import('./pages/calendario/calendario.component').then(m => m.CalendarioComponent)
+  },
+  {
+    path: 'reservas-todas',
+    loadComponent: () => import('./pages/gestor-reservas/gestor-reservas.component').then(m => m.GestorReservasComponent),
+    canActivate: [adminGuard]
   },
   {
     path: 'mis-reservas',

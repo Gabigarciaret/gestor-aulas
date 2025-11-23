@@ -7,6 +7,13 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.dev-note {
+  color: #666;
+  display: block;
+  margin-top: 4px;
+  font-size: 0.85rem;
+}
+
 .welcome-section {
   text-align: center;
   margin-bottom: 3rem;

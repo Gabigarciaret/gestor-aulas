@@ -1,0 +1,277 @@
+:root{
+  --bg: #f5f7fb;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --accent: #0366d6;
+  --success: #2a9d8f;
+  --danger: #d9534f;
+  --border: #e6e9ef;
+
+  --color-primary: var(--accent);
+  --color-primary-dark: #234f86;
+  --color-text-inverse: #ffffff;
+  --color-text-secondary: #475569;
+  --shadow-light: 0 2px 6px rgba(2,6,23,0.08);
+}
+
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+body { background: var(--bg); color: #111827; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+
+.header {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.header h1 {
+  color: var(--color-primary);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.header .btn-secondary {
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  border: none;
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: var(--shadow-light);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.header .btn-secondary:hover{ background: var(--color-primary-dark); }
+
+.grid-container{ display:block; padding:0.75rem 0; }
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.list-title {
+  margin: .25rem 0 0.75rem; 
+  font-size:1.125rem; 
+  color:var(--muted);
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.section-count {
+  background: var(--color-primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.activas-count {
+  background: var(--success);
+}
+
+.pasadas-count {
+  background: var(--muted);
+}
+
+/* Rejilla de cards */
+.grid-list{ display:block; max-height:320px; overflow-y:auto; padding-right:0.25rem; }
+
+/* Scrollbar styling (sutil) */
+.grid-list::-webkit-scrollbar{ width:10px }
+.grid-list::-webkit-scrollbar-track{ background:transparent }
+.grid-list::-webkit-scrollbar-thumb{ background: rgba(15,23,42,0.08); border-radius:6px }
+.grid-list::-webkit-scrollbar-thumb:hover{ background: rgba(15,23,42,0.12) }
+
+article.card{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.9rem;
+  margin-bottom: 0.6rem;
+  box-shadow: 0 2px 6px rgba(15,23,42,0.04);
+  transition: box-shadow .12s ease, transform .08s ease;
+}
+article.card:hover{ background: #ffffff; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(15,23,42,0.06) }
+
+article.card{ cursor: pointer }
+article.card:focus{ outline: 3px solid rgba(3,102,214,0.16); outline-offset: 3px }
+article.card:active{ transform: translateY(0) }
+
+.card-content { flex: 1 1 auto; padding-right: 0.75rem }
+.card-content h2{ margin:0 0 0.25rem 0; font-size:1rem; color:#0b1220; display:block; font-weight:600 }
+.meta{ font-size:0.85rem; color:var(--muted); display:flex; gap:0.75rem; align-items:center; flex-wrap: wrap }
+.meta .fechas, .meta .horas { color:var(--muted); font-size:0.85rem }
+.meta .day { font-weight: 600; color: var(--color-primary) !important; }
+.meta .espacio, .meta .profesor { color:var(--muted); font-size:0.85rem }
+
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.card-footer{ display:flex; gap:0.5rem; align-items:center }
+
+.status {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.status.activa {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.status.pasada {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.empty-message {
+  text-align: center;
+  color: var(--muted);
+  font-style: italic;
+  padding: 2rem;
+}
+
+/* Modal: overlay y card (mejorado) */
+.modal-overlay{ position: fixed; inset: 0; background: rgba(0,0,0,0.45); display:flex; align-items:center; justify-content:center; z-index:1200; padding:1rem; -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px); animation: overlay-fade 160ms ease }
+
+.modal-content{ 
+  background: linear-gradient(180deg, #fff, #fbfdff); 
+  border-radius: 12px; 
+  max-width:720px; 
+  width:100%; 
+  box-shadow: 0 18px 40px rgba(2,6,23,0.25); 
+  overflow: hidden; 
+  border: 3px solid var(--color-primary); 
+  transform-origin: center center; 
+  animation: modal-pop 200ms cubic-bezier(.2,.9,.25,1) 
+}
+
+.modal-header{ 
+  display:flex; 
+  align-items:center; 
+  justify-content:space-between; 
+  padding:0.75rem 1rem; 
+  background: var(--color-primary); 
+  color: var(--color-text-inverse) 
+}
+.modal-header h2{ font-size:1.125rem; margin:0 }
+.btn-close{ 
+  background: #fff; 
+  color: var(--color-primary); 
+  border: none; 
+  width:36px; 
+  height:36px; 
+  display:inline-flex; 
+  align-items:center; 
+  justify-content:center; 
+  border-radius:50%; 
+  font-size:1.25rem; 
+  cursor:pointer; 
+  box-shadow: var(--shadow-light) 
+}
+
+.modal-body{ padding:1rem; color:#222; line-height:1.4 }
+.modal-body p{ margin:0.5rem 0 }
+.modal-body strong{ color: var(--color-text-secondary) }
+
+.detail-section {
+  margin-bottom: 2rem;
+}
+
+.detail-section h3 {
+  color: var(--color-primary);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.modal-footer{ 
+  padding:0.75rem 1rem 1rem 1rem; 
+  display:flex; 
+  justify-content:flex-end; 
+  align-items:center; 
+  gap:0.5rem 
+}
+
+.btn{ 
+  white-space:nowrap; 
+  background: #2b6cb0; 
+  color: white; 
+  border: none; 
+  padding: 0.45rem 0.75rem; 
+  border-radius: 6px; 
+  cursor: pointer; 
+  font-size: 1.05rem 
+}
+.btn:hover{ background: #234f86 }
+.btn.secondary{ 
+  background: var(--muted); 
+  color: var(--color-text-inverse); 
+}
+.btn.secondary:hover{ 
+  background: #5a6268;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .section-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+}
+
+/* Animaciones */
+@keyframes overlay-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modal-pop {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}

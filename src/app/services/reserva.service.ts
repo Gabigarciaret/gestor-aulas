@@ -33,6 +33,14 @@ export interface Asignatura {
   nombre_asignatura: string;
 }
 
+export interface Usuario {
+  id: string;
+  nombre: string;
+  apellido: string;
+  email: string;
+  rol: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -58,25 +66,32 @@ export class ReservaService {
     return this.http.get<Asignatura[]>(`${this.baseUrl}/asignaturas`);
   }
 
+  getUsuarios(): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>(`${this.baseUrl}/usuarios`);
+  }
+
   // Obtener reservas formateadas para FullCalendar
   getReservasParaCalendario(): Observable<EventInput[]> {
     return forkJoin({
       reservas: this.getReservas(),
       espacios: this.getEspacios(),
       comisiones: this.getComisiones(),
-      asignaturas: this.getAsignaturas()
+      asignaturas: this.getAsignaturas(),
+      usuarios: this.getUsuarios()
     }).pipe(
-      map(({ reservas, espacios, comisiones, asignaturas }) => {
+      map(({ reservas, espacios, comisiones, asignaturas, usuarios }) => {
         console.log('🔄 Procesando datos de la API...');
         console.log('📊 Reservas:', reservas.length);
         console.log('🏫 Espacios:', espacios.length);
         console.log('👥 Comisiones:', comisiones.length);
         console.log('📚 Asignaturas:', asignaturas.length);
+        console.log('👨‍🏫 Usuarios:', usuarios.length);
         
         return reservas.map(reserva => {
           const espacio = espacios.find(e => e.id === reserva.aula_id.toString());
           const comision = comisiones.find(c => c.id === reserva.comision_id.toString());
           const asignatura = comision ? asignaturas.find(a => a.id === comision.asignatura_id.toString()) : null;
+          const profesor = comision ? usuarios.find(u => u.id === comision.usuario_profesor_id.toString()) : null;
 
           // Convertir fechas y horas
           const fechaInicio = new Date(`${reserva.fecha_inicio}T${reserva.hora_inicio.split('.')[0]}`);
@@ -92,6 +107,7 @@ export class ReservaService {
               asignatura: asignatura?.nombre_asignatura || 'Sin asignatura',
               aula: espacio?.nombre || 'Sin aula',
               comision: comision?.nombre || 'Sin comisión',
+              profesor: profesor ? `${profesor.nombre} ${profesor.apellido}` : 'Sin profesor',
               dia: reserva.dia,
               capacidad: espacio?.capacidad || 0,
               tipoEspacio: espacio?.tipo_espacio || 'AULA',

@@ -16,7 +16,7 @@
       <!-- Cards para ADMIN -->
       @if (usuario()?.rol === 'ADMIN') {
                 
-        <div class="action-card solicitudes" (click)="navigateTo('solicitud/list-solicitudes')">
+        <div class="action-card solicitudes" (click)="navigateTo('/gestor-solicitudes')">
           <div class="card-icon">📋</div>
           <h3>Gestor Solicitudes</h3>
           <p>Administrar solicitudes de cambio de aula</p>
@@ -25,31 +25,31 @@
           }
         </div>
 
-        <div class="action-card" (click)="navigateTo('/coming-soon')">
+        <div class="action-card" (click)="navigateTo('/reservas-todas')">
           <div class="card-icon">📖</div>
           <h3>Ver Todas las Reservas</h3>
           <p>Administrar todas las reservas del sistema</p>
         </div>
         
-        <div class="action-card" (click)="navigateTo('/usuarios')">
+        <div class="action-card" (click)="navigateTo(null)">
           <div class="card-icon">👥</div>
           <h3>Gestión de Usuarios</h3>
           <p>Administrar profesores y permisos</p>
         </div>
         
-        <div class="action-card" (click)="navigateTo('/coming-soon')">
+        <div class="action-card" (click)="navigateTo(null)">
           <div class="card-icon">🏢</div>
           <h3>Gestión de Espacios</h3>
           <p>Administrar aulas y laboratorios</p>
         </div>
 
-        <div class="action-card" (click)="navigateTo('/coming-soon')">
+        <div class="action-card" (click)="navigateTo(null)">
           <div class="card-icon">🎓</div>
           <h3>Gestión de Comisiones</h3>
           <p>Administrar comisiones y asignaturas</p>
         </div>
 
-        <div class="action-card" (click)="navigateTo('/coming-soon')">
+        <div class="action-card" (click)="navigateTo(null)">
           <div class="card-icon">📚</div>
           <h3>Gestión de Carreras</h3>
           <p>Administrar planes de estudio</p>
@@ -76,7 +76,7 @@
           <p>Ver mis clases programadas ordenadas por estado</p>
         </div>
 
-        <div class="action-card" (click)="navigateTo('/coming-soon')">
+        <div class="action-card" (click)="navigateTo(null)">
           <div class="card-icon">🎓</div>
           <h3>Mis Comisiones</h3>
           <p>Ver comisiones asignadas</p>

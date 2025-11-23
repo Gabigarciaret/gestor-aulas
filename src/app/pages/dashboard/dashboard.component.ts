@@ -39,7 +39,7 @@ export class DashboardComponent {
     });
   }
 
-  navigateTo(path: string) {
+  navigateTo(path: string | null) {
     if (path) {
       this.router.navigate([path]);
     } else {

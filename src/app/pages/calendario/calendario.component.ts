@@ -38,7 +38,13 @@ export class CalendarioComponent implements AfterViewInit, OnInit {
   // Método para determinar el título según la ruta
   getTituloVista(): string {
     const currentUrl = this.router.url;
-    return currentUrl.includes('/mis-reservas') ? 'Mis Reservas' : 'Calendario de Reservas';
+    if (currentUrl.includes('/mis-reservas')) {
+      return 'Mis Reservas';
+    } else if (currentUrl.includes('/reservas-todas')) {
+      return 'Administración de Reservas - Vista Completa';
+    } else {
+      return 'Calendario de Reservas';
+    }
   }
 
   // Método para determinar el mensaje informativo
@@ -47,14 +53,18 @@ export class CalendarioComponent implements AfterViewInit, OnInit {
     const usuario = this.authService.infoUsuario();
     
     if (currentUrl.includes('/mis-reservas')) {
-      return `${usuario.nombre} ${usuario.apellido}`;
+      return usuario ? `${usuario.nombre} ${usuario.apellido}` : 'Sin usuario';
     }
     
-    if (usuario.rol === 'ADMIN') {
+    if (currentUrl.includes('/reservas-todas')) {
+      return '👨‍💼 Vista administrativa - Todas las reservas del sistema';
+    }
+    
+    if (usuario && usuario.rol === 'ADMIN') {
       return '👨‍💼 Vista general - Todas las reservas del sistema';
     }
     
-    return 'Gestión de horarios y reservas de aulas';
+    return 'Calendario público de reservas de aulas';
   }
 
   ngOnInit() {
@@ -113,7 +123,12 @@ export class CalendarioComponent implements AfterViewInit, OnInit {
           reservasFiltradas = reservas;
         }
         
-        console.log('👤 Usuario actual:', this.authService.infoUsuario().rol, '- ID:', this.authService.infoUsuario().id);
+        const usuario = this.authService.infoUsuario();
+        if (usuario) {
+          console.log('👤 Usuario actual:', usuario.rol, '- ID:', usuario.id);
+        } else {
+          console.log('👤 Usuario no logueado - Vista pública');
+        }
         console.log('📊 Total reservas mostradas:', reservasFiltradas.length, 'de', reservas.length, 'totales');
         
         // Procesar reservas y agregar resourceId
@@ -141,6 +156,12 @@ export class CalendarioComponent implements AfterViewInit, OnInit {
   // Filtrar reservas según el rol y usuario actual
   private filtrarReservasPorUsuario(reservas: EventInput[]): EventInput[] {
     const usuario = this.authService.infoUsuario();
+    
+    // Si no hay usuario logueado, devolver array vacío
+    if (!usuario) {
+      console.log('👤 No hay usuario logueado - Sin reservas personales');
+      return [];
+    }
     
     // Si es PROFESOR, filtrar solo sus reservas
     if (usuario.rol === 'PROFESOR') {
