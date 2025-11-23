@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../auth/service/auth-service';
 import { Subscription } from 'rxjs';
@@ -9,20 +9,18 @@ import { Subscription } from 'rxjs';
   templateUrl: './header.html',
   styleUrl: './header.css'
 })
-export class Header implements OnDestroy {
+export class Header {
   private authService = inject(AuthService);
   private router = inject(Router);
 
-  isLogged = false;
   showProfileMenu = false;
-  private sub: Subscription;
 
   constructor() {
-    this.sub = this.authService.estaLogueado.subscribe(v => this.isLogged = v);
+    
   }
 
   isLoggedIn(): boolean {
-    return this.isLogged;
+    return this.authService.usuarioLogueado();
   }
 
   login(): void {
@@ -30,7 +28,7 @@ export class Header implements OnDestroy {
   }
 
   logout(): void {
-    this.authService.cerrarSesion();
+    this.authService.logout();
     this.router.navigate(['/home']);
   }
 
@@ -44,10 +42,6 @@ export class Header implements OnDestroy {
 
   closeProfileMenu(): void {
     this.showProfileMenu = false;
-  }
-
-  ngOnDestroy(): void {
-    this.sub.unsubscribe();
   }
 
   comingSoon(): void {

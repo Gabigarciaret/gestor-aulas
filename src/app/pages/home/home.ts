@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from "@angular/router";
+import { AuthService } from '../../auth/service/auth-service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,9 @@ import { RouterLink } from "@angular/router";
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class Home {
 
+/*la informacion del usuario logueado y el booleano que indica si hay un usuario logueado
+se obtiene de authService: */
+export class Home {
+  authService = inject(AuthService); //ver implementacion en home.html
 }
