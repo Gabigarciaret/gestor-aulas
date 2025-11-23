@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-coming-soon',
@@ -7,9 +7,6 @@ import { Router } from '@angular/router';
   styleUrl: './coming-soon.css'
 })
 export class ComingSoon {
-  constructor(private router: Router) {}
+   
 
-  goHome(): void {
-    this.router.navigate(['/home']);
-  }
 }

@@ -1,11 +1,12 @@
 .coming-soon {
-  min-height: calc(100vh - 64px);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
   transform-origin: center;
   transition: transform 180ms ease;
+  box-sizing: border-box;
+  min-height: 70vh;
 }
 .coming-soon .card {
   background: var(--color-surface, #fff);
@@ -62,7 +63,9 @@
 
 .coming-soon .card {
   position: relative;
-  z-index: 2;
+  /* subir z-index por encima de los ladrillos animados */
+  z-index: 20;
+  overflow: visible;
 }
 
 /* En móvil: ocultar overflow vertical para que no empuje ni desplace el header */
