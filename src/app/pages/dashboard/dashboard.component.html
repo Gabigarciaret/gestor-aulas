@@ -16,7 +16,7 @@
       <!-- Cards para ADMIN -->
       @if (usuario()?.rol === 'ADMIN') {
                 
-        <div class="action-card solicitudes" (click)="navigateTo('/solicitudes')">
+        <div class="action-card solicitudes" (click)="navigateTo('solicitud/list-solicitudes')">
           <div class="card-icon">📋</div>
           <h3>Gestor Solicitudes</h3>
           <p>Administrar solicitudes de cambio de aula</p>

@@ -1,5 +1,4 @@
 import { Component, OnInit, inject, signal, WritableSignal } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import type { Solicitud as SolicitudModel } from '../../../services/solicitud';
 import { Solicitud as SolicitudService } from '../../../services/solicitud';
 import { AuthService } from '../../../auth/service/auth-service';
@@ -7,7 +6,7 @@ import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-mis-solicitudes',
-  imports: [CommonModule, RouterLink],
+  imports: [RouterLink],
   templateUrl: './mis-solicitudes.html',
   styleUrls: ['./mis-solicitudes.css'],
 })
@@ -105,7 +104,7 @@ export class MisSolicitudes implements OnInit {
 
   
 
-  // Ejemplo de helper para formatear la fecha (puedes personalizarlo)
+  // Ejemplo de helper para formatear la fecha 
   formatFecha(fechaIso?: string): string {
     if (!fechaIso) return '';
     try {
@@ -117,8 +116,7 @@ export class MisSolicitudes implements OnInit {
     }
   }
 
-  // Formatea una cadena de hora a HH:MM. Acepta formatos como 'HH:MM', 'HH:MM:SS',
-  // o una parte horaria de un ISO datetime. Devuelve '-' si no hay valor.
+ 
   formatHora(hora?: string): string {
     if (!hora) return '-';
 
