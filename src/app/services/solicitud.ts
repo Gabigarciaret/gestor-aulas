@@ -11,6 +11,8 @@ export interface Solicitud{
   fecha_fin: string;
   fecha_hora_solicitud: string;
   fecha_inicio: string;
+  hora_inicio?: string;
+  hora_fin?: string;
   comision_id: number;
   nuevo_espacio_id: number;
   reserva_original_id: number;
