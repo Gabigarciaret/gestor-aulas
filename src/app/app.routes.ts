@@ -72,7 +72,7 @@ export const routes: Routes = [
     canActivate: [adminGuard]
   },
   {
-    path: 'gestionUsuarios/eliminarUsuario',
+    path: 'gestionUsuarios/administracionUsuarios',
     component: AdministrarUsuario,
     canActivate: [adminGuard]
   },
