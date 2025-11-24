@@ -90,7 +90,7 @@
       </div>
 
       @if (usuarioSeleccionado()!.activo) {
-      <button (click)="eliminar()" class="btn-eliminar-usuario">Eliminar Usuario</button>
+      <button (click)="eliminar()" [disabled]="seleccionadoIgualLogueado()" class="btn-eliminar-usuario">Eliminar Usuario</button>
       } @else {
       <button (click)="reactivar()" class="btn-reactivar-usuario">Reactivar Usuario</button>
       }

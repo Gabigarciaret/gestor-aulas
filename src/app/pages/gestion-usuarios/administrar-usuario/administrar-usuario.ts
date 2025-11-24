@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { UsuarioService } from '../../../services/usuario-service/usuario-service';
 import { Usuario } from '../../../models/usuario';
+import { AuthService } from '../../../auth/service/auth-service';
 
 @Component({
   selector: 'app-administrar-usuario',
@@ -12,6 +13,7 @@ import { Usuario } from '../../../models/usuario';
 })
 export class AdministrarUsuario implements OnInit {
   usuarioService = inject(UsuarioService);
+  auth = inject(AuthService);
   paginaActual = signal(1);
   limite = 8;
   totalPaginas = signal(0);
@@ -88,5 +90,12 @@ export class AdministrarUsuario implements OnInit {
         this.cargarUsuarios();
       }
     })
+  }
+
+  seleccionadoIgualLogueado(): boolean {
+    if(this.auth.infoUsuario().id === this.usuarioSeleccionado()?.id) {
+      return true;
+    }
+    return false;
   }
 }

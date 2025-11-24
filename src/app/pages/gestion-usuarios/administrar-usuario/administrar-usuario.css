@@ -246,9 +246,16 @@
   box-shadow: 0 4px 12px rgba(245, 101, 101, 0.3);
 }
 
-.btn-eliminar-usuario:hover {
+.btn-eliminar-usuario:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(245, 101, 101, 0.4);
+}
+
+.btn-eliminar-usuario:disabled {
+  background: #cbd5e0;
+  cursor: not-allowed;
+  box-shadow: none;
+  opacity: 0.6;
 }
 
 .btn-reactivar-usuario {

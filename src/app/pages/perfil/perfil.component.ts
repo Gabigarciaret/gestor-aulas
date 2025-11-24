@@ -19,7 +19,7 @@ export class PerfilComponent implements OnInit {
   private fb = inject(FormBuilder);
   private usuarioService = inject(UsuarioService);
 
-  usuarioActual = signal<Usuario | undefined>(undefined);
+  usuarioActual = signal<Usuario | null>(null);
 
   loadingPerfil = false;
   loadingPassword = false;
