@@ -1,8 +1,50 @@
-<br><br>
-<p>
-    <!-- usuarioLogueado() es un atributo booleano -->
-    @if (authService.usuarioLogueado()) {
-        Bienvenido {{authService.infoUsuario().nombre}} {{authService.infoUsuario().apellido}}!
-    }
-    <!-- infoUsuario() contiene los datos del usuario logueado -->
-</p>
+<div class="home-hero">
+	<div class="content">
+		<h1 class="welcome">Bienvenido/a</h1>
+		<h2 class="app-name">Gestor de Aulas</h2>
+		<p class="slogan">Organiza tus espacios, simplifica tus reservas.</p>
+	</div>
+
+	<!-- Ilustración decorativa tipo calendario/agenda (solo visual) -->
+	<svg class="calendar-illustration" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" aria-hidden="true">
+		<defs>
+			<linearGradient id="g" x1="0" x2="1">
+				<stop offset="0" stop-color="#5ee1df" stop-opacity="0.95"/>
+				<stop offset="1" stop-color="#3b82f6" stop-opacity="0.95"/>
+			</linearGradient>
+		</defs>
+		<rect x="40" y="70" width="520" height="440" rx="18" fill="#ffffff" stroke="rgba(0,0,0,0.06)"/>
+		<rect x="40" y="30" width="520" height="80" rx="14" fill="url(#g)"/>
+		<!-- anillas -->
+		<g fill="#ffffff" opacity="0.9">
+			<rect x="120" y="18" width="20" height="20" rx="4"/>
+			<rect x="260" y="18" width="20" height="20" rx="4"/>
+			<rect x="400" y="18" width="20" height="20" rx="4"/>
+		</g>
+		<!-- grid de días -->
+		<g transform="translate(65,110)" fill="#f6f9ff">
+			<!-- 5 columnas x 3 filas simples -->
+			<rect x="0"   y="0"   width="85" height="60" rx="8"/>
+			<rect x="95"  y="0"   width="85" height="60" rx="8"/>
+			<rect x="190" y="0"   width="85" height="60" rx="8"/>
+			<rect x="285" y="0"   width="85" height="60" rx="8"/>
+			<rect x="380" y="0"   width="85" height="60" rx="8"/>
+
+			<rect x="0"   y="75"  width="85" height="60" rx="8"/>
+			<rect x="95"  y="75"  width="85" height="60" rx="8"/>
+			<rect x="190" y="75"  width="85" height="60" rx="8"/>
+			<rect x="285" y="75"  width="85" height="60" rx="8"/>
+			<rect x="380" y="75"  width="85" height="60" rx="8"/>
+
+			<rect x="0"   y="150" width="85" height="60" rx="8"/>
+			<rect x="95"  y="150" width="85" height="60" rx="8"/>
+			<rect x="190" y="150" width="85" height="60" rx="8"/>
+			<rect x="285" y="150" width="85" height="60" rx="8"/>
+			<rect x="380" y="150" width="85" height="60" rx="8"/>
+		</g>
+
+		<!-- check decorativo -->
+		<path d="M210 310 L260 360 L350 250" stroke="#10b981" stroke-width="18" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/>
+	</svg>
+</div>
+

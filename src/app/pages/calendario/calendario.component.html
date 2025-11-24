@@ -1,0 +1,65 @@
+<div class="calendario-container">
+  <!-- Header con controles -->
+  <div class="calendario-header">
+    <h1>📅 {{ getTituloVista() }}</h1>
+    
+    <!-- Mostrar información del usuario dinámicamente -->
+    <p class="info-usuario">{{ getMensajeInfo() }}</p>
+    
+    <!-- Solo selector de vista -->
+    <div class="controles">
+      <div class="vista-selector">
+        <label>Vista:</label>
+        <button 
+          [class]="vistaActual() === 'diario' ? 'active' : ''"
+          (click)="cambiarVista('diario')"
+          class="btn-vista"
+        >
+          📊 Diario
+        </button>
+        <button 
+          [class]="vistaActual() === 'semanal' ? 'active' : ''"
+          (click)="cambiarVista('semanal')"
+          class="btn-vista"
+        >
+          � Semanal
+        </button>
+        <button 
+          [class]="vistaActual() === 'mensual' ? 'active' : ''"
+          (click)="cambiarVista('mensual')"
+          class="btn-vista"
+        >
+          � Mensual
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Calendario principal -->
+  <div class="calendario-contenido">
+    <full-calendar #calendar [options]="calendarOptions()"></full-calendar>
+  </div>
+
+  <!-- Leyenda -->
+  <div class="leyenda">
+    <h3>Leyenda:</h3>
+    <div class="leyenda-items">
+      <div class="leyenda-item">
+        <span class="color-box matematica"></span>
+        <span>Matemática</span>
+      </div>
+      <div class="leyenda-item">
+        <span class="color-box fisica"></span>
+        <span>Física/Laboratorios</span>
+      </div>
+      <div class="leyenda-item">
+        <span class="color-box programacion"></span>
+        <span>Programación</span>
+      </div>
+      <div class="leyenda-item">
+        <span class="color-box base-datos"></span>
+        <span>Base de Datos</span>
+      </div>
+    </div>
+  </div>
+</div>

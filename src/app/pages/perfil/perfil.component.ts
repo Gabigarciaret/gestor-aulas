@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../auth/service/auth-service';
 import { Usuario } from '../../models/usuario';
 import { UsuarioService } from '../../services/usuario-service/usuario-service';
@@ -157,3 +157,4 @@ export class PerfilComponent implements OnInit {
     });
   }
 }
+

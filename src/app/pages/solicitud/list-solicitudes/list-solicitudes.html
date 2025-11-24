@@ -1,0 +1,174 @@
+<main class="container">
+    <section class="header">
+        <h1>Solicitudes</h1>
+        <button type="button" routerLink="/dashboard" class="btn-secondary">
+            ← Volver
+        </button>
+    </section>
+
+
+    <section class="grid-container sector pendientes">
+        <div class="section-header">
+            <h2 class="list-title">Solicitudes Pendientes</h2>
+            <span class="section-count pendientes-count">{{ pendientes().length }}</span>
+        </div>
+        <div class="grid-list">
+            @for(s of pendientes(); track s.id) {
+            <article class="card" role="button" tabindex="0" (click)="openDetails(s)" (keydown.enter)="openDetails(s)" (keydown.space)="$event.preventDefault(); openDetails(s)">
+                <div class="card-content">
+                    <h2>Solicitud #{{ s.id }}</h2>
+                    <div class="meta">
+                        <span class="day">{{ s.dia_semana }}</span>
+                        <span class="horas"><strong>Horario:</strong> {{ formatHora(s.hora_inicio) }} - {{
+                            formatHora(s.hora_fin) }}</span>
+                        <span class="fechas"><strong>Fecha inicio - fin:</strong> {{ formatFecha(s.fecha_inicio) }} - {{
+                            formatFecha(s.fecha_fin) }}</span>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="card-footer">
+                    </div>
+                </div>
+            </article>
+            }
+        </div>
+        @if (pendientes().length === 0) {
+            <div class="empty">No hay solicitudes pendientes.</div>
+        }
+    </section>
+
+    <section class="grid-container sector aprobadas">
+        <div class="section-header">
+            <h2 class="list-title">Solicitudes Aprobadas</h2>
+            <span class="section-count aprobadas-count">{{ aprobadas().length }}</span>
+        </div>
+        <div class="grid-list">
+            @for(s of aprobadas(); track s.id) {
+            <article class="card" role="button" tabindex="0" (click)="openDetails(s)" (keydown.enter)="openDetails(s)" (keydown.space)="$event.preventDefault(); openDetails(s)">
+                <div class="card-content">
+                    <h2>Solicitud #{{ s.id }}</h2>
+                    <div class="meta">
+                        <span class="day">{{ s.dia_semana }}</span>
+                        <span class="horas"><strong>Horario:</strong> {{ formatHora(s.hora_inicio) }} - {{
+                            formatHora(s.hora_fin) }}</span>
+                        <span class="fechas"><strong>Fecha inicio - fin:</strong> {{ formatFecha(s.fecha_inicio) }} - {{
+                            formatFecha(s.fecha_fin) }}</span>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="card-footer">
+                    </div>
+                </div>
+            </article>
+            }
+        </div>
+        @if (aprobadas().length === 0) {
+            <div class="empty">No hay solicitudes aprobadas.</div>
+        }
+    </section>
+
+    <section class="grid-container sector rechazadas">
+        <div class="section-header">
+            <h2 class="list-title">Solicitudes Rechazadas</h2>
+            <span class="section-count rechazadas-count">{{ rechazadas().length }}</span>
+        </div>
+        <div class="grid-list">
+            @for(s of rechazadas(); track s.id) {
+            <article class="card" role="button" tabindex="0" (click)="openDetails(s)" (keydown.enter)="openDetails(s)" (keydown.space)="$event.preventDefault(); openDetails(s)">
+                <div class="card-content">
+                    <h2>Solicitud #{{ s.id }}</h2>
+                    <div class="meta">
+                        <span class="day">{{ s.dia_semana }}</span>
+                        <span class="horas"><strong>Horario:</strong> {{ formatHora(s.hora_inicio) }} - {{
+                            formatHora(s.hora_fin) }}</span>
+                        <span class="fechas"><strong>Fecha inicio - fin:</strong> {{ formatFecha(s.fecha_inicio) }} - {{
+                            formatFecha(s.fecha_fin) }}</span>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="card-footer">
+                    </div>
+                </div>
+            </article>
+            }
+        </div>
+        @if (rechazadas().length === 0) {
+            <div class="empty">No hay solicitudes rechazadas.</div>
+        }
+    </section>
+
+    <section class="grid-container sector otras">
+        <div class="section-header">
+            <h2 class="list-title">Solicitudes Canceladas por los Usuarios</h2>
+            <span class="section-count otras-count">{{ otras().length }}</span>
+        </div>
+        <div class="grid-list">
+            @for(s of otras(); track s.id) {
+            <article class="card" role="button" tabindex="0" (click)="openDetails(s)" (keydown.enter)="openDetails(s)" (keydown.space)="$event.preventDefault(); openDetails(s)">
+                <div class="card-content">
+                    <h2>Solicitud #{{ s.id }}</h2>
+                    <div class="meta">
+                        <span class="day">{{ s.dia_semana }}</span>
+                        <span class="horas"><strong>Horario:</strong> {{ formatHora(s.hora_inicio) }} - {{
+                            formatHora(s.hora_fin) }}</span>
+                        <span class="fechas"><strong>Fecha inicio - fin:</strong> {{ formatFecha(s.fecha_inicio) }} - {{
+                            formatFecha(s.fecha_fin) }}</span>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="card-footer">
+                    </div>
+                </div>
+            </article>
+            }
+        </div>
+        @if (otras().length === 0) {
+            <div class="empty">No hay solicitudes canceladas por usuarios.</div>
+        }
+    </section>
+
+    @if (selectedSolicitud()) {
+    <div class="modal-overlay" (click)="closeDetails()">
+        <div class="modal-card" (click)="$event.stopPropagation()">
+            <header class="modal-header">
+                <h3>Detalle - Solicitud #{{ selectedSolicitud()?.id }}</h3>
+                <button class="close" aria-label="Cerrar" (click)="closeDetails()">×</button>
+            </header>
+
+            <div class="modal-body">
+                <p><strong>Estado:</strong> {{ selectedSolicitud()?.estado || '-' }}</p>
+                <p><strong>Día:</strong> {{ selectedSolicitud()?.dia_semana || '-' }}</p>
+                <p><strong>Horario:</strong> {{ formatHora(selectedSolicitud()?.hora_inicio) }} - {{
+                    formatHora(selectedSolicitud()?.hora_fin) }}</p>
+                <p><strong>Fecha inicio:</strong> {{ formatFecha(selectedSolicitud()?.fecha_inicio) }}</p>
+                <p><strong>Fecha fin:</strong> {{ formatFecha(selectedSolicitud()?.fecha_fin) }}</p>
+                <p><strong>Fecha/Hora solicitud:</strong> {{ formatFecha(selectedSolicitud()?.fecha_hora_solicitud) }}
+                    {{ formatHora(selectedSolicitud()?.fecha_hora_solicitud) }}</p>
+                <p><strong>Solicitante:</strong> {{ selectedUsuario()?.nombre ? (selectedUsuario()?.nombre + ' ' + selectedUsuario()?.apellido) : (selectedSolicitud()?.usuario_id ?? '-') }}</p>
+                <p><strong>Comisión:</strong> {{ selectedComision()?.nombre ? selectedComision()?.nombre : (selectedSolicitud()?.comision_id ?? '-') }}</p>
+                <p><strong>Espacio:</strong> {{ selectedEspacio()?.nombre ? selectedEspacio()?.nombre : (selectedSolicitud()?.nuevo_espacio_id ?? '-') }}</p>
+                <p><strong>Comentario profesor:</strong> {{ selectedSolicitud()?.comentario_profesor || '-' }}</p>
+
+                <div class="comentario-edit">
+                    <label for="comentario_estado"><strong>Comentario estado:</strong></label>
+                    <hr />
+                    <textarea id="comentario_estado" rows="3" class="form-control" [value]="comentarioEditing()" (input)="setComentarioEditing($any($event.target).value)"></textarea>
+                    <div class="actions">
+                        <button class="btn" (click)="saveComentarioEstado()" [disabled]="isSavingComment()">Guardar comentario</button>
+                    </div>
+                </div>
+                
+            </div>
+
+            <footer class="modal-footer">
+                    @if (isAdmin() && selectedSolicitud()?.estado === 'PENDIENTE') {
+                    <div class="admin-actions">
+                        <button class="btn primary" (click)="confirmApprove()" [disabled]="isSavingComment()">Aceptar Solicitud</button>
+                        <button class="btn danger" (click)="confirmReject()" [disabled]="isSavingComment()">Rechazar Solicitud</button>
+                    </div>
+                    }
+            </footer>
+        </div>
+    </div>
+    }
+</main>

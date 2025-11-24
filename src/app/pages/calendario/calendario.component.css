@@ -1,0 +1,265 @@
+.calendario-container {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+
+.calendario-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.calendario-header h1 {
+  color: #2c3e50;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.calendario-header p {
+  color: #7f8c8d;
+  font-size: 1.1rem;
+  margin-bottom: 0;
+}
+
+.calendario-header .info-usuario {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  display: inline-block;
+  font-weight: 500;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 0.5rem;
+  border: 2px solid rgba(52, 152, 219, 0.2);
+}
+
+/* Controles */
+.controles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.vista-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.vista-selector label {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.btn-vista {
+  padding: 0.6rem 1.2rem;
+  border: 2px solid #e9ecef;
+  border-radius: 25px;
+  background: white;
+  color: #6c757d;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-vista:hover {
+  border-color: #667eea;
+  color: #667eea;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+.btn-vista.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-color: #667eea;
+}
+
+/* Contenido del calendario */
+.calendario-contenido {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+/* Leyenda */
+.leyenda {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.leyenda h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.leyenda-items {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.leyenda-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.color-box {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  display: block;
+}
+
+/* Colores específicos para la leyenda */
+.color-box.matematica {
+  background-color: #007bff;
+}
+
+.color-box.fisica {
+  background-color: #28a745;
+}
+
+.color-box.programacion {
+  background-color: #dc3545;
+}
+
+.color-box.base-datos {
+  background-color: #ffc107;
+}
+
+/* Estilos del FullCalendar */
+:global(.fc-theme-standard .fc-header-toolbar) {
+  padding: 1rem 0;
+  border-radius: 8px;
+}
+
+:global(.fc-theme-standard .fc-button) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 0.5rem 1rem !important;
+  font-weight: 600 !important;
+}
+
+:global(.fc-theme-standard .fc-button:hover) {
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3) !important;
+}
+
+:global(.fc-event) {
+  border-radius: 6px !important;
+  font-weight: 500 !important;
+  padding: 2px 4px !important;
+  cursor: pointer !important;
+}
+
+:global(.fc-event:hover) {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2) !important;
+}
+
+:global(.fc-daygrid-day:hover) {
+  background-color: rgba(102, 126, 234, 0.05) !important;
+}
+
+:global(.fc-col-header-cell) {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+  font-weight: 600 !important;
+  color: #2c3e50 !important;
+}
+
+:global(.fc-today) {
+  background-color: rgba(102, 126, 234, 0.1) !important;
+}
+
+/* Estilos para la vista de recursos (agrupación por aulas) */
+:global(.fc-resource-area) {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+}
+
+:global(.fc-resource-area-header) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: white !important;
+  font-weight: 600 !important;
+  padding: 0.8rem !important;
+  border-radius: 8px 0 0 0 !important;
+}
+
+:global(.fc-resource) {
+  border-right: 2px solid #e9ecef !important;
+  font-weight: 600 !important;
+  color: #2c3e50 !important;
+  padding: 0.5rem !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+}
+
+:global(.fc-resource:hover) {
+  background: rgba(102, 126, 234, 0.1) !important;
+}
+
+:global(.fc-resource .fc-resource-title) {
+  font-size: 0.9rem !important;
+  text-align: center !important;
+}
+
+/* Líneas divisorias entre recursos */
+:global(.fc-timeline-slot) {
+  border-right: 1px solid #e9ecef !important;
+}
+
+:global(.fc-timeline-lane) {
+  border-bottom: 1px solid #e9ecef !important;
+}
+
+/* Eventos en vista de recursos */
+:global(.fc-resource-area + .fc-scrollgrid-section .fc-event) {
+  margin: 1px !important;
+  font-size: 0.85rem !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .calendario-container {
+    padding: 1rem;
+  }
+  
+  .calendario-header h1 {
+    font-size: 2rem;
+  }
+  
+  .vista-selector {
+    justify-content: center;
+  }
+  
+  .leyenda-items {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .calendario-contenido {
+    padding: 1rem;
+  }
+
+  /* En móvil, hacer los recursos más pequeños */
+  :global(.fc-resource-area) {
+    width: 100px !important;
+  }
+  
+  :global(.fc-resource .fc-resource-title) {
+    font-size: 0.8rem !important;
+  }
+}

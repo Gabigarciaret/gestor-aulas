@@ -1,0 +1,110 @@
+<main class="container">
+    <section class="header">
+        <h1>Gestión de Reservas</h1>
+        <button type="button" routerLink="/dashboard" class="btn-secondary">
+            ← Volver
+        </button>
+    </section>
+
+    <section class="grid-container sector activas">
+        <div class="section-header">
+            <h2 class="list-title">Reservas Activas</h2>
+            <span class="section-count activas-count">{{ activas().length }}</span>
+        </div>
+        <div class="grid-list">
+            @for(r of activas(); track r.id) {
+            <article class="card" role="button" tabindex="0" (click)="openDetails(r)" (keydown.enter)="openDetails(r)" (keydown.space)="$event.preventDefault(); openDetails(r)">
+                <div class="card-content">
+                    <h2>{{ r.asignatura }}</h2>
+                    <div class="meta">
+                        <span class="day">{{ r.dia }}</span>
+                        <span class="horas"><strong>Horario:</strong> {{ formatHora(r.fecha_inicio) }} - {{ formatHora(r.fecha_fin) }}</span>
+                        <span class="fechas"><strong>Fecha inicio - fin:</strong> {{ formatFecha(r.fecha_inicio) }} - {{ formatFecha(r.fecha_fin) }}</span>
+                        <span class="espacio"><strong>Aula:</strong> {{ r.espacio }}</span>
+                        <span class="profesor"><strong>Profesor:</strong> {{ r.profesor }}</span>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="card-footer">
+                        <span class="status activa">ACTIVA</span>
+                    </div>
+                </div>
+            </article>
+            }
+            @if (activas().length === 0) {
+            <p class="empty-message">No hay reservas activas</p>
+            }
+        </div>
+    </section>
+
+    <section class="grid-container sector pasadas">
+        <div class="section-header">
+            <h2 class="list-title">Reservas Pasadas</h2>
+            <span class="section-count pasadas-count">{{ pasadas().length }}</span>
+        </div>
+        <div class="grid-list">
+            @for(r of pasadas(); track r.id) {
+            <article class="card" role="button" tabindex="0" (click)="openDetails(r)" (keydown.enter)="openDetails(r)" (keydown.space)="$event.preventDefault(); openDetails(r)">
+                <div class="card-content">
+                    <h2>{{ r.asignatura }}</h2>
+                    <div class="meta">
+                        <span class="day">{{ r.dia }}</span>
+                        <span class="horas"><strong>Horario:</strong> {{ formatHora(r.fecha_inicio) }} - {{ formatHora(r.fecha_fin) }}</span>
+                        <span class="fechas"><strong>Fecha:</strong> {{ formatFecha(r.fecha_inicio) }}</span>
+                        <span class="espacio"><strong>Aula:</strong> {{ r.espacio }}</span>
+                        <span class="profesor"><strong>Profesor:</strong> {{ r.profesor }}</span>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="card-footer">
+                        <span class="status pasada">FINALIZADA</span>
+                    </div>
+                </div>
+            </article>
+            }
+            @if (pasadas().length === 0) {
+            <p class="empty-message">No hay reservas pasadas</p>
+            }
+        </div>
+    </section>
+
+    <!-- Modal para detalles de reserva -->
+    @if (selectedReserva()) {
+    <div class="modal-overlay" (click)="closeDetails()">
+        <div class="modal-content" (click)="$event.stopPropagation()">
+            <header class="modal-header">
+                <h2>Detalle de Reserva</h2>
+                <button class="btn-close" (click)="closeDetails()" aria-label="Cerrar modal">&times;</button>
+            </header>
+            
+            <div class="modal-body">
+                <div class="detail-section">
+                    <h3>Información General</h3>
+                    <p><strong>Asignatura:</strong> {{ selectedReserva()!.asignatura }}</p>
+                    <p><strong>Comisión:</strong> {{ selectedReserva()!.comision }}</p>
+                    <p><strong>Profesor:</strong> {{ selectedReserva()!.profesor }}</p>
+                    <p><strong>Aula:</strong> {{ selectedReserva()!.espacio }}</p>
+                </div>
+                
+                <div class="detail-section">
+                    <h3>Horarios</h3>
+                    <p><strong>Día:</strong> {{ selectedReserva()!.dia }}</p>
+                    <p><strong>Hora inicio:</strong> {{ formatHora(selectedReserva()!.fecha_inicio) }}</p>
+                    <p><strong>Hora fin:</strong> {{ formatHora(selectedReserva()!.fecha_fin) }}</p>
+                    <p><strong>Fecha inicio:</strong> {{ formatFecha(selectedReserva()!.fecha_inicio) }}</p>
+                    <p><strong>Fecha fin:</strong> {{ formatFecha(selectedReserva()!.fecha_fin) }}</p>
+                </div>
+                
+                <div class="detail-section">
+                    <h3>Estado</h3>
+                    <p><strong>Estado:</strong> {{ selectedReserva()!.estado }}</p>
+                </div>
+            </div>
+
+            <footer class="modal-footer">
+                <button class="btn secondary" (click)="closeDetails()">Cerrar</button>
+            </footer>
+        </div>
+    </div>
+    }
+</main>
