@@ -19,7 +19,7 @@ export class PerfilComponent implements OnInit {
   private fb = inject(FormBuilder);
   private usuarioService = inject(UsuarioService);
 
-  usuarioActual?: Usuario;
+  usuarioActual = signal<Usuario | undefined>(undefined);
 
   loadingPerfil = false;
   loadingPassword = false;
@@ -47,9 +47,13 @@ export class PerfilComponent implements OnInit {
       return;
     }
 
+    this.getUsuarioActual();    
+  }
+
+  private getUsuarioActual() {
     this.usuarioService.getUsuarioById(this.auth.infoUsuario().id).subscribe({
       next: (data) => {
-        this.usuarioActual = data;
+        this.usuarioActual.set(data);
       },
       error: () => {
         this.errorPerfil.set('Fallo en el servidor');
@@ -67,17 +71,19 @@ export class PerfilComponent implements OnInit {
     this.mensajePerfil.set('');
     this.errorPerfil.set('');
 
-    this.usuarioActual = {
-      ...this.usuarioActual!,
+    const usuarioActualizado = {
+      ...this.usuarioActual()!,
       nombre: this.formPerfil.value.nombre!,
       apellido: this.formPerfil.value.apellido!,
       email: this.formPerfil.value.email!,
     };
 
-    this.auth.actualizarInfoUsuario(this.usuarioActual!).subscribe({
+    this.auth.actualizarInfoUsuario(usuarioActualizado).subscribe({
       next: () => {
         this.mensajePerfil.set('¡Perfil actualizado correctamente!');
         this.loadingPerfil = false;
+        this.formPerfil.markAsUntouched();
+        this.getUsuarioActual();
       },
       error: (err) => {
         this.errorPerfil.set('Error al actualizar el perfil');
@@ -98,7 +104,7 @@ export class PerfilComponent implements OnInit {
 
     if (
       !this.auth.validarPassword(
-        this.usuarioActual!.password!,
+        this.usuarioActual()!.password!,
         this.formPassword.value.passwordActual!
       )
     ) {
@@ -114,13 +120,14 @@ export class PerfilComponent implements OnInit {
     }
 
     this.usuarioService
-      .actualizarPassword(this.usuarioActual?.id!, this.formPassword.value.passwordNuevo!)
+      .actualizarPassword(this.usuarioActual()?.id!, this.formPassword.value.passwordNuevo!)
       .subscribe({
         next: () => {
           this.mensajePassword.set('¡Contraseña actualizada correctamente!');
+          this.loadingPassword = false;
           this.formPassword.reset();
           this.formPassword.markAsUntouched();
-          this.loadingPassword = false;
+          this.getUsuarioActual();
         },
         error: (err) => {
           this.errorPassword.set('Error al actualizar la contraseña');
@@ -143,7 +150,7 @@ export class PerfilComponent implements OnInit {
   }
 
   confirmarEliminar() {
-    this.usuarioService.eliminarById(this.usuarioActual!.id).subscribe({
+    this.usuarioService.eliminarById(this.usuarioActual()!.id).subscribe({
       next: () => {
         this.cerrarAlertaEliminar();
         this.auth.logout();
