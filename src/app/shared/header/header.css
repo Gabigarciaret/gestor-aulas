@@ -12,6 +12,7 @@
 /* necesario para posicionar dropdown */
 .header {
   position: relative;
+  z-index: 90;
 }
 
 .header__logo {

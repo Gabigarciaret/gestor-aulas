@@ -50,8 +50,6 @@
   --font-size-3xl: 1.875rem;/* 30px */
   --font-size-4xl: 2.25rem; /* 36px */
   --font-size-5xl: 3rem;    /* 48px */
-  /* Altura estimada del header (útil para compensar contenido cuando el header está fijo) */
-  --header-height: 64px;
 }
 
 * {
@@ -62,7 +60,6 @@
 
 main {
   min-height: calc(100vh - 165px); /* Ajustar según el tamaño del header y footer */
-  padding-top: var(--header-height);
 }
 
 @media(min-width: 768px) {
