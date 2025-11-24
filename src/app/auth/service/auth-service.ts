@@ -22,9 +22,9 @@ export class AuthService {
   });
 
   constructor() {
-    // Limpiar cualquier sesión previa para que siempre inicie sin usuario logueado
-    this.limpiarSesion();
-    // this.cargarSesion();
+  // Limpiar cualquier sesión previa para que siempre inicie sin usuario logueado
+  this.limpiarSesion();
+  // this.cargarSesion();
   }
 
   private cargarSesion(): void {

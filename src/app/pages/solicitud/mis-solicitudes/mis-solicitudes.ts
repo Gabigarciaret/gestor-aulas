@@ -71,7 +71,11 @@ export class MisSolicitudes implements OnInit {
 
   // Cancela la solicitud: actualiza el estado a 'CANCELADA' y persiste en el servidor
   cancelarSolicitud(solicitud: SolicitudModel | null): void {
-    if (!solicitud) return;
+  if (!solicitud) return;
+
+  // Confirmación antes de cancelar
+  const confirmado = window.confirm('¿Estás seguro que deseas cancelar esta solicitud?');
+  if (!confirmado) return;
 
     const currentUser = this.authService.infoUsuario();
     const currentUserIdStr = currentUser?.id ? String(currentUser.id) : '';

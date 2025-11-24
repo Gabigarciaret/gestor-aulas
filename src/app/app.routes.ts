@@ -78,7 +78,7 @@ export const routes: Routes = [
   },
   {
     path: 'coming-soon',
-    redirectTo: '/coming-soon'
+    loadComponent: () => import('./pages/coming-soon/coming-soon').then(m => m.ComingSoon)
   },
   {
     path: '**',

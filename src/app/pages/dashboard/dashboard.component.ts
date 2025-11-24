@@ -40,8 +40,11 @@ export class DashboardComponent {
   }
 
   navigateTo(path: string | null) {
-    if (path) {
-      this.router.navigate([path]);
+    // Si el path es null, vacío o no implementado, ir a coming-soon
+    if (!path || path === '' || path === '#') {
+      this.router.navigate(['/coming-soon']);
+      return;
     }
+    this.router.navigate([path]);
   }
 }

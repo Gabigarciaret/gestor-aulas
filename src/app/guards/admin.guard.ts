@@ -9,6 +9,8 @@ export const adminGuard: CanActivateFn = () => {
   console.log('AdminGuard: verificando rol admin...', auth.usuarioLogueado());
   
   if (!auth.usuarioLogueado()) {
+    // No logueado: dejar como está (redirige a login)
+    window.alert('No tienes permiso para acceder a esta página');
     console.log('AdminGuard: Usuario no logueado, redirigiendo a login');
     router.navigate(['/login']);
     return false;
@@ -18,8 +20,13 @@ export const adminGuard: CanActivateFn = () => {
   console.log('AdminGuard: Usuario rol:', usuario.rol);
   
   if (usuario.rol !== 'ADMIN') {
-    console.log('AdminGuard: Usuario no es admin, redirigiendo a dashboard');
-    router.navigate(['/dashboard']);
+    window.alert('No tienes permiso para acceder a esta página');
+    // Redirigir a dashboard según rol
+    if (usuario.rol === 'PROFESOR') {
+      router.navigate(['/dashboard']);
+    } else {
+      router.navigate(['/home']);
+    }
     return false;
   }
   
