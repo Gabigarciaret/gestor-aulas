@@ -6,8 +6,7 @@ import { Nueva } from './pages/solicitud/nueva/nueva';
 import { MisSolicitudes } from './pages/solicitud/mis-solicitudes/mis-solicitudes';
 import { GestionUsuarios } from './pages/gestion-usuarios/gestion-usuarios';
 import { RegistrarUsuario } from './pages/gestion-usuarios/registrar-usuario/registrar-usuario';
-import { EliminarUsuario } from './pages/gestion-usuarios/eliminar-usuario/eliminar-usuario';
-import { ReactivarUsuario } from './pages/gestion-usuarios/reactivar-usuario/reactivar-usuario';
+import { AdministrarUsuario } from './pages/gestion-usuarios/administrar-usuario/administrar-usuario';
 
 export const routes: Routes = [
   {
@@ -51,11 +50,7 @@ export const routes: Routes = [
   },
   {
     path: 'gestionUsuarios/eliminarUsuario',
-    component: EliminarUsuario
-  },
-  {
-    path: 'gestionUsuarios/reactivarUsuario',
-    component: ReactivarUsuario
+    component: AdministrarUsuario
   },
   {
     path: 'coming-soon',

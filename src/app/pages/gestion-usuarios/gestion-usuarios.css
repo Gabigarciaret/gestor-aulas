@@ -89,12 +89,7 @@
   box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
 }
 
-.opcion-icon.eliminar {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
-}
-
-.opcion-icon.reactivar {
+.opcion-icon.administrar {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
 }

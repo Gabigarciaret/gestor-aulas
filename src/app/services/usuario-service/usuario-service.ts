@@ -50,4 +50,51 @@ export class UsuarioService {
     }
     return 'PROFESOR';
   }
+
+  obtenerUsuariosPaginados(
+    pagina: number,
+    limite: number,
+    filtroTexto?: string,
+    filtroRol?: string,
+    filtroActivo?: boolean
+  ): Observable<{ usuarios: Usuario[]; total: number }> {
+    let params = '';
+
+    if (filtroRol && filtroRol !== '') {
+      params += `rol=${filtroRol}`;
+    }
+
+    if (filtroActivo !== undefined) {
+      params += params ? '&' : '';
+      params += `activo=${filtroActivo}`;
+    }
+
+    const url = params ? `${this.baseDatosUrl}?${params}` : this.baseDatosUrl;
+
+    return this.http
+      .get<Usuario[]>(url, { observe: 'response' })
+      .pipe(
+        map((response) => {
+          let usuarios = response.body || [];
+          
+          if (filtroTexto && filtroTexto.trim() !== '') {
+            const textoLower = filtroTexto.toLowerCase();
+            usuarios = usuarios.filter(u => 
+              u.nombre.toLowerCase().includes(textoLower) ||
+              u.apellido.toLowerCase().includes(textoLower) ||
+              u.email.toLowerCase().includes(textoLower)
+            );
+          }
+          
+          const inicio = (pagina - 1) * limite;
+          const fin = inicio + limite;
+          const usuariosPaginados = usuarios.slice(inicio, fin);
+          
+          return {
+            usuarios: usuariosPaginados,
+            total: usuarios.length,
+          };
+        })
+      );
+  }
 }
