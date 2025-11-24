@@ -1,7 +1,7 @@
 <div class="calendario-container">
   <!-- Header con controles -->
   <div class="calendario-header">
-    <h1>📅 {{ getTituloVista() }}</h1>
+    <h1> {{ getTituloVista() }}</h1>
     
     <!-- Mostrar información del usuario dinámicamente -->
     <p class="info-usuario">{{ getMensajeInfo() }}</p>
@@ -15,21 +15,21 @@
           (click)="cambiarVista('diario')"
           class="btn-vista"
         >
-          📊 Diario
+          Diario
         </button>
         <button 
           [class]="vistaActual() === 'semanal' ? 'active' : ''"
           (click)="cambiarVista('semanal')"
           class="btn-vista"
         >
-          � Semanal
+          Semanal
         </button>
         <button 
           [class]="vistaActual() === 'mensual' ? 'active' : ''"
           (click)="cambiarVista('mensual')"
           class="btn-vista"
         >
-          � Mensual
+          Mensual
         </button>
       </div>
     </div>
