@@ -1,59 +1,89 @@
-# GestorAulas
+Gestor de Aulas
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.5.
+Este proyecto fue desarrollado como trabajo final de la materia Programación IV de la Tecnicatura Universitaria en Programación (Universidad Tecnológica Nacional, Facultad Regional Mar del Plata).
 
-## Development server
+Gestor de Aulas es una aplicación web desarrollada en Angular para la gestión de reservas de aulas dentro de una institución educativa.
+Permite a los usuarios autenticarse, solicitar reservas, administrar solicitudes y visualizar información relevante sobre el uso de los espacios.
 
-To start a local development server, run:
+Repositorio GitHub: https://github.com/Gabigarciaret/gestor-aulas.git
 
-```bash
-ng serve
-```
+Integrantes
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Ambrosi Nicolás
 
-## Code scaffolding
+De la Riva Karina
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+García Retamar Gabriela
 
-```bash
-ng generate component component-name
-```
+Módulos y Funcionalidades
+Autenticación y Usuarios
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Inicio de sesión y registro.
 
-```bash
-ng generate --help
-```
+Manejo de roles: usuarios comunes y administradores.
 
-## Building
+Guards de rutas para proteger secciones según autenticación y permisos.
 
-To build the project run:
+Panel de Control (Dashboard)
 
-```bash
-ng build
-```
+Acceso centralizado a las funcionalidades principales según rol.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Navegación hacia módulos de solicitudes, calendario, perfil y administración.
 
-## Running unit tests
+Gestión de Solicitudes
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Creación de nuevas solicitudes de reserva de aula.
 
-```bash
-ng test
-```
+Visualización y seguimiento de solicitudes del usuario.
 
-## Running end-to-end tests
+Aprobación o rechazo de solicitudes (solo para administradores).
 
-For end-to-end (e2e) testing, run:
+Calendario
 
-```bash
-ng e2e
-```
+Visualización de reservas en formato calendario.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Consulta de disponibilidad de aulas.
 
-## Additional Resources
+Perfil de Usuario
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Visualización y edición de datos personales.
+
+Cambio de contraseña.
+
+Componentes Compartidos
+
+Header y footer reutilizables.
+
+Menú adaptado al rol del usuario.
+
+Seguridad
+
+Guards de autenticación.
+
+Guards de autorización por rol.
+
+Redirección automática según permisos y estado de sesión.
+
+Backend Simulado
+
+Uso de json-server con db.json para simular CRUD y persistencia durante el desarrollo.
+
+Estructura del Proyecto
+src/
+ └─ app/
+     ├─ auth/        → Autenticación, modelos y servicios
+     ├─ guards/      → Guards de rutas (auth y roles)
+     ├─ pages/       → Páginas principales (dashboard, calendario, login, registro, perfil, solicitudes)
+     ├─ services/    → Servicios de usuarios, reservas y solicitudes
+     └─ shared/      → Header, footer y componentes comunes
+
+db/
+ └─ db.json          → Base de datos simulada
+
+Objetivo del Proyecto
+
+El objetivo principal de Gestor de Aulas es permitir una administración eficiente de los espacios educativos, facilitando la reserva por parte de los usuarios y la gestión de disponibilidad por parte de los administradores.
+
+Fecha
+
+Noviembre 2025
