@@ -7,6 +7,8 @@ import { Nueva } from './pages/solicitud/nueva/nueva';
 import { MisSolicitudes } from './pages/solicitud/mis-solicitudes/mis-solicitudes';
 import { ListSolicitudes } from './pages/solicitud/list-solicitudes/list-solicitudes';
 import { ComingSoon } from './pages/coming-soon/coming-soon';
+import { RegistrarUsuario } from './pages/gestion-usuarios/registrar-usuario/registrar-usuario';
+import { AdministrarUsuario } from './pages/gestion-usuarios/administrar-usuario/administrar-usuario';
 
 export const routes: Routes = [
   {
@@ -58,6 +60,15 @@ export const routes: Routes = [
     path: 'mis-reservas',
     loadComponent: () => import('./pages/calendario/calendario.component').then(m => m.CalendarioComponent),
     canActivate: [authGuard]
+  },
+  // Gestión de usuarios (Nico)
+  {
+    path: 'gestionUsuarios/registrarUsuario',
+    component: RegistrarUsuario
+  },
+  {
+    path: 'gestionUsuarios/eliminarUsuario',
+    component: AdministrarUsuario
   },
   {
     path: 'coming-soon',

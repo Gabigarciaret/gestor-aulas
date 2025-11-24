@@ -1,0 +1,100 @@
+<div class="eliminar-container">
+  <div class="eliminar-content">
+    <div class="eliminar-header">
+      <h1>Administrar Usuarios</h1>
+      <button routerLink="/gestionUsuarios" class="btn-volver">← Volver</button>
+    </div>
+
+    <div class="filtros-section">
+      <input
+        type="text"
+        class="input-buscar"
+        placeholder="Buscar por nombre, apellido o email..."
+        [(ngModel)]="filtroBusqueda"
+        (ngModelChange)="aplicarFiltros()"
+      />
+      <select class="select-filtro" [(ngModel)]="filtroRol" (ngModelChange)="aplicarFiltros()">
+        <option value="">Todos los roles</option>
+        <option value="ADMIN">Administrador</option>
+        <option value="PROFESOR">Profesor</option>
+      </select>
+      <select class="select-filtro" [(ngModel)]="filtroActivo" (ngModelChange)="aplicarFiltros()">
+        <option value="">Todos los estados</option>
+        <option [value]="true">Activos</option>
+        <option [value]="false">Eliminados</option>
+      </select>
+    </div>
+
+    <div class="usuarios-grid">
+      @for (u of listaUsuarios(); track u.id) {
+      <div class="usuario-card" (click)="abrirModal(u)">
+        <div class="usuario-info">
+          <h3>{{ u.nombre }} {{ u.apellido }}</h3>
+          <p>{{ u.email }}</p>
+        </div>
+      </div>
+      }
+    </div>
+
+    <div class="paginacion">
+      <button class="btn-paginacion" [disabled]="paginaActual() === 1" (click)="anteriorPagina()">
+        ← Anterior
+      </button>
+      <span class="pagina-info"> Página {{ paginaActual() }} de {{ totalPaginas() || 1 }} </span>
+      <button
+        class="btn-paginacion"
+        [disabled]="paginaActual() >= totalPaginas() || totalPaginas() === 0"
+        (click)="siguientePagina()"
+      >
+        Siguiente →
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal de detalles del usuario -->
+  @if (usuarioSeleccionado()) {
+  <div class="modal-overlay" (click)="cerrarModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <button class="btn-cerrar" (click)="cerrarModal()">✕</button>
+
+      <h2>Detalles del Usuario</h2>
+
+      <div class="detalle-grupo">
+        <label>ID:</label>
+        <p>{{ usuarioSeleccionado()!.id }}</p>
+      </div>
+
+      <div class="detalle-grupo">
+        <label>Nombre:</label>
+        <p>{{ usuarioSeleccionado()!.nombre }}</p>
+      </div>
+
+      <div class="detalle-grupo">
+        <label>Apellido:</label>
+        <p>{{ usuarioSeleccionado()!.apellido }}</p>
+      </div>
+
+      <div class="detalle-grupo">
+        <label>Email:</label>
+        <p>{{ usuarioSeleccionado()!.email }}</p>
+      </div>
+
+      <div class="detalle-grupo">
+        <label>Rol:</label>
+        <p>{{ usuarioSeleccionado()!.rol }}</p>
+      </div>
+
+      <div class="detalle-grupo">
+        <label>Estado:</label>
+        <p>@if (usuarioSeleccionado()!.activo === true) { activo } @else { eliminado }</p>
+      </div>
+
+      @if (usuarioSeleccionado()!.activo) {
+      <button (click)="eliminar()" class="btn-eliminar-usuario">Eliminar Usuario</button>
+      } @else {
+      <button (click)="reactivar()" class="btn-reactivar-usuario">Reactivar Usuario</button>
+      }
+    </div>
+  </div>
+  }
+</div>
