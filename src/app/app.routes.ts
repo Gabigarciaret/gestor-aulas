@@ -6,6 +6,8 @@ import { Home } from './pages/home/home';
 import { Nueva } from './pages/solicitud/nueva/nueva';
 import { MisSolicitudes } from './pages/solicitud/mis-solicitudes/mis-solicitudes';
 import { ListSolicitudes } from './pages/solicitud/list-solicitudes/list-solicitudes';
+import { RegistrarUsuario } from './pages/gestion-usuarios/registrar-usuario/registrar-usuario';
+import { AdministrarUsuario } from './pages/gestion-usuarios/administrar-usuario/administrar-usuario';
 
 export const routes: Routes = [
   {
@@ -59,8 +61,16 @@ export const routes: Routes = [
     canActivate: [authGuard]
   },
   {
+    path: 'gestionUsuarios/registrarUsuario',
+    component: RegistrarUsuario
+  },
+  {
+    path: 'gestionUsuarios/eliminarUsuario',
+    component: AdministrarUsuario
+  },
+  {
     path: 'coming-soon',
-    redirectTo: '/home'  // Temporal hasta que tus compañeros implementen coming-soon
+    redirectTo: '/coming-soon'  // Temporal hasta que tus compañeros implementen coming-soon
   },
   {
     path: '**',
