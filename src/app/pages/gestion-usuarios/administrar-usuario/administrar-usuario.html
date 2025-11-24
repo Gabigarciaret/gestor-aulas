@@ -37,19 +37,15 @@
     </div>
 
     <div class="paginacion">
-      <button 
-        class="btn-paginacion" 
-        [disabled]="paginaActual() === 1" 
-        (click)="anteriorPagina()">
+      <button class="btn-paginacion" [disabled]="paginaActual() === 1" (click)="anteriorPagina()">
         ← Anterior
       </button>
-      <span class="pagina-info">
-        Página {{ paginaActual() }} de {{ totalPaginas() || 1 }}
-      </span>
-      <button 
-        class="btn-paginacion" 
-        [disabled]="paginaActual() >= totalPaginas() || totalPaginas() === 0" 
-        (click)="siguientePagina()">
+      <span class="pagina-info"> Página {{ paginaActual() }} de {{ totalPaginas() || 1 }} </span>
+      <button
+        class="btn-paginacion"
+        [disabled]="paginaActual() >= totalPaginas() || totalPaginas() === 0"
+        (click)="siguientePagina()"
+      >
         Siguiente →
       </button>
     </div>
@@ -94,9 +90,9 @@
       </div>
 
       @if (usuarioSeleccionado()!.activo) {
-      <button class="btn-eliminar-usuario">Eliminar Usuario</button>
+      <button (click)="eliminar()" class="btn-eliminar-usuario">Eliminar Usuario</button>
       } @else {
-      <button class="btn-reactivar-usuario">Reactivar Usuario</button>
+      <button (click)="reactivar()" class="btn-reactivar-usuario">Reactivar Usuario</button>
       }
     </div>
   </div>

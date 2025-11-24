@@ -35,6 +35,10 @@ export class UsuarioService {
     return this.http.patch<Usuario>(`${this.baseDatosUrl}/${id}`, { activo: false });
   }
 
+  reactivarById(id: string): Observable<Usuario> {
+    return this.http.patch<Usuario>(`${this.baseDatosUrl}/${id}`, { activo: true });
+  }
+
   crear(usuario: UsuarioCreateDto): Observable<Usuario> {
     const usuarioNuevo = {
       ...usuario,

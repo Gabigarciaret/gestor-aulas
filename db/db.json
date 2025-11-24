@@ -1121,6 +1121,15 @@
       "rol": "PROFESOR",
       "email": "patricia.morales@gmail.com",
       "activo": false
+    },
+    {
+      "id": "da40",
+      "nombre": "nicolas",
+      "apellido": "ambrosini",
+      "password": "nico",
+      "rol": "ADMIN",
+      "email": "nico@gmail.com",
+      "activo": false
     }
   ],
   "carrera_x_asignatura": [

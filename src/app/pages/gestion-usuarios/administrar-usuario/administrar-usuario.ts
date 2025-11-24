@@ -72,10 +72,20 @@ export class AdministrarUsuario implements OnInit {
     this.usuarioSeleccionado.set(null);
   }
 
-  eliminarUsuario(){
+  eliminar(){
     this.usuarioService.eliminarById(this.usuarioSeleccionado()!.id).subscribe({
       next: () => {
-        
+        this.usuarioSeleccionado.set(null);
+        this.cargarUsuarios();
+      }
+    })
+  }
+
+  reactivar() {
+    this.usuarioService.reactivarById(this.usuarioSeleccionado()!.id).subscribe({
+      next: () => {
+        this.usuarioSeleccionado.set(null);
+        this.cargarUsuarios();
       }
     })
   }
