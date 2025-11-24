@@ -6,14 +6,14 @@ import { Home } from './pages/home/home';
 import { Nueva } from './pages/solicitud/nueva/nueva';
 import { MisSolicitudes } from './pages/solicitud/mis-solicitudes/mis-solicitudes';
 import { ListSolicitudes } from './pages/solicitud/list-solicitudes/list-solicitudes';
-import { ComingSoon } from './pages/coming-soon/coming-soon';
+// import { ComingSoon } from './pages/coming-soon/coming-soon';
 import { RegistrarUsuario } from './pages/gestion-usuarios/registrar-usuario/registrar-usuario';
 import { AdministrarUsuario } from './pages/gestion-usuarios/administrar-usuario/administrar-usuario';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home',
+  redirectTo: '/home',
     pathMatch: 'full'
   },
   {
@@ -61,18 +61,24 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/calendario/calendario.component').then(m => m.CalendarioComponent),
     canActivate: [authGuard]
   },
-  // Gestión de usuarios (Nico)
+  {
+    path: 'gestionUsuarios',
+    loadComponent: () => import('./pages/gestion-usuarios/gestion-usuarios').then(m => m.GestionUsuarios),
+    canActivate: [adminGuard]
+  },
   {
     path: 'gestionUsuarios/registrarUsuario',
-    component: RegistrarUsuario
+    component: RegistrarUsuario,
+    canActivate: [adminGuard]
   },
   {
     path: 'gestionUsuarios/eliminarUsuario',
-    component: AdministrarUsuario
+    component: AdministrarUsuario,
+    canActivate: [adminGuard]
   },
   {
     path: 'coming-soon',
-    component: ComingSoon
+    redirectTo: '/coming-soon'
   },
   {
     path: '**',

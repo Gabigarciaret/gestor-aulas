@@ -31,7 +31,7 @@
           <p>Administrar todas las reservas del sistema</p>
         </div>
         
-        <div class="action-card" (click)="navigateTo('/coming-soon')">
+  <div class="action-card" (click)="navigateTo('/gestionUsuarios')">
           <img class="card-icon" src="Usuarios.png" alt="Icono de usuarios"/>
           <h3>Gestión de Usuarios</h3>
           <p>Administrar profesores y permisos</p>
@@ -85,3 +85,5 @@
     </div>
   </div>
 </div>
+<!-- Router outlet to render nested dashboard routes (e.g. gestión de usuarios) -->
+<router-outlet></router-outlet>

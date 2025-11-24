@@ -1353,13 +1353,13 @@
       "activo": false
     },
     {
-      "id": "da40",
-      "nombre": "nicolas",
-      "apellido": "ambrosini",
-      "password": "nico",
+      "id": "db14",
+      "nombre": "Gabriela",
+      "apellido": "Garcia Retamar",
+      "password": "1234",
       "rol": "ADMIN",
-      "email": "nico@gmail.com",
-      "activo": false
+      "email": "gabrielagarciaret@hotmail.com",
+      "activo": true
     }
   ],
   "carrera_x_asignatura": [
