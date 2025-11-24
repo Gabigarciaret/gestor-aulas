@@ -27,7 +27,7 @@ export class CalendarioComponent implements AfterViewInit, OnInit {
   private router = inject(Router);
 
   // Vista actual
-  vistaActual = signal<'diario' | 'semanal' | 'mensual'>('semanal');
+  vistaActual = signal<'diario' | 'semanal' | 'mensual'>('diario');
 
   // Reservas cargadas desde la API
   reservasAprobadas = signal<EventInput[]>([]);

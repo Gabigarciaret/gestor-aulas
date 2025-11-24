@@ -6,11 +6,12 @@ import { Home } from './pages/home/home';
 import { Nueva } from './pages/solicitud/nueva/nueva';
 import { MisSolicitudes } from './pages/solicitud/mis-solicitudes/mis-solicitudes';
 import { ListSolicitudes } from './pages/solicitud/list-solicitudes/list-solicitudes';
+import { ComingSoon } from './pages/coming-soon/coming-soon';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: '/login',
+    redirectTo: '/home',
     pathMatch: 'full'
   },
   {
@@ -40,9 +41,9 @@ export const routes: Routes = [
     canActivate: [authGuard]
   },
   {
-    path: 'gestor-solicitudes',
+    path: 'solicitudes',
     component: ListSolicitudes,
-    canActivate: [authGuard]
+    canActivate: [adminGuard]
   },
   {
     path: 'agenda',
@@ -60,7 +61,7 @@ export const routes: Routes = [
   },
   {
     path: 'coming-soon',
-    redirectTo: '/home'  // Temporal hasta que tus compañeros implementen coming-soon
+    component: ComingSoon
   },
   {
     path: '**',

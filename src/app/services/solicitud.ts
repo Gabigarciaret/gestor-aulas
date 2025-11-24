@@ -44,16 +44,6 @@ export class Solicitud {
     return this.http.patch<Solicitud>(`${this.apiUrl}/${id}`, payload);
   }
 
-  // Patch parcial para actualizar solo el comentario de estado
-  patchComentarioEstado(id: string, comentario: string): Observable<Solicitud> {
-    return this.http.patch<Solicitud>(`${this.apiUrl}/${id}`, { comentario_estado: comentario });
-  }
-
-  // Patch parcial para actualizar estado y comentario de estado en una sola llamada
-  patchEstadoComentario(id: string, estado: string, comentario: string): Observable<Solicitud> {
-    return this.http.patch<Solicitud>(`${this.apiUrl}/${id}`, { estado, comentario_estado: comentario });
-  }
-
   /**
    * Comprueba si la solicitud puede ser modificada por el usuario actual.
    * Solo el usuario creador y cuando el estado sea 'PENDIENTE'.
@@ -94,5 +84,26 @@ export class Solicitud {
     }
     // cancelarSolicitud ya fuerza el estado 'CANCELADA'
     return this.cancelarSolicitud(id, solicitud);
+  }
+
+  /**
+   * Actualiza el estado y comentario de estado de una solicitud (funcionalidad de admin)
+   */
+  patchEstadoComentario(id: string, estado: string, comentario: string): Observable<Solicitud> {
+    const payload = { 
+      estado: estado,
+      comentario_estado: comentario 
+    };
+    return this.http.patch<Solicitud>(`${this.apiUrl}/${id}`, payload);
+  }
+
+  /**
+   * Actualiza solo el comentario de estado de una solicitud (funcionalidad de admin)
+   */
+  patchComentarioEstado(id: string, comentario: string): Observable<Solicitud> {
+    const payload = { 
+      comentario_estado: comentario 
+    };
+    return this.http.patch<Solicitud>(`${this.apiUrl}/${id}`, payload);
   }
 }

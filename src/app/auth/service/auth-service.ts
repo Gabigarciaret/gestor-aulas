@@ -22,7 +22,9 @@ export class AuthService {
   });
 
   constructor() {
-    this.cargarSesion();
+    // Limpiar cualquier sesión previa para que siempre inicie sin usuario logueado
+    this.limpiarSesion();
+    // this.cargarSesion();
   }
 
   private cargarSesion(): void {
@@ -36,6 +38,12 @@ export class AuthService {
         localStorage.removeItem('usuario');
       }
     }
+  }
+
+  private limpiarSesion(): void {
+    localStorage.removeItem('usuario');
+    this.usuarioLogueado.set(false);
+    this.usuarioReset();
   }
 
   private guardarSesion(usuario: Usuario): void {
@@ -97,6 +105,11 @@ export class AuthService {
       return true;
     }
     return false;
+  }
+
+  esAdmin(): boolean {
+    const usuario = this.infoUsuario();
+    return usuario?.rol === 'ADMIN';
   }
 
   logout(): void {

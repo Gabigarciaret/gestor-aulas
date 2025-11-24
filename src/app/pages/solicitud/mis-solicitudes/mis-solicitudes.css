@@ -238,6 +238,7 @@
 	justify-content: center;
 	z-index: 1200;
 	padding: 1rem;
+	-webkit-backdrop-filter: blur(2px);
 	backdrop-filter: blur(2px);
 	animation: overlay-fade 160ms ease;
 }
